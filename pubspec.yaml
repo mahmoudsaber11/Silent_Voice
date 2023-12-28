@@ -42,23 +42,23 @@ dependencies:
   shared_preferences: ^2.0.18
   carousel_slider: ^4.2.1
   image_picker: ^0.8.7
-  tflite_flutter: ^0.9.5
+  tflite_flutter: ^0.10.4
   camera: ^0.10.5
-  zego_uikit_prebuilt_call: ^3.3.15
+  zego_uikit_prebuilt_call: ^3.18.4
   youtube_player_flutter: ^8.1.2
   teachable: ^0.0.2
-  permission_handler: ^10.3.0
-  tflite: ^1.0.7
-  speech_to_text: ^6.1.1
+  permission_handler: ^11.1.0
+  tflite: ^1.1.2
+  speech_to_text: ^6.5.1
   highlight_text: ^1.6.0
   avatar_glow: ^2.0.2
   flutter_launcher_icons: ^0.13.1
   #firebase
-  firebase_core: ^2.7.1
-  firebase_auth: ^4.2.10
-  cloud_firestore: ^4.4.4
-  firebase_storage: ^11.0.16
-  firebase_messaging: ^14.3.0
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.15.3
+  cloud_firestore: ^4.13.6
+  firebase_storage: ^11.5.6
+  firebase_messaging: ^14.7.9
 
 
   # The following adds the Cupertino Icons font to your application.
