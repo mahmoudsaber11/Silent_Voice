@@ -2,6 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/features/auth/data/repositories/sign_in/sign_in_repo_impl.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_in/sign_in_cubit.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_in/sign_in_state.dart';
@@ -10,7 +11,7 @@ import 'package:social_app/features/layout/cubit/cubit.dart';
 import 'package:social_app/features/layout/social_layout.dart';
 import 'package:social_app/shared/components/components.dart';
 import 'package:social_app/shared/components/constants.dart';
-import 'package:social_app/shared/network/local/cache_helper.dart';
+import 'package:social_app/core/helpers/cache_helper.dart';
 
 class SignInView extends StatelessWidget {
   const SignInView({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class SignInView extends StatelessWidget {
                 text: 'Welcome in Social App',
                 state: ToastStates.SUCCESS,
               );
-              navigateAndFinish(context, const SocialLayout(0));
+              navigateAndFinish(context, const SocialLayout());
               SocialCubit.get(context).currentIndex = 0;
             });
           }

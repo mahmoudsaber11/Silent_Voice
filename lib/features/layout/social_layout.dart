@@ -7,7 +7,7 @@ import '../new_post/new_post_screen.dart';
 import '../../shared/components/components.dart';
 
 class SocialLayout extends StatelessWidget {
-  const SocialLayout(int i, {super.key});
+  const SocialLayout({super.key});
 
   @override
   Widget build(BuildContext context) {

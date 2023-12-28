@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/shared/cubit/states.dart';
 
-import '../network/local/cache_helper.dart';
+import '../../core/helpers/cache_helper.dart';
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitailState());

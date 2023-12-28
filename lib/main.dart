@@ -9,7 +9,7 @@ import 'package:social_app/features/layout/social_layout.dart';
 import 'package:social_app/shared/components/constants.dart';
 import 'package:social_app/shared/cubit/cubit.dart';
 import 'package:social_app/shared/cubit/states.dart';
-import 'package:social_app/shared/network/local/cache_helper.dart';
+import 'package:social_app/core/helpers/cache_helper.dart';
 import 'package:social_app/shared/styles/themes.dart';
 
 List<CameraDescription>? cameras;
@@ -27,7 +27,7 @@ void main() async {
 
   uId = CacheHelper.getStringData(key: 'uId');
   if (uId != null) {
-    startWidget = const SocialLayout(0);
+    startWidget = const SocialLayout();
   } else {
     startWidget = SignInView();
   }
