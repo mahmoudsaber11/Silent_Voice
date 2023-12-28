@@ -1,9 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:social_app/core/helpers/cache_helper.dart';
-import 'package:social_app/core/helpers/helper.dart';
-import 'package:social_app/core/utils/app_navigator.dart';
+import 'package:social_app/core/utils/app_assets.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -13,27 +9,14 @@ class SplashViewBody extends StatefulWidget {
 }
 
 class _SplashViewBodyState extends State<SplashViewBody> {
-  late Timer _timer;
-  void timer(){
-     _timer=Timer(const Duration(seconds: 5), ()=>);
-  }
-  void navigateTo(){
-    Helper.uId=CacheHelper.getStringData(key: 'uId');
-    if(Helper.uId !=null){
-      
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        const Spacer(),
-        Text('Silent Voice',),
-        const Spacer(),
-        Divider(),
-        Text('FROM INJOY',),
-      ],
-    );
+    return Container(
+        height: double.infinity,
+        width: double.infinity,
+        child: Image.asset(
+          AppAssets.splashView,
+          fit: BoxFit.fill,
+        ));
   }
 }
