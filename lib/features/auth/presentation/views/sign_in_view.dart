@@ -12,8 +12,8 @@ import 'package:social_app/shared/components/components.dart';
 import 'package:social_app/shared/components/constants.dart';
 import 'package:social_app/shared/network/local/cache_helper.dart';
 
-class SocialLoginScreen extends StatelessWidget {
-  const SocialLoginScreen({Key? key}) : super(key: key);
+class SignInView extends StatelessWidget {
+  const SignInView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

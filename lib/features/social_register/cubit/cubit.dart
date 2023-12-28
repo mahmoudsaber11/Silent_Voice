@@ -19,7 +19,7 @@ class SocialRegisterCubit extends Cubit<SocialRegisterStates> {
     FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password)
         .then((value) {
-      userCreate(
+      createUser(
         name: name,
         email: email,
         phone: phone,
@@ -35,7 +35,7 @@ class SocialRegisterCubit extends Cubit<SocialRegisterStates> {
     });
   }
 
-  void userCreate({
+  void createUser({
     required String name,
     required String email,
     required String phone,
