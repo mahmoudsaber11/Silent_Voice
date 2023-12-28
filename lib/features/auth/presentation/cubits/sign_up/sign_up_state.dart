@@ -1,27 +1,54 @@
-abstract class SocialRegisterStates {}
+import 'package:equatable/equatable.dart';
 
-class SocialRegisterInitialState extends SocialRegisterStates {}
+abstract class SignUpState extends Equatable {
+  const SignUpState();
 
-class SocialRegisterLoadingState extends SocialRegisterStates {}
-
-class SocialRegisterSuccessState extends SocialRegisterStates {}
-
-class SocialRegisterErrorState extends SocialRegisterStates {
-  final String error;
-
-  SocialRegisterErrorState(this.error);
+  @override
+  List<Object?> get props => [];
 }
 
-class SocialCreateUserSuccessState extends SocialRegisterStates {
+class SignUpInitial extends SignUpState {
+  const SignUpInitial();
+}
+
+class SignUpLoading extends SignUpState {
+  const SignUpLoading();
+}
+
+class SignUpSuccess extends SignUpState {}
+
+class SignUpError extends SignUpState {
+  final String error;
+
+  const SignUpError({required this.error});
+
+  @override
+  List<Object> get props => [error];
+}
+
+class CreateUserSuccess extends SignUpState {
   final String uId;
 
-  SocialCreateUserSuccessState(this.uId);
+  CreateUserSuccess({required this.uId});
+
+  @override
+  List<Object?> get props => [uId];
 }
 
-class SocialCreateUserErrorState extends SocialRegisterStates {
+class CreateUserError extends SignUpState {
   final String error;
 
-  SocialCreateUserErrorState(this.error);
+  const CreateUserError({required this.error});
+
+  @override
+  List<Object> get props => [error];
 }
 
-class SocialChangePasswordVisibilityState extends SocialRegisterStates {}
+class SignUpChangePasswordVisibility extends SignUpState {
+  final bool isPassword;
+
+  SignUpChangePasswordVisibility({required this.isPassword});
+
+  @override
+  List<Object?> get props => [isPassword];
+}
