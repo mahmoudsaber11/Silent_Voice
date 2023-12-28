@@ -1,15 +1,17 @@
-class SocialUserModel {
-  String? name;
-  String? email;
-  String? phone;
-  String? password;
-  String? image;
-  String? cover;
-  String? uId;
-  // bool? isEmailVerified;
-  String? bio;
+import 'package:equatable/equatable.dart';
 
-  SocialUserModel({
+class UserModel extends Equatable {
+  final String? name;
+  final String? email;
+  final String? phone;
+  final String? password;
+  final String? image;
+  final String? cover;
+  final String? uId;
+  // bool? isEmailVerified;
+  final String? bio;
+
+  const UserModel({
     required this.name,
     required this.email,
     required this.phone,
@@ -20,16 +22,15 @@ class SocialUserModel {
     required this.bio,
     //  required this.isEmailVerified,
   });
-  SocialUserModel.fromJson(Map<String, dynamic>? json) {
-    name = json!['name'];
-    email = json['email'];
-    phone = json['phone'];
-    password = json['password'];
-    //  isEmailVerified = json['isEmailVerified'];
-    uId = json['uId'];
-    cover = json['cover'];
-    image = json['image'];
-    bio = json['bio'];
+  factory UserModel.fromJson(Map<String, dynamic>? json) {
+    return UserModel(
+        name: json!['name'],
+        email: json['email'],
+        phone: json['phone'],
+        image: json['image'],
+        cover: json['cover'],
+        uId: json['uId'],
+        bio: json['bio']);
   }
   Map<String, dynamic> toMap() {
     return {
@@ -43,4 +44,16 @@ class SocialUserModel {
       'bio': bio,
     };
   }
+
+  @override
+  List<Object?> get props => [
+        name,
+        email,
+        phone,
+        password,
+        image,
+        cover,
+        uId,
+        bio,
+      ];
 }
