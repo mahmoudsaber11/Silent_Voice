@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/features/layout/cubit/cubit.dart';
 import 'package:social_app/features/layout/cubit/states.dart';
 import 'package:social_app/models/social_app/post_model.dart';
-import 'package:social_app/models/social_app/social_user_model.dart';
+import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/shared/components/components.dart';
 
 // ignore: must_be_immutable

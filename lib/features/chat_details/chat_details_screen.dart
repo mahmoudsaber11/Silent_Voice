@@ -6,7 +6,7 @@ import 'package:social_app/features/layout/cubit/states.dart';
 import 'package:social_app/models/social_app/message_model.dart';
 import 'package:social_app/features/chat_details/call_video.dart';
 import 'package:social_app/features/chat_details/nlp.dart';
-import 'package:social_app/models/social_app/social_user_model.dart';
+import 'package:social_app/features/auth/data/models/user_model.dart';
 
 class ChatDetails extends StatelessWidget {
   final UserModel? userModel;

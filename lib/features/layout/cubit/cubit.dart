@@ -14,7 +14,7 @@ import 'package:social_app/features/chats/chats_screen.dart';
 import 'package:social_app/features/feeds/feeds_screen.dart';
 import 'package:social_app/features/new_post/new_post_screen.dart';
 import 'package:social_app/features/settings/settings_screen.dart';
-import 'package:social_app/models/social_app/social_user_model.dart';
+import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/shared/components/components.dart';
 import 'package:social_app/shared/network/local/cache_helper.dart';
 import 'dart:io';
