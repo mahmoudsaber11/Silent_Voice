@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_app/features/auth/data/repositories/sign_up/sign_up_repo_impl.dart';
+import 'package:social_app/features/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
+import 'package:social_app/features/auth/presentation/cubits/sign_up/sign_up_state.dart';
 import 'package:social_app/features/layout/cubit/cubit.dart';
 import 'package:social_app/features/layout/social_layout.dart';
-import 'package:social_app/features/social_register/cubit/cubit.dart';
-import 'package:social_app/features/social_register/cubit/states.dart';
 import 'package:social_app/shared/components/components.dart';
 import 'package:social_app/shared/components/constants.dart';
 
@@ -30,13 +31,13 @@ class SignUpView extends StatelessWidget {
     String uId = '';
 
     return BlocProvider(
-        create: (context) => SocialRegisterCubit(),
-        child: BlocConsumer<SocialRegisterCubit, SocialRegisterStates>(
+        create: (context) => SignUpCubit(signUpRepo: SignUpRepoImpl()),
+        child: BlocConsumer<SignUpCubit, SignUpState>(
           listener: (context, state) {
-            if (state is SocialCreateUserErrorState) {
+            if (state is SignUpError) {
               showToast(text: state.error, state: ToastStates.ERROR);
             }
-            if (state is SocialCreateUserSuccessState) {
+            if (state is CreateUserSuccess) {
               CacheHelper.saveData(
                 key: 'uId',
                 value: state.uId,
@@ -171,13 +172,9 @@ class SignUpView extends StatelessWidget {
                                       ),
                                       decoration: InputDecoration(
                                         suffix: IconButton(
-                                          onPressed: () {
-                                            SocialRegisterCubit.get(context)
-                                                .changePasswordVisibility();
-                                          },
+                                          onPressed: () {},
                                           icon: Icon(
-                                            SocialRegisterCubit.get(context)
-                                                .suffix,
+                                            Icons.visibility,
                                             color: Colors.deepOrange,
                                           ),
                                         ),
@@ -196,8 +193,7 @@ class SignUpView extends StatelessWidget {
                                         return null;
                                       },
                                       obscureText:
-                                          SocialRegisterCubit.get(context)
-                                              .isPassword,
+                                          SignUpCubit.get(context).isPassword,
                                     ),
                                   ),
                                   const SizedBox(
@@ -216,13 +212,9 @@ class SignUpView extends StatelessWidget {
                                       ),
                                       decoration: InputDecoration(
                                         suffix: IconButton(
-                                          onPressed: () {
-                                            SocialRegisterCubit.get(context)
-                                                .changePasswordVisibility();
-                                          },
+                                          onPressed: () {},
                                           icon: Icon(
-                                            SocialRegisterCubit.get(context)
-                                                .suffix,
+                                            Icons.visibility,
                                             color: Colors.deepOrange,
                                           ),
                                         ),
@@ -275,18 +267,15 @@ class SignUpView extends StatelessWidget {
                                     height: 30.0,
                                   ),
                                   ConditionalBuilder(
-                                    condition:
-                                        state is! SocialRegisterLoadingState,
+                                    condition: state is! SignUpLoading,
                                     builder: (context) => defaultButton(
                                       function: (() {
                                         if (formKey.currentState!.validate()) {
-                                          SocialRegisterCubit.get(context)
-                                              .userRegister(
-                                                  name: nameController.text,
-                                                  email: emailController.text,
-                                                  password:
-                                                      passwordController.text,
-                                                  phone: phoneController.text);
+                                          SignUpCubit.get(context).signUp(
+                                              name: nameController.text,
+                                              email: emailController.text,
+                                              password: passwordController.text,
+                                              phone: phoneController.text);
                                         }
                                       }),
                                       text: 'register',

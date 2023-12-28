@@ -587,7 +587,7 @@ class SocialCubit extends Cubit<SocialStates> {
       key: 'uId',
     ).then((value) {
       if (value) {
-        navigateAndFinish(context, const SocialLoginScreen());
+        navigateAndFinish(context, const SignInView());
         SocialCubit.get(context).currentIndex = 0;
       }
     });

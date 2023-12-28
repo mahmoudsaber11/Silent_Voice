@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/features/auth/data/repositories/sign_in/sign_in_repo_impl.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_in/sign_in_cubit.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_in/sign_in_state.dart';
+import 'package:social_app/features/auth/presentation/views/sign_up_view.dart';
 import 'package:social_app/features/layout/cubit/cubit.dart';
 import 'package:social_app/features/layout/social_layout.dart';
-import 'package:social_app/features/social_register/social_register_screen.dart';
 import 'package:social_app/shared/components/components.dart';
 import 'package:social_app/shared/components/constants.dart';
 import 'package:social_app/shared/network/local/cache_helper.dart';
@@ -193,8 +193,7 @@ class SignInView extends StatelessWidget {
                                     ),
                                     TextButton(
                                         onPressed: () {
-                                          navigateTo(
-                                              context, ShopRegisterScreen());
+                                          navigateTo(context, SignUpView());
                                         },
                                         // navigateTo(context, ShopRegisterScreen());
                                         //},

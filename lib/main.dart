@@ -29,7 +29,7 @@ void main() async {
   if (uId != null) {
     startWidget = const SocialLayout(0);
   } else {
-    startWidget = const SocialLoginScreen();
+    startWidget = SignInView();
   }
 
   runApp(MyApp(
