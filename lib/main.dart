@@ -2,6 +2,7 @@ import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/bloc_observable.dart';
 import 'package:social_app/config/routes/app_router.dart';
 import 'package:social_app/config/themes/app_themes.dart';
@@ -51,14 +52,19 @@ class MyApp extends StatelessWidget {
       child: BlocConsumer<AppCubit, AppStates>(
           listener: (context, state) {},
           builder: (context, state) {
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              themeMode: AppCubit.get(context).isDarkMode
-                  ? ThemeMode.light
-                  : ThemeMode.dark,
-              theme: MyTheme.lightTheme,
-              darkTheme: MyTheme.darkTheme,
-              onGenerateRoute: AppRouter.onGenerateRoute,
+            return ScreenUtilInit(
+              designSize: const Size(375, 812),
+              minTextAdapt: true,
+              splitScreenMode: true,
+              child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+                themeMode: AppCubit.get(context).isDarkMode
+                    ? ThemeMode.light
+                    : ThemeMode.dark,
+                theme: MyTheme.lightTheme,
+                darkTheme: MyTheme.darkTheme,
+                onGenerateRoute: AppRouter.onGenerateRoute,
+              ),
             );
           }),
     );

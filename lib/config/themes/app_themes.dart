@@ -1,46 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:social_app/core/utils/app_color.dart';
 
 class MyTheme {
   static final lightTheme = ThemeData(
-    primarySwatch: Colors.deepOrange,
     scaffoldBackgroundColor: Colors.white,
-    appBarTheme: const AppBarTheme(
-      titleSpacing: 20.0,
-      // ignore: deprecated_member_use
-      // backwardsCompatibility: false,
-      systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-      backgroundColor: Colors.white,
-      elevation: 0.0,
-      titleTextStyle: TextStyle(
-        fontFamily: 'Jannah',
-        color: Colors.black,
-        fontSize: 20.0,
-        fontWeight: FontWeight.bold,
-      ),
-      iconTheme: IconThemeData(
-        color: Colors.black,
-      ),
-    ),
+    appBarTheme: const AppBarTheme(backgroundColor: AppColors.primaryColor),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.deepOrange,
+      selectedItemColor: Colors.white,
       unselectedItemColor: Colors.grey,
       elevation: 20.0,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.primaryColor,
     ),
-    textTheme: const TextTheme(
-      bodyLarge: TextStyle(
-        fontSize: 18.0,
-        fontWeight: FontWeight.w600,
-        color: Colors.black,
-      ),
-    ),
-    fontFamily: 'Jannah',
   );
   static final darkTheme = ThemeData(
       primarySwatch: Colors.deepOrange,
