@@ -6,7 +6,6 @@ import 'package:social_app/features/layout/cubit/states.dart';
 import 'package:social_app/features/chat_details/chat_details_screen.dart';
 import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/shared/components/components.dart';
-import 'package:social_app/shared/components/constants.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -59,7 +58,7 @@ class ChatScreen extends StatelessWidget {
             children: [
               Text(
                 "${model.name}",
-                style: themeMode.textTheme.bodyLarge,
+                //   style: themeMode.textTheme.bodyLarge,
               ),
             ],
           ),

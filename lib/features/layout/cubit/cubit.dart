@@ -4,6 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/features/auth/presentation/views/sign_in_view.dart';
 import 'package:social_app/features/layout/cubit/states.dart';
 import 'package:social_app/models/social_app/comment_model.dart';
@@ -19,7 +20,6 @@ import 'package:social_app/shared/components/components.dart';
 import 'package:social_app/core/helpers/cache_helper.dart';
 import 'dart:io';
 import '../../other_services/other_services_screens.dart';
-import '../../../shared/components/constants.dart';
 
 class SocialCubit extends Cubit<SocialStates> {
   SocialCubit() : super(SocialInitialState());
@@ -174,7 +174,7 @@ class SocialCubit extends Cubit<SocialStates> {
         .doc(socialUserModel!.uId)
         .update(model.toMap())
         .then((value) {
-      getUserData(uId);
+      getUserData(Helper.uId);
     }).catchError((error) {
       emit(SocialUserUpdateErrorState());
     });
@@ -606,7 +606,7 @@ class SocialCubit extends Cubit<SocialStates> {
   Future getMyData() async {
     FirebaseFirestore.instance
         .collection('users')
-        .doc(uId)
+        .doc(Helper.uId)
         .snapshots()
         .listen((value) async {
       socialUserModel = UserModel.fromJson(value.data());

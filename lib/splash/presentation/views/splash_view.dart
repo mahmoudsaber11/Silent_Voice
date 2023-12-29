@@ -29,15 +29,20 @@ class _SplashViewState extends State<SplashView> {
   }
 
   void timer() {
-    _timer = Timer(const Duration(seconds: 200), () => navigateTo());
+    _timer = Timer(const Duration(seconds: 5), () => navigateTo());
   }
 
   void navigateTo() {
     Helper.uId = CacheHelper.getStringData(key: 'uId');
-    if (Helper.uId != null) {
-      context.navigateAndRemoveUntil(newRoute: Routes.LayoutViewRoute);
+    bool? onBoarding = CacheHelper.getBoolData(key: 'onBoarding');
+    if (onBoarding != null) {
+      if (Helper.uId != null) {
+        context.navigateAndRemoveUntil(newRoute: Routes.LayoutViewRoute);
+      } else {
+        context.navigateAndReplacement(newRoute: Routes.signInRoute);
+      }
     } else {
-      context.navigateAndReplacement(newRoute: Routes.signInRoute);
+      context.navigateAndReplacement(newRoute: Routes.onBoardingViewRoute);
     }
   }
 

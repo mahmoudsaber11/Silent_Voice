@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:social_app/shared/components/constants.dart';
+import 'package:social_app/core/utils/app_constant.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 
 import '../layout/cubit/cubit.dart';

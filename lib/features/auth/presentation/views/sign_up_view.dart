@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_app/core/utils/functions/show_toast.dart';
 import 'package:social_app/features/auth/data/repositories/sign_up/sign_up_repo_impl.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_up/sign_up_state.dart';
@@ -35,7 +36,7 @@ class SignUpView extends StatelessWidget {
         child: BlocConsumer<SignUpCubit, SignUpState>(
           listener: (context, state) {
             if (state is SignUpError) {
-              showToast(text: state.error, state: ToastStates.ERROR);
+              showToast(text: state.error, state: ToastStates.error);
             }
             if (state is CreateUserSuccess) {
               CacheHelper.saveData(
@@ -45,7 +46,7 @@ class SignUpView extends StatelessWidget {
                 SocialCubit.get(context).getUserData(uId);
                 showToast(
                   text: 'Welcome in Social App',
-                  state: ToastStates.SUCCESS,
+                  state: ToastStates.success,
                 );
                 navigateAndFinish(context, const SocialLayout());
               });

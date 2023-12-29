@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/features/auth/data/repositories/sign_in/sign_in_repo.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_in/sign_in_state.dart';
-import 'package:social_app/shared/components/constants.dart';
 import 'package:social_app/core/helpers/cache_helper.dart';
 
 class SignInCubit extends Cubit<SingInState> {
@@ -16,7 +16,7 @@ class SignInCubit extends Cubit<SingInState> {
   }) {
     emit(SignInLoading());
     signInRepo.signIn(email: email, password: password).then((value) {
-      CacheHelper.saveData(key: 'uid', value: uId);
+      CacheHelper.saveData(key: 'uid', value: Helper.uId);
       emit(SignInSuccess(value.user!.uid));
     }).catchError((error) {
       emit(SignInError(error.toString()));

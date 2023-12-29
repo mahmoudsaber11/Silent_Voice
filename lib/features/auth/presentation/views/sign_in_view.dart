@@ -2,7 +2,8 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_app/core/utils/app_navigator.dart';
+import 'package:social_app/core/helpers/helper.dart';
+import 'package:social_app/core/utils/functions/show_toast.dart';
 import 'package:social_app/features/auth/data/repositories/sign_in/sign_in_repo_impl.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_in/sign_in_cubit.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_in/sign_in_state.dart';
@@ -26,7 +27,7 @@ class SignInView extends StatelessWidget {
       child: BlocConsumer<SignInCubit, SingInState>(
         listener: (context, state) {
           if (state is SignInError) {
-            showToast(text: state.error, state: ToastStates.ERROR);
+            showToast(text: state.error, state: ToastStates.error);
           }
 
           if (state is SignInSuccess) {
@@ -34,10 +35,10 @@ class SignInView extends StatelessWidget {
               key: 'uId',
               value: state.uId,
             ).then((value) async {
-              SocialCubit.get(context).getUserData(uId);
+              SocialCubit.get(context).getUserData(Helper.uId);
               showToast(
                 text: 'Welcome in Social App',
-                state: ToastStates.SUCCESS,
+                state: ToastStates.success,
               );
               navigateAndFinish(context, const SocialLayout());
               SocialCubit.get(context).currentIndex = 0;

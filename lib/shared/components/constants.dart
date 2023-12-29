@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:social_app/shared/components/full_screen_widget.dart';
-import 'package:social_app/shared/styles/themes.dart';
 
 const hintTxtStyle = TextStyle(
   color: Color(0xFFffae19),
@@ -25,30 +23,25 @@ final bxDecorationStyle = BoxDecoration(
   ],
 );
 
-String? uId = '';
-double intToDouble(int num) {
-  double doubleNum = num.toDouble();
-  return doubleNum;
-}
+// double intToDouble(int num) {
+//   double doubleNum = num.toDouble();
+//   return doubleNum;
+// }
 
-Widget imagePreview(String? image) {
-  return FullScreenWidget(
-    child: Center(
-      child: Image.network(
-        "$image",
-        fit: BoxFit.cover,
-        width: double.infinity,
-        alignment: AlignmentDirectional.topCenter,
-      ),
-    ),
-  );
-}
+// Widget imagePreview(String? image) {
+//   return FullScreenWidget(
+//     child: Center(
+//       child: Image.network(
+//         "$image",
+//         fit: BoxFit.cover,
+//         width: double.infinity,
+//         alignment: AlignmentDirectional.topCenter,
+//       ),
+//     ),
+//   );
+// }
 
-var themeMode = MyTheme.lightTheme;
-const defaultColor = Color.fromRGBO(93, 63, 211, 1);
+// var themeMode = MyTheme.lightTheme;
 
-class MyConst {
-  static const int appId = 1339273049;
-  static const String appSign =
-      '4c4d1ed3ab6c7c81990f30803376b2193aa2c9b604d824af125f194bf11b6d7c';
-}
+
+

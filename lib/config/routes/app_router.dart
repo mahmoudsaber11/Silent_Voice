@@ -3,6 +3,7 @@ import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/features/auth/presentation/views/sign_in_view.dart';
 import 'package:social_app/features/auth/presentation/views/sign_up_view.dart';
 import 'package:social_app/features/layout/social_layout.dart';
+import 'package:social_app/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:social_app/splash/presentation/views/splash_view.dart';
 
 class AppRouter {
@@ -10,6 +11,9 @@ class AppRouter {
     switch (routeSettings.name) {
       case Routes.initialRoute:
         return MaterialPageRoute(builder: (context) => const SplashView());
+
+      case Routes.onBoardingViewRoute:
+        return MaterialPageRoute(builder: (context) => const OnBoardingView());
 
       case Routes.signInRoute:
         return MaterialPageRoute(builder: (context) => const SignInView());
