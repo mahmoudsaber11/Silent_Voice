@@ -26,7 +26,7 @@ class CustomPageView extends StatelessWidget {
         padding: EdgeInsets.only(
             right: 25.w,
             top: MediaQuery.sizeOf(context).height * .7,
-            left: 20.w),
+            left: 25.w),
         width: MediaQuery.sizeOf(context).width * .8,
         child: Text(pageInfo.title, style: AppTextStyles.textStyle30),
       ),

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/features/auth/presentation/views/sign_in_view.dart';
 import 'package:social_app/features/auth/presentation/views/sign_up_view.dart';
 import 'package:social_app/features/layout/social_layout.dart';
+import 'package:social_app/features/on_boarding/data/repositories/on_boarding_repo_impl.dart';
+import 'package:social_app/features/on_boarding/presentation/cubit/on_boarding_cubit.dart';
 import 'package:social_app/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:social_app/splash/presentation/views/splash_view.dart';
 
@@ -13,7 +16,11 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const SplashView());
 
       case Routes.onBoardingViewRoute:
-        return MaterialPageRoute(builder: (context) => const OnBoardingView());
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                create: (context) =>
+                    OnBoardingCubit(onBoardingRepo: OnBoardingRepoImpl()),
+                child: const OnBoardingView()));
 
       case Routes.signInRoute:
         return MaterialPageRoute(builder: (context) => const SignInView());
