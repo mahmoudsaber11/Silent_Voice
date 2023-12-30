@@ -18,7 +18,7 @@ class CustomGeneralButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 55.h,
+      height: 60.h,
       width: width ?? double.infinity,
       decoration: BoxDecoration(
         color: AppColors.primaryColor,

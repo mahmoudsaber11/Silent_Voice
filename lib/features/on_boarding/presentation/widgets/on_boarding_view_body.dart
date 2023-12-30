@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/config/routes/routes.dart';
+import 'package:social_app/core/helpers/cache_helper.dart';
+import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/core/utils/app_text_style.dart';
 import 'package:social_app/core/widgets/custom_general_button.dart';
 import 'package:social_app/features/on_boarding/presentation/cubit/on_boarding_cubit.dart';
@@ -38,10 +41,15 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                       cubit.onChangePageIndex(index);
                     },
                   ),
-                  Positioned(
-                    top: 50.0.h,
-                    right: 20.0.w,
-                    child: Text("Skip", style: AppTextStyles.textStyle16),
+                  Visibility(
+                    visible: pageController.hasClients
+                        ? (pageController.page == 2 ? false : true)
+                        : true,
+                    child: Positioned(
+                      top: 50.0.h,
+                      right: 20.0.w,
+                      child: Text("Skip", style: AppTextStyles.textStyle16),
+                    ),
                   ),
                   CustomIndicator(
                     pageController: pageController,
@@ -51,7 +59,20 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 25.w),
-              child: CustomGeneralButton(text: "Next", onPressed: () {}),
+              child: CustomGeneralButton(
+                text: cubit.isLastBoarding ? 'Get Started' : 'Next',
+                onPressed: () {
+                  if (pageController.page! < 2) {
+                    pageController.nextPage(
+                        duration: Duration(milliseconds: 500),
+                        curve: Curves.easeIn);
+                  } else {
+                    CacheHelper.saveData(key: 'onBoarding', value: true);
+                    context.navigateAndReplacement(
+                        newRoute: Routes.signInRoute);
+                  }
+                },
+              ),
             )
           ],
         );
