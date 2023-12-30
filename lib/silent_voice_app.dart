@@ -8,7 +8,8 @@ import 'package:social_app/features/layout/cubit/cubit.dart';
 import 'package:social_app/shared/cubit/cubit.dart';
 import 'package:social_app/shared/cubit/states.dart';
 
-class MyApp extends StatelessWidget {
+class SilentVoice extends StatelessWidget {
+  const SilentVoice({super.key});
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
