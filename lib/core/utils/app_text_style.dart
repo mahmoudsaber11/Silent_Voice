@@ -7,4 +7,9 @@ class AppTextStyles {
 
   static TextStyle textStyle30 = TextStyle(
       color: Colors.white, fontSize: 30.sp, fontWeight: FontWeight.bold);
+
+  static TextStyle textStyle20 = TextStyle(
+      color: Colors.white, fontSize: 20.sp, fontWeight: FontWeight.bold);
+
+  static TextStyle textStyle15 = TextStyle(color: Colors.grey, fontSize: 15.sp);
 }
