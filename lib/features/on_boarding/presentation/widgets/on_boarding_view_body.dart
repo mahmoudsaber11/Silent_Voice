@@ -61,22 +61,22 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
               padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 25.w),
               child: CustomGeneralButton(
                 text: cubit.isLastBoarding ? 'Get Started' : 'Next',
-                onPressed: () {
-                  if (pageController.page! < 2) {
-                    pageController.nextPage(
-                        duration: Duration(milliseconds: 500),
-                        curve: Curves.easeIn);
-                  } else {
-                    CacheHelper.saveData(key: 'onBoarding', value: true);
-                    context.navigateAndReplacement(
-                        newRoute: Routes.signInRoute);
-                  }
-                },
+                onPressed: () => navOnBoarding(context),
               ),
             )
           ],
         );
       },
     );
+  }
+
+  void navOnBoarding(BuildContext context) {
+    if (pageController.page! < 2) {
+      pageController.nextPage(
+          duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+    } else {
+      CacheHelper.saveData(key: 'onBoarding', value: true);
+      context.navigateAndReplacement(newRoute: Routes.signInRoute);
+    }
   }
 }
