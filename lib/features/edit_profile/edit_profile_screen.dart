@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_app/features/layout/cubit/cubit.dart';
-import 'package:social_app/features/layout/cubit/states.dart';
+import 'package:social_app/cubit/cubit.dart';
+import 'package:social_app/cubit/states.dart';
 import 'package:social_app/shared/components/components.dart';
 
 // ignore: must_be_immutable

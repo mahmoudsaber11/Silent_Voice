@@ -13,7 +13,7 @@ import 'package:social_app/core/widgets/custom_text_field.dart';
 import 'package:social_app/features/auth/data/repositories/sign_in/sign_in_repo_impl.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_in/sign_in_cubit.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_in/sign_in_state.dart';
-import 'package:social_app/features/layout/cubit/cubit.dart';
+import 'package:social_app/cubit/cubit.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});

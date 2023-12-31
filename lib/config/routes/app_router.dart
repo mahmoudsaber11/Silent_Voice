@@ -5,7 +5,7 @@ import 'package:social_app/features/auth/data/repositories/sign_up/sign_up_repo_
 import 'package:social_app/features/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
 import 'package:social_app/features/auth/presentation/views/sign_in_view.dart';
 import 'package:social_app/features/auth/presentation/views/sign_up_view.dart';
-import 'package:social_app/features/layout/social_layout.dart';
+import 'package:social_app/features/layout/presentation/views/layout_view.dart';
 import 'package:social_app/features/on_boarding/data/repositories/on_boarding_repo_impl.dart';
 import 'package:social_app/features/on_boarding/presentation/cubit/on_boarding_cubit.dart';
 import 'package:social_app/features/on_boarding/presentation/views/on_boarding_view.dart';
@@ -34,7 +34,7 @@ class AppRouter {
                 child: SignUpView()));
 
       case Routes.LayoutViewRoute:
-        return MaterialPageRoute(builder: (context) => SocialLayout());
+        return MaterialPageRoute(builder: (context) => MediaXLayout());
 
       default:
         return _unFoundRoute();

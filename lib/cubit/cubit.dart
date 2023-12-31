@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/features/auth/presentation/views/sign_in_view.dart';
-import 'package:social_app/features/layout/cubit/states.dart';
+import 'package:social_app/cubit/states.dart';
 import 'package:social_app/models/social_app/comment_model.dart';
 import 'package:social_app/models/social_app/like_model.dart';
 import 'package:social_app/models/social_app/message_model.dart';
@@ -19,7 +19,7 @@ import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/shared/components/components.dart';
 import 'package:social_app/core/helpers/cache_helper.dart';
 import 'dart:io';
-import '../../other_services/other_services_screens.dart';
+import '../features/other_services/other_services_screens.dart';
 
 class SocialCubit extends Cubit<SocialStates> {
   SocialCubit() : super(SocialInitialState());
@@ -50,7 +50,6 @@ class SocialCubit extends Cubit<SocialStates> {
   List<String> titles = [
     'Home',
     'Chats',
-    'Post',
     'OtherServices',
     'Profile',
   ];

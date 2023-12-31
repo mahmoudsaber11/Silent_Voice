@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_app/features/layout/cubit/cubit.dart';
-import 'package:social_app/features/layout/cubit/states.dart';
+import 'package:social_app/cubit/cubit.dart';
+import 'package:social_app/cubit/states.dart';
 import 'package:social_app/models/social_app/comment_model.dart';
 import 'package:social_app/models/social_app/post_model.dart';
 import 'package:social_app/features/auth/data/models/user_model.dart';

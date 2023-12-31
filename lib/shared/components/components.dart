@@ -1,38 +1,4 @@
-// ignore_for_file: constant_identifier_names
-
 import 'package:flutter/material.dart';
-
-Widget defaultButton(
-    {double width = double.infinity,
-    double radius = 4.0,
-    Color background = Colors.deepOrange,
-    required Function() function,
-    required String text,
-    bool isUpperCase = true}) {
-  return Container(
-    width: width,
-    height: 50,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(
-        radius,
-      ),
-      color: background,
-    ),
-    child: TextButton(
-      onPressed: (() => function()),
-      child: Text(
-        isUpperCase ? text.toUpperCase() : text,
-        style: const TextStyle(
-          color: Color(0xFF000000),
-          letterSpacing: 1.5,
-          fontSize: 18.0,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'OpenSans',
-        ),
-      ),
-    ),
-  );
-}
 
 defaultAppBar({
   required BuildContext context,

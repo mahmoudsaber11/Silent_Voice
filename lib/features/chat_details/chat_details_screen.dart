@@ -1,8 +1,8 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_app/features/layout/cubit/cubit.dart';
-import 'package:social_app/features/layout/cubit/states.dart';
+import 'package:social_app/cubit/cubit.dart';
+import 'package:social_app/cubit/states.dart';
 import 'package:social_app/models/social_app/message_model.dart';
 import 'package:social_app/features/chat_details/call_video.dart';
 import 'package:social_app/features/chat_details/nlp.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_app/features/layout/cubit/cubit.dart';
-import 'package:social_app/features/layout/cubit/states.dart';
+import 'package:social_app/cubit/cubit.dart';
+import 'package:social_app/cubit/states.dart';
 import 'package:social_app/features/edit_profile/edit_profile_screen.dart';
 import '../../../shared/components/components.dart';
 
