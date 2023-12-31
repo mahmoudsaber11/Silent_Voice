@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/core/helpers/cache_helper.dart';
 import 'package:social_app/core/helpers/helper.dart';
+import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/core/utils/functions/show_toast.dart';
 import 'package:social_app/core/widgets/custom_circular_progress_indicator.dart';
@@ -59,7 +60,7 @@ class _SignUpFormState extends State<SignUpForm> {
     _nameController.dispose();
     _passwordController.dispose();
     _confirmController.dispose();
-    _passwordController.dispose();
+    _phoneController.dispose();
   }
 
   void _disposeFocusNodes() {
@@ -77,6 +78,7 @@ class _SignUpFormState extends State<SignUpForm> {
       child: BlocConsumer<SignUpCubit, SignUpState>(
         listener: (context, state) => _handleSignUpState(state, context),
         builder: (context, state) {
+          SignUpCubit cubit = BlocProvider.of<SignUpCubit>(context);
           return Form(
               key: _formKey,
               autovalidateMode: autovalidateMode,
@@ -120,6 +122,16 @@ class _SignUpFormState extends State<SignUpForm> {
                       height: 20.h,
                     ),
                     CustomTextField(
+                        isPassword: cubit.isPassword,
+                        suffix: IconButton(
+                          onPressed: () => cubit.switchPassVisibility(),
+                          icon: Icon(
+                            cubit.isPassword
+                                ? Icons.visibility_outlined
+                                : Icons.visibility_off_outlined,
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
                         validate: (String? value) =>
                             Helper.validatePasswordField(value),
                         prefix: Icon(
@@ -137,6 +149,16 @@ class _SignUpFormState extends State<SignUpForm> {
                       height: 20.h,
                     ),
                     CustomTextField(
+                        isPassword: cubit.isConfirmPassVisible,
+                        suffix: IconButton(
+                          onPressed: () => cubit.switchConfirmPassVisibility(),
+                          icon: Icon(
+                            cubit.isConfirmPassVisible
+                                ? Icons.visibility_outlined
+                                : Icons.visibility_off_outlined,
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
                         validate: (String? value) =>
                             Helper.validateConfirmPasswordField(
                               value: value,

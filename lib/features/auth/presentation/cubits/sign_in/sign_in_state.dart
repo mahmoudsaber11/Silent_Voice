@@ -26,7 +26,7 @@ class SignInLoading extends SingInState {
 class SignInSuccess extends SingInState {
   final String uId;
 
-  SignInSuccess(this.uId);
+  SignInSuccess({required this.uId});
   @override
   List<Object?> get props => [uId];
 }
