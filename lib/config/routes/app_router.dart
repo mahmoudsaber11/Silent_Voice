@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/config/routes/routes.dart';
+import 'package:social_app/features/auth/data/repositories/sign_up/sign_up_repo_impl.dart';
+import 'package:social_app/features/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
 import 'package:social_app/features/auth/presentation/views/sign_in_view.dart';
 import 'package:social_app/features/auth/presentation/views/sign_up_view.dart';
 import 'package:social_app/features/layout/social_layout.dart';
@@ -26,7 +28,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const SignInView());
 
       case Routes.signUpRoute:
-        return MaterialPageRoute(builder: (context) => SignUpView());
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                create: (context) => SignUpCubit(signUpRepo: SignUpRepoImpl()),
+                child: SignUpView()));
 
       case Routes.LayoutViewRoute:
         return MaterialPageRoute(builder: (context) => SocialLayout());

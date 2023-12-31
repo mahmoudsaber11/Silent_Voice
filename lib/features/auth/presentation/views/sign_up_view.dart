@@ -22,7 +22,7 @@ class SignUpView extends StatelessWidget {
             child: Text("Create Account", style: AppTextStyles.textStyle20),
           ),
           SizedBox(
-            height: 40.h,
+            height: 35.h,
           ),
           CustomCardApp(
               widget: Column(
@@ -38,7 +38,7 @@ class SignUpView extends StatelessWidget {
                 "Create Account to keep exploring amazing \n destinations around the world!",
                 style: AppTextStyles.textStyle15,
               ),
-              SizedBox(height: 45.h),
+              SizedBox(height: 25.h),
               const SignUpForm(),
             ],
           )),

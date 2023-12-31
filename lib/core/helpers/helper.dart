@@ -48,6 +48,13 @@ class Helper {
     return null;
   }
 
+  static String? validatePhoneField({String? value}) {
+    if (value!.isEmpty) {
+      return "Enter a valid phone number";
+    }
+    return null;
+  }
+
   static void keyboardUnfocus(BuildContext context) {
     FocusScope.of(context).unfocus();
   }

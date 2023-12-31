@@ -36,8 +36,8 @@ class SignUpCubit extends Cubit<SignUpState> {
     signUpRepo
         .createUser(name: name, email: email, phone: phone, uId: uId)
         .then((value) {
-      emit(CreateUserSuccess(uId: uId));
-      emit(SignUpSuccess());
+      emit(CreateUserSuccess());
+      emit(SignUpSuccess(uId: uId));
     }).catchError((error) {
       emit(CreateUserError(error: error.toString()));
     });
