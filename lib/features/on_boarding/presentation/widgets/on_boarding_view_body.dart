@@ -25,6 +25,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
     return BlocBuilder<OnBoardingCubit, OnBoardingState>(
       builder: (context, state) {
         OnBoardingCubit cubit = BlocProvider.of<OnBoardingCubit>(context);
+        var size = MediaQuery.of(context).size;
         return Column(
           children: [
             Expanded(
@@ -46,8 +47,8 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                         ? (pageController.page == 2 ? false : true)
                         : true,
                     child: Positioned(
-                      top: 50.0.h,
-                      right: 20.0.w,
+                      top: size.height * .07.h,
+                      right: size.width * .06.w,
                       child: Text("Skip", style: AppTextStyles.textStyle16),
                     ),
                   ),
@@ -63,6 +64,9 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                 text: cubit.isLastBoarding ? 'Get Started' : 'Next',
                 onPressed: () => navOnBoarding(context),
               ),
+            ),
+            SizedBox(
+              height: 20.h,
             )
           ],
         );

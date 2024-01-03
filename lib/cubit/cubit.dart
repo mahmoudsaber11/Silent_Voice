@@ -11,15 +11,10 @@ import 'package:social_app/models/social_app/comment_model.dart';
 import 'package:social_app/models/social_app/like_model.dart';
 import 'package:social_app/models/social_app/message_model.dart';
 import 'package:social_app/models/social_app/post_model.dart';
-import 'package:social_app/features/chats/chats_screen.dart';
-import 'package:social_app/features/feeds/feeds_screen.dart';
-import 'package:social_app/features/new_post/new_post_screen.dart';
-import 'package:social_app/features/settings/settings_screen.dart';
 import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/shared/components/components.dart';
 import 'package:social_app/core/helpers/cache_helper.dart';
 import 'dart:io';
-import '../features/other_services/other_services_screens.dart';
 
 class SocialCubit extends Cubit<SocialStates> {
   SocialCubit() : super(SocialInitialState());
@@ -40,33 +35,6 @@ class SocialCubit extends Cubit<SocialStates> {
   }
 
   var currentIndex = 0;
-  List<Widget> screens = [
-    const FeedsScreen(),
-    const ChatScreen(),
-    NewPostScreen(),
-    const OtherServices(),
-    const ProfileScreen(),
-  ];
-  List<String> titles = [
-    'Home',
-    'Chats',
-    'OtherServices',
-    'Profile',
-  ];
-  void changeBottomNav(int index) {
-    if (index == 1 || index == 3) {
-      getUsers();
-    }
-    // if (index == 4) {
-    //  getUserData(uId);
-    //}
-    if (index == 2) {
-      emit(SocialNewPostState());
-    } else {
-      currentIndex = index;
-      emit(SocialChangeBottomNavStates());
-    }
-  }
 
   File? profileImage;
   ImagePicker picker = ImagePicker();

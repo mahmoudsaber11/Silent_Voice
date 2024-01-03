@@ -11,6 +11,7 @@ class CustomPageView extends StatelessWidget {
   final OnBoardingModel pageInfo;
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
@@ -24,10 +25,11 @@ class CustomPageView extends StatelessWidget {
               fit: BoxFit.cover)),
       child: Container(
         padding: EdgeInsets.only(
-            right: 25.w,
-            top: MediaQuery.sizeOf(context).height * .7,
-            left: 25.w),
-        width: MediaQuery.sizeOf(context).width * .8,
+          right: 25.w,
+          top: size.height * .7.h,
+          left: 25.w,
+        ),
+        width: size.width * .8.w,
         child: Text(pageInfo.title, style: AppTextStyles.textStyle30),
       ),
     );

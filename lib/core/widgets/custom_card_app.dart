@@ -8,6 +8,7 @@ class CustomCardApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
         child: Container(
           width: double.infinity,
           height: MediaQuery.of(context).size.height,

@@ -5,7 +5,9 @@ import 'package:social_app/features/auth/data/repositories/sign_up/sign_up_repo_
 import 'package:social_app/features/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
 import 'package:social_app/features/auth/presentation/views/sign_in_view.dart';
 import 'package:social_app/features/auth/presentation/views/sign_up_view.dart';
+import 'package:social_app/features/comments_screen.dart';
 import 'package:social_app/features/layout/presentation/views/layout_view.dart';
+import 'package:social_app/features/new_post/new_post_screen.dart';
 import 'package:social_app/features/on_boarding/data/repositories/on_boarding_repo_impl.dart';
 import 'package:social_app/features/on_boarding/presentation/cubit/on_boarding_cubit.dart';
 import 'package:social_app/features/on_boarding/presentation/views/on_boarding_view.dart';
@@ -35,6 +37,12 @@ class AppRouter {
 
       case Routes.LayoutViewRoute:
         return MaterialPageRoute(builder: (context) => MediaXLayout());
+
+      case Routes.postViewRoute:
+        return MaterialPageRoute(builder: (context) => NewPostScreen());
+
+      case Routes.commentsViewRoute:
+        return MaterialPageRoute(builder: (context) => CommentsScreen());
 
       default:
         return _unFoundRoute();

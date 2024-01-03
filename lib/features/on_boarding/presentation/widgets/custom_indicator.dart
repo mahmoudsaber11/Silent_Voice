@@ -14,9 +14,10 @@ class CustomIndicator extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return Padding(
       padding: EdgeInsets.only(
-          right: 25.w,
-          top: MediaQuery.sizeOf(context).height * .84,
-          left: 20.w),
+        right: 25.w,
+        top: size.height * .83.h,
+        left: 25.w,
+      ),
       child: SmoothPageIndicator(
         controller: pageController,
         count: 3,
