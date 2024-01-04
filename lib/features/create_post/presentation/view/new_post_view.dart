@@ -5,8 +5,8 @@ import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/core/widgets/custom_card_app.dart';
 import 'package:social_app/cubit/cubit.dart';
 import 'package:social_app/cubit/states.dart';
-import 'package:social_app/features/new_post/create_post/presentation/widgets/appbar_post_view.dart';
-import 'package:social_app/features/new_post/create_post/presentation/widgets/custom_card_create_post.dart';
+import 'package:social_app/features/create_post/presentation/widgets/appbar_post_view.dart';
+import 'package:social_app/features/create_post/presentation/widgets/custom_card_create_post.dart';
 import 'package:social_app/models/social_app/post_model.dart';
 import 'package:social_app/features/auth/data/models/user_model.dart';
 

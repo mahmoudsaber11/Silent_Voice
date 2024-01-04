@@ -35,8 +35,8 @@ class HomeView extends StatelessWidget {
                                 model: SocialCubit.get(context).posts[index],
                                 userModel: userModel!,
                               )),
-                          separatorBuilder: ((context, index) => const SizedBox(
-                                height: 8,
+                          separatorBuilder: ((context, index) => SizedBox(
+                                height: 12.h,
                               )),
                           itemCount: SocialCubit.get(context).posts.length),
                       const SizedBox(
@@ -50,10 +50,6 @@ class HomeView extends StatelessWidget {
               return showToast(text: state.error, state: ToastStates.error);
             } else {
               return Center(child: const CustomCircularProgressIndicator());
-            }
-          },
-        ),
-      ],
-    );
+            }},),],);
   }
 }

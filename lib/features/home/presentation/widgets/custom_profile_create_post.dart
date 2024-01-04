@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/cubit/cubit.dart';
 import 'package:social_app/models/social_app/post_model.dart';
 
 class CustomProfileCreatePost extends StatelessWidget {
@@ -53,7 +54,9 @@ class CustomProfileCreatePost extends StatelessWidget {
           width: 15.w,
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            SocialCubit.get(context).removePostImage();
+          },
           icon: Icon(
             Icons.more_horiz,
             size: 20.sp,
