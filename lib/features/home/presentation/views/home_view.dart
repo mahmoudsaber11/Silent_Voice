@@ -22,8 +22,8 @@ class HomeView extends StatelessWidget {
         AppbarHomeView(),
         BlocBuilder<SocialCubit, SocialStates>(
           builder: (context, state) {
-            UserModel? userModel = SocialCubit.get(context).socialUserModel;
-            if (SocialCubit.get(context).socialUserModel != null) {
+            UserModel? userModel = SocialCubit.get(context).userModel;
+            if (userModel != null) {
               return Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -33,7 +33,7 @@ class HomeView extends StatelessWidget {
                           physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: ((context, index) => CustomPostItem(
                                 model: SocialCubit.get(context).posts[index],
-                                userModel: userModel!,
+                                userModel: userModel,
                               )),
                           separatorBuilder: ((context, index) => SizedBox(
                                 height: 12.h,
@@ -50,6 +50,10 @@ class HomeView extends StatelessWidget {
               return showToast(text: state.error, state: ToastStates.error);
             } else {
               return Center(child: const CustomCircularProgressIndicator());
-            }},),],);
+            }
+          },
+        ),
+      ],
+    );
   }
 }

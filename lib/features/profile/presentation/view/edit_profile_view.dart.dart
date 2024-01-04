@@ -7,20 +7,19 @@ import 'package:social_app/cubit/states.dart';
 import 'package:social_app/shared/components/components.dart';
 
 // ignore: must_be_immutable
-class EditProfileScreen extends StatelessWidget {
-  var nameController = TextEditingController();
-  var bioController = TextEditingController();
-  var phoneController = TextEditingController();
+class EditProfileView extends StatelessWidget {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController bioController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
 
-  EditProfileScreen({super.key});
+  EditProfileView({super.key});
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SocialCubit, SocialStates>(
       listener: ((context, state) {}),
       builder: (context, state) {
-        var userModel = SocialCubit.get(context).socialUserModel;
+        var userModel = SocialCubit.get(context).userModel;
         File? profileImage = SocialCubit.get(context).profileImage;
-        File? coverImage = SocialCubit.get(context).coverImage;
         nameController.text = userModel!.name!;
         bioController.text = userModel.bio!;
         phoneController.text = userModel.phone!;
@@ -57,40 +56,6 @@ class EditProfileScreen extends StatelessWidget {
                     child: Stack(
                       alignment: AlignmentDirectional.bottomCenter,
                       children: [
-                        Align(
-                          alignment: AlignmentDirectional.topCenter,
-                          child: Stack(
-                              alignment: AlignmentDirectional.topEnd,
-                              children: [
-                                Container(
-                                  height: 140,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4),
-                                          topRight: Radius.circular(4)),
-                                      image: DecorationImage(
-                                          image: coverImage == null
-                                              ? NetworkImage(userModel.cover!)
-                                              : FileImage(coverImage)
-                                                  as ImageProvider,
-                                          fit: BoxFit.cover)),
-                                ),
-                                IconButton(
-                                  onPressed: () {
-                                    SocialCubit.get(context).getCoverImage();
-                                  },
-                                  icon: CircleAvatar(
-                                      //  backgroundColor: Colors.grey[400],
-                                      radius: 13,
-                                      child: Icon(
-                                        Icons.camera_alt_outlined,
-                                        size: 16,
-                                        color: Colors.grey[300],
-                                      )),
-                                ),
-                              ]),
-                        ),
                         Stack(
                           alignment: AlignmentDirectional.bottomEnd,
                           children: [
@@ -145,28 +110,6 @@ class EditProfileScreen extends StatelessWidget {
                                 child: const Text('Upload Profile'),
                               ),
                               if (state is SocialUploadProfileImageLoadingState)
-                                const LinearProgressIndicator(),
-                            ],
-                          ),
-                        ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      if (SocialCubit.get(context).coverImage != null)
-                        Expanded(
-                          child: Column(
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  SocialCubit.get(context).uploadCoverImage(
-                                      context: context,
-                                      name: nameController.text,
-                                      phone: phoneController.text,
-                                      bio: bioController.text);
-                                },
-                                child: const Text('Upload Cover'),
-                              ),
-                              if (state is SocialUploadCoverImageLoadingState)
                                 const LinearProgressIndicator(),
                             ],
                           ),

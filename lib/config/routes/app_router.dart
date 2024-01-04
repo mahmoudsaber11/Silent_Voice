@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_app/comment/presentation/view/comment_view.dart';
+import 'package:social_app/features/comment/presentation/view/comment_view.dart';
 import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/features/auth/data/repositories/sign_up/sign_up_repo_impl.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
@@ -11,6 +11,7 @@ import 'package:social_app/features/layout/presentation/views/layout_view.dart';
 import 'package:social_app/features/on_boarding/data/repositories/on_boarding_repo_impl.dart';
 import 'package:social_app/features/on_boarding/presentation/cubit/on_boarding_cubit.dart';
 import 'package:social_app/features/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:social_app/features/profile/presentation/view/edit_profile_view.dart.dart';
 import 'package:social_app/splash/presentation/views/splash_view.dart';
 
 class AppRouter {
@@ -43,6 +44,9 @@ class AppRouter {
 
       case Routes.commentsViewRoute:
         return MaterialPageRoute(builder: (context) => CommentView());
+
+      case Routes.editProfileViewRoute:
+        return MaterialPageRoute(builder: (context) => EditProfileView());
 
       default:
         return _unFoundRoute();

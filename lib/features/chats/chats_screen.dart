@@ -45,7 +45,6 @@ class ChatScreen extends StatelessWidget {
       },
       child: Container(
         padding: const EdgeInsets.all(10),
-        // height: 60,
         child: Row(children: [
           CircleAvatar(
               radius: 22, backgroundImage: NetworkImage('${model.image}')),

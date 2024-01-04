@@ -15,8 +15,8 @@ class CallPage extends StatelessWidget {
           .appId, // Fill in the appID that you get from ZEGOCLOUD Admin Console.
       appSign: MyConst
           .appSign, // Fill in the appSign that you get from ZEGOCLOUD Admin Console.
-      userID: SocialCubit.get(context).socialUserModel!.uId!,
-      userName: SocialCubit.get(context).socialUserModel!.name!,
+      userID: SocialCubit.get(context).userModel!.uId!,
+      userName: SocialCubit.get(context).userModel!.name!,
       callID: callID,
       // You can also use groupVideo/groupVoice/oneOnOneVoice to make more types of calls.
       config: ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()

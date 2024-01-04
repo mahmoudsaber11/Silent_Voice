@@ -6,4 +6,5 @@ class Routes {
   static const String LayoutViewRoute = '/LayoutView';
   static const String postViewRoute = "/postView";
   static const String commentsViewRoute = "/commentsView";
+  static const String editProfileViewRoute = "/editProfileView";
 }

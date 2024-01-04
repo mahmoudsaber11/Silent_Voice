@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/cubit/cubit.dart';
-import 'package:social_app/models/social_app/post_model.dart';
+import 'package:social_app/features/create_post/data/models/post_model.dart';
 
 class CustomProfileCreatePost extends StatelessWidget {
   const CustomProfileCreatePost({
@@ -44,7 +44,7 @@ class CustomProfileCreatePost extends StatelessWidget {
                 ],
               ),
               Text(
-                '${model.date}',
+                '${model.time}',
                 style: TextStyle(fontSize: 12.sp),
               )
             ],

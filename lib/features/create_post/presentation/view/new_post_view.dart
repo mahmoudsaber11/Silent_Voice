@@ -7,31 +7,30 @@ import 'package:social_app/cubit/cubit.dart';
 import 'package:social_app/cubit/states.dart';
 import 'package:social_app/features/create_post/presentation/widgets/appbar_post_view.dart';
 import 'package:social_app/features/create_post/presentation/widgets/custom_card_create_post.dart';
-import 'package:social_app/models/social_app/post_model.dart';
+import 'package:social_app/features/create_post/data/models/post_model.dart';
 import 'package:social_app/features/auth/data/models/user_model.dart';
 
-// ignore: must_be_immutable
 class NewPostView extends StatelessWidget {
-  var textController = TextEditingController();
-  var now = TimeOfDay.now();
-  String? postId;
-  PostModel? postModel;
-
   NewPostView({
     super.key,
+    this.postId,
+    this.postModel,
   });
+  final TextEditingController textController = TextEditingController();
+  final now = TimeOfDay.now();
+  final String? postId;
+  final PostModel? postModel;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SocialCubit, SocialStates>(
-      listener: (context, state) {},
+    return BlocBuilder<SocialCubit, SocialStates>(
       builder: (context, state) {
-        UserModel socialUserModel = SocialCubit.get(context).socialUserModel!;
+        UserModel userModel = SocialCubit.get(context).userModel!;
         return Scaffold(
           backgroundColor: AppColors.primaryColor,
           body: Column(
             children: [
               AppBarPostView(
-                  socialUserModel: socialUserModel,
+                  socialUserModel: userModel,
                   textController: textController,
                   now: now),
               Expanded(
@@ -48,7 +47,7 @@ class NewPostView extends StatelessWidget {
                         height: 50.h,
                       ),
                       CustomCardCreatePost(
-                          socialUserModel: socialUserModel,
+                          socialUserModel: userModel,
                           textController: textController),
                       Spacer(),
                       Expanded(

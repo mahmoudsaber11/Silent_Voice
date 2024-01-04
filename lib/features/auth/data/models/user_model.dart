@@ -6,9 +6,7 @@ class UserModel extends Equatable {
   final String? phone;
   final String? password;
   final String? image;
-  final String? cover;
   final String? uId;
-  // bool? isEmailVerified;
   final String? bio;
 
   const UserModel({
@@ -16,11 +14,9 @@ class UserModel extends Equatable {
     required this.email,
     required this.phone,
     required this.image,
-    required this.cover,
     this.password,
     required this.uId,
     required this.bio,
-    //  required this.isEmailVerified,
   });
   factory UserModel.fromJson(Map<String, dynamic>? json) {
     return UserModel(
@@ -28,7 +24,6 @@ class UserModel extends Equatable {
         email: json['email'],
         phone: json['phone'],
         image: json['image'],
-        cover: json['cover'],
         uId: json['uId'],
         bio: json['bio']);
   }
@@ -39,7 +34,6 @@ class UserModel extends Equatable {
       'phone': phone,
       'password': password,
       'uId': uId,
-      'cover': cover,
       'image': image,
       'bio': bio,
     };
@@ -52,7 +46,6 @@ class UserModel extends Equatable {
         phone,
         password,
         image,
-        cover,
         uId,
         bio,
       ];

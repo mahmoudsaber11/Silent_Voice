@@ -5,7 +5,7 @@ import 'package:social_app/features/chats/chats_screen.dart';
 import 'package:social_app/features/layout/data/repositories/layout_repo.dart';
 import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
 import 'package:social_app/features/other_services/other_services_screens.dart';
-import 'package:social_app/features/settings/settings_screen.dart';
+import 'package:social_app/features/profile/presentation/view/profile_view.dart';
 
 class LayoutRepoImpl implements LayoutRepo {
   @override

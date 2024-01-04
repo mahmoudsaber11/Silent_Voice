@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:social_app/comment/presentation/view/comment_view.dart';
+import 'package:social_app/features/comment/presentation/view/comment_view.dart';
 import 'package:social_app/cubit/cubit.dart';
 import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/core/widgets/custom_divider.dart';
-import 'package:social_app/features/home/presentation/widgets/custom_icon_likes.dart';
 import 'package:social_app/features/home/presentation/widgets/custom_profile_create_post.dart';
-import 'package:social_app/models/social_app/post_model.dart';
+import 'package:social_app/features/create_post/data/models/post_model.dart';
 import 'package:social_app/shared/components/components.dart';
 
 class CustomPostItem extends StatelessWidget {
@@ -77,7 +76,7 @@ class CustomPostItem extends StatelessWidget {
                       context,
                       CommentView(
                         // likes: model.likes,
-                        postId: model.postId,
+                        //  postId: model.postId,
                         postUid: model.uId,
                       ),
                     );
@@ -101,17 +100,17 @@ class CustomPostItem extends StatelessWidget {
                 Spacer(),
                 InkWell(
                   onTap: () async {
-                    UserModel? postUser =
-                        SocialCubit.get(context).socialUserModel;
+                    UserModel? postUser = SocialCubit.get(context).userModel;
                     await SocialCubit.get(context).likedByMe(
-                        postUser: postUser,
-                        context: context,
-                        postModel: model,
-                        postId: model.postId);
+                      postUser: postUser,
+                      context: context,
+                      postModel: model,
+                      //    postId: model.postId
+                    );
                   },
-                  child: CustomIconsLikes(
-                    text: "${model.likes}",
-                  ),
+                  // child: CustomIconsLikes(
+                  //   text: "${model.likes}",
+                  // ),
                 ),
               ],
             ),

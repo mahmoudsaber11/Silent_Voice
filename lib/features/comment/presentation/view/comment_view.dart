@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:social_app/comment/presentation/widgets/comment_list_view.dart';
-import 'package:social_app/comment/presentation/widgets/cooment_app_bar.dart';
+import 'package:social_app/features/comment/presentation/widgets/comment_list_view.dart';
+import 'package:social_app/features/comment/presentation/widgets/cooment_app_bar.dart';
 import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/core/widgets/custom_card_app.dart';
 import 'package:social_app/cubit/cubit.dart';
@@ -11,7 +11,6 @@ import 'package:social_app/models/social_app/comment_model.dart';
 
 class CommentView extends StatelessWidget {
   final TextEditingController commentTextControl = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final String? postId;
   final String? postUid;
@@ -38,18 +37,20 @@ class CommentView extends StatelessWidget {
                 CustomCardApp(
                     widget: Column(
                   children: [
-                    Expanded(
-                      child: comments.isNotEmpty
-                          ? CommentListView(comments: comments)
-                          : Center(
+                    comments.isNotEmpty
+                        ? CommentListView(comments: comments)
+                        : Expanded(
+                            child: Center(
                               child: Text(
                                 "no comments",
                               ),
                             ),
-                    ),
-                    buildCommentImagePreview(commentImage, context),
-                    buildCommentInputSection(
-                        context, postId, commentTextControl, commentImage)
+                          ),
+                    Expanded(
+                      child: BuildCommentInputSection(
+                        commentImage: commentImage,
+                      ),
+                    )
                   ],
                 )),
               ],
@@ -105,82 +106,97 @@ Widget buildCommentImagePreview(dynamic commentImage, context) {
 
 Widget buildCommentInputSection(BuildContext context, String? postId,
     TextEditingController commentTextControl, dynamic commentImage) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10),
-    child: Column(
-      children: [
-        if (commentImage != null)
-          buildCommentImagePreview(commentImage, context),
-        TextFormField(
-          controller: commentTextControl,
-          autofocus: true,
-          textAlignVertical: TextAlignVertical.center,
-          cursorColor: Colors.black,
-          style: const TextStyle(color: Colors.black),
-          validator: (value) {
-            if (value!.isEmpty) {
-              return "Write something to share";
-            }
-            return null;
-          },
-          decoration: InputDecoration(
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(40),
-              borderSide: BorderSide.none,
-            ),
-            contentPadding: const EdgeInsets.all(10),
-            hintText: "Write a comment",
-            hintStyle: const TextStyle(color: Colors.grey),
-            suffixIcon: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () {
-                    SocialCubit.get(context).getCommentImage();
-                  },
-                  icon: const Icon(
-                    Icons.photo,
+  return BuildCommentInputSection();
+}
+
+class BuildCommentInputSection extends StatelessWidget {
+  final TextEditingController commentTextControl = TextEditingController();
+  final dynamic commentImage;
+  final String? postId;
+  BuildCommentInputSection({
+    super.key,
+    this.commentImage,
+    this.postId,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      child: Column(
+        children: [
+          if (commentImage != null)
+            buildCommentImagePreview(commentImage, context),
+          TextFormField(
+            controller: commentTextControl,
+            autofocus: true,
+            textAlignVertical: TextAlignVertical.center,
+            // cursorColor: Colors.black,
+            style: const TextStyle(color: Colors.black),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "Write something to share";
+              }
+              return null;
+            },
+            decoration: InputDecoration(
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(40),
+                borderSide: BorderSide.none,
+              ),
+              contentPadding: const EdgeInsets.all(10),
+              hintText: "Write a comment",
+              hintStyle: const TextStyle(color: Colors.grey),
+              suffixIcon: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      SocialCubit.get(context).getCommentImage();
+                    },
+                    icon: const Icon(
+                      Icons.photo,
+                    ),
                   ),
-                ),
-                IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () {
-                    if (commentImage == null) {
-                      SocialCubit.get(context).commentPost(
-                        postId: postId,
-                        comment: commentTextControl.text,
-                        time: TimeOfDay.now().format(context),
-                      );
-                    } else {
-                      SocialCubit.get(context).uploadCommentPic(
-                        postId: postId,
-                        commentText: commentTextControl.text == ''
-                            ? null
-                            : commentTextControl.text,
-                        time: TimeOfDay.now().format(context),
-                      );
-                    }
-                    commentTextControl.clear();
-                    SocialCubit.get(context).popCommentImage();
-                  },
-                  icon: const Icon(
-                    Icons.send_outlined,
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      if (commentImage == null) {
+                        SocialCubit.get(context).commentPost(
+                          postId: postId,
+                          comment: commentTextControl.text,
+                          time: TimeOfDay.now().format(context),
+                        );
+                      } else {
+                        SocialCubit.get(context).uploadCommentPic(
+                          postId: postId,
+                          commentText: commentTextControl.text == ''
+                              ? null
+                              : commentTextControl.text,
+                          time: TimeOfDay.now().format(context),
+                        );
+                      }
+                      commentTextControl.clear();
+                      SocialCubit.get(context).popCommentImage();
+                    },
+                    icon: const Icon(
+                      Icons.send_outlined,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            filled: true,
-            fillColor: Colors.grey[300],
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(40),
+                ],
+              ),
+              filled: true,
+              fillColor: Colors.grey[300],
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(40),
+              ),
             ),
           ),
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 }
 
 class BuildComment extends StatelessWidget {
