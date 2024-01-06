@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/features/profile/presentation/widgets/profile/custom_count_info.dart';
-import 'package:social_app/features/profile/presentation/widgets/profile/stories_users_list_view.dart';
 import 'package:social_app/features/profile/presentation/widgets/profile/user_profile.dart';
 
 class ProfileView extends StatelessWidget {
