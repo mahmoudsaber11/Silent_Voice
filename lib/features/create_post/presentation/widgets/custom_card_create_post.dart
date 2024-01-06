@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/cubit/cubit.dart';
-import 'package:social_app/features/auth/data/models/user_model.dart';
 
 class CustomCardCreatePost extends StatelessWidget {
   const CustomCardCreatePost({
     super.key,
-    required this.socialUserModel,
     required this.textController,
   });
-
-  final UserModel socialUserModel;
   final TextEditingController textController;
 
   @override
@@ -36,12 +33,12 @@ class CustomCardCreatePost extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 25.0,
-                backgroundImage: NetworkImage('${socialUserModel.image}'),
+                backgroundImage: NetworkImage('${Helper.userModel!.image}'),
               ),
               const SizedBox(
                 width: 15.0,
               ),
-              Text('${socialUserModel.name}'),
+              Text('${Helper.userModel!.name}'),
             ],
           ),
           const SizedBox(

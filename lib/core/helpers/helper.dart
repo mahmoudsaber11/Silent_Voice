@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:social_app/features/auth/data/models/user_model.dart';
 
 class Helper {
   static String? uId = '';
+  static UserModel? userModel;
   static String? validatePasswordField(String? value) {
     if (value!.isEmpty) {
       return 'Please enter password';
@@ -10,6 +13,12 @@ class Helper {
     }
 
     return null;
+  }
+
+  static String getDate() {
+    DateTime dateTime = DateTime.now();
+    String date = DateFormat.yMMMd().format(dateTime);
+    return date;
   }
 
   static String? validateEmailField(String? value) {

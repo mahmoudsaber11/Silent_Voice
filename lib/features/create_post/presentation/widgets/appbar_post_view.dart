@@ -2,20 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/core/utils/app_text_style.dart';
-import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/features/create_post/presentation/widgets/custom_button_upload_post.dart';
 
 class AppBarPostView extends StatelessWidget {
   const AppBarPostView({
     super.key,
-    required this.socialUserModel,
     required this.textController,
-    required this.now,
   });
 
-  final UserModel socialUserModel;
   final TextEditingController textController;
-  final TimeOfDay now;
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +33,8 @@ class AppBarPostView extends StatelessWidget {
             style: AppTextStyles.textStyle20,
           ),
           CustomButtonUploadPost(
-              socialUserModel: socialUserModel,
-              textController: textController,
-              now: now)
+            textController: textController,
+          )
         ],
       ),
     );

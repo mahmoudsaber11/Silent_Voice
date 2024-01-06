@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/cubit/cubit.dart';
 import 'package:social_app/features/create_post/data/models/post_model.dart';
 
-class CustomProfileCreatePost extends StatelessWidget {
-  const CustomProfileCreatePost({
+class UpperSection extends StatelessWidget {
+  const UpperSection({
     super.key,
-    required this.model,
+    required this.postModel,
   });
 
-  final PostModel model;
+  final PostModel postModel;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class CustomProfileCreatePost extends StatelessWidget {
         CircleAvatar(
           radius: 25,
           backgroundImage: NetworkImage(
-            '${model.image}',
+            '${postModel.image}',
           ),
         ),
         SizedBox(
@@ -31,7 +32,7 @@ class CustomProfileCreatePost extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '${model.name}',
+                    '${postModel.name}',
                   ),
                   SizedBox(
                     width: 5.w,
@@ -44,7 +45,7 @@ class CustomProfileCreatePost extends StatelessWidget {
                 ],
               ),
               Text(
-                '${model.time}',
+                '${postModel.date} at ${postModel.time} ',
                 style: TextStyle(fontSize: 12.sp),
               )
             ],
@@ -55,7 +56,8 @@ class CustomProfileCreatePost extends StatelessWidget {
         ),
         IconButton(
           onPressed: () {
-            SocialCubit.get(context).removePostImage();
+            BlocProvider.of<SocialCubit>(context)
+                .deletePost(postId: postModel.postId!);
           },
           icon: Icon(
             Icons.more_horiz,

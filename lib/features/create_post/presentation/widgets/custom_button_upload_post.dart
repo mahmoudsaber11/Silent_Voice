@@ -1,38 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/core/utils/app_text_style.dart';
 import 'package:social_app/cubit/cubit.dart';
-import 'package:social_app/features/auth/data/models/user_model.dart';
+import 'package:social_app/cubit/states.dart';
 
 class CustomButtonUploadPost extends StatelessWidget {
   const CustomButtonUploadPost({
     super.key,
-    required this.socialUserModel,
     required this.textController,
-    required this.now,
   });
 
-  final UserModel socialUserModel;
   final TextEditingController textController;
-  final TimeOfDay now;
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-        onPressed: () {
-          if (SocialCubit.get(context).postImage == null) {
-            SocialCubit.get(context).createPost(
-              name: socialUserModel.name,
-              postText: textController.text,
-              date: now.toString(),
-            );
-          } else {
-            SocialCubit.get(context).uploadPost(
-                postText: textController.text, date: now.toString());
-          }
-        },
-        child: Text(
-          'Post',
-          style: AppTextStyles.textStyle16.copyWith(color: Colors.white60),
-        ));
+    return BlocBuilder<SocialCubit, SocialStates>(builder: (context, state) {
+      return TextButton(
+          onPressed: () {
+            if (SocialCubit.get(context).postImage == null) {
+              SocialCubit.get(context).createPost(
+                  postText: textController.text,
+                  date: Helper.getDate(),
+                  time: DateFormat.jm().format(DateTime.now()));
+            } else {
+              SocialCubit.get(context).uploadPost(
+                  postText: textController.text,
+                  date: Helper.getDate(),
+                  time: DateFormat.jm().format(DateTime.now()));
+            }
+          },
+          child: Text(
+            'Post',
+            style: AppTextStyles.textStyle16.copyWith(color: Colors.white60),
+          ));
+    });
   }
 }

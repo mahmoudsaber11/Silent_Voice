@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/core/utils/app_text_style.dart';
-import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/features/profile/presentation/widgets/profile/custom_edit_button.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({
     super.key,
-    required this.userModel,
   });
-
-  final UserModel? userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +24,7 @@ class UserProfile extends StatelessWidget {
             backgroundColor: AppColors.primaryColor,
             child: CircleAvatar(
               radius: 60,
-              backgroundImage: NetworkImage("${userModel!.image}"),
+              backgroundImage: NetworkImage("${Helper.userModel!.image}"),
             ),
           ),
           SizedBox(
@@ -37,11 +34,11 @@ class UserProfile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '${userModel!.name}',
+                '${Helper.userModel!.name}',
                 style: AppTextStyles.textStyle20.copyWith(color: Colors.black),
               ),
               Text(
-                '${userModel!.bio}',
+                '${Helper.userModel!.bio}',
                 style: AppTextStyles.textStyle15,
               ),
               SizedBox(

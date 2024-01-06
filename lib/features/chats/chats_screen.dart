@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/cubit/cubit.dart';
 import 'package:social_app/cubit/states.dart';
-import 'package:social_app/features/chat_details/chat_details_screen.dart';
 import 'package:social_app/features/auth/data/models/user_model.dart';
+import 'package:social_app/features/chat_details/chat_details_screen.dart';
 import 'package:social_app/shared/components/components.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -12,36 +12,34 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SocialCubit, SocialStates>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          var cubit = SocialCubit.get(context);
-          return ListView.separated(
-            itemBuilder: (context, index) {
-              return ConditionalBuilder(
-                condition: cubit.users!.isNotEmpty,
-                builder: (context) {
-                  return chatItem(context, cubit.users![index]);
-                },
-                fallback: (BuildContext context) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                },
+    return BlocBuilder<SocialCubit, SocialStates>(builder: (context, state) {
+      var cubit = SocialCubit.get(context);
+      return ListView.separated(
+        itemBuilder: (context, index) {
+          return ConditionalBuilder(
+            condition: cubit.users!.isNotEmpty,
+            builder: (context) {
+              return chatItem(context, cubit.users![index]);
+            },
+            fallback: (BuildContext context) {
+              return const Center(
+                child: CircularProgressIndicator(),
               );
             },
-            itemCount: cubit.users!.length,
-            separatorBuilder: (BuildContext context, int index) {
-              return const Divider();
-            },
           );
-        });
+        },
+        itemCount: cubit.users!.length,
+        separatorBuilder: (BuildContext context, int index) {
+          return const Divider();
+        },
+      );
+    });
   }
 
   Widget chatItem(BuildContext context, UserModel model) {
     return InkWell(
       onTap: () {
-        navigateTo(context, ChatDetails(model));
+        navigateTo(context, ChatDetails());
       },
       child: Container(
         padding: const EdgeInsets.all(10),

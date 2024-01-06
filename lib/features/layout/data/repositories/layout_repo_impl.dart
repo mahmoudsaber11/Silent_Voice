@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/features/Home/presentation/views/home_view.dart';
 import 'package:social_app/features/chats/chats_screen.dart';
 import 'package:social_app/features/layout/data/repositories/layout_repo.dart';
@@ -19,7 +21,15 @@ class LayoutRepoImpl implements LayoutRepo {
       const HomeView(),
       ChatScreen(),
       const OtherServices(),
-      const ProfileScreen(),
+      const ProfileView(),
     ];
+  }
+
+  @override
+  Future<DocumentSnapshot<Map<String, dynamic>>> getUserData() async {
+    return await FirebaseFirestore.instance
+        .collection('users')
+        .doc(Helper.uId)
+        .get();
   }
 }

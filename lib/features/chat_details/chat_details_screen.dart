@@ -1,21 +1,20 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/cubit/cubit.dart';
 import 'package:social_app/cubit/states.dart';
 import 'package:social_app/models/social_app/message_model.dart';
 import 'package:social_app/features/chat_details/call_video.dart';
 import 'package:social_app/features/chat_details/nlp.dart';
-import 'package:social_app/features/auth/data/models/user_model.dart';
 
 class ChatDetails extends StatelessWidget {
-  final UserModel? userModel;
-  const ChatDetails(this.userModel, {super.key});
+  const ChatDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
-      SocialCubit.get(context).getMessages(receiverId: userModel!.uId!);
+      SocialCubit.get(context).getMessages(receiverId: Helper.userModel!.uId!);
       return BlocConsumer<SocialCubit, SocialStates>(
           listener: (context, state) {},
           builder: (context, state) {
@@ -23,7 +22,7 @@ class ChatDetails extends StatelessWidget {
             String enteredMsg = '';
 
             return ConditionalBuilder(
-              condition: userModel != null,
+              condition: Helper.userModel != null,
               builder: (BuildContext context) {
                 var messageController = TextEditingController();
                 return Scaffold(
@@ -31,7 +30,8 @@ class ChatDetails extends StatelessWidget {
                     title: Row(children: [
                       CircleAvatar(
                           radius: 22,
-                          backgroundImage: NetworkImage('${userModel?.image}')),
+                          backgroundImage:
+                              NetworkImage('${Helper.userModel?.image}')),
                       const SizedBox(
                         width: 10,
                       ),
@@ -40,7 +40,7 @@ class ChatDetails extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "${userModel?.name}",
+                            "${Helper.userModel?.name}",
                             // style: themeMode.textTheme.titleSmall,
                             style: TextStyle(fontSize: 15),
                           ),
@@ -87,7 +87,7 @@ class ChatDetails extends StatelessWidget {
                               reverse: true,
                               itemBuilder: (context, index) {
                                 var message = cubit.messages[index];
-                                if (userModel!.uId == message.senderId) {
+                                if (Helper.userModel!.uId == message.senderId) {
                                   return buildMessage(message);
                                 } else {
                                   return buildMyMessage(message);
@@ -134,7 +134,7 @@ class ChatDetails extends StatelessWidget {
                                     enteredMsg.trim().isEmpty
                                         ? null
                                         : cubit.sendMessage(
-                                            receiverId: userModel!.uId!,
+                                            receiverId: Helper.userModel!.uId!,
                                             // date: getDate(),
                                             time:
                                                 TimeOfDay.now().format(context),

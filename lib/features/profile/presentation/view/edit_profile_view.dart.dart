@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/cubit/cubit.dart';
 import 'package:social_app/cubit/states.dart';
 import 'package:social_app/shared/components/components.dart';
@@ -15,14 +16,12 @@ class EditProfileView extends StatelessWidget {
   EditProfileView({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SocialCubit, SocialStates>(
-      listener: ((context, state) {}),
+    return BlocBuilder<SocialCubit, SocialStates>(
       builder: (context, state) {
-        var userModel = SocialCubit.get(context).userModel;
         File? profileImage = SocialCubit.get(context).profileImage;
-        nameController.text = userModel!.name!;
-        bioController.text = userModel.bio!;
-        phoneController.text = userModel.phone!;
+        nameController.text = Helper.userModel!.name!;
+        bioController.text = Helper.userModel!.bio!;
+        phoneController.text = Helper.userModel!.phone!;
         return Scaffold(
             appBar: defaultAppBar(
               context: context,
@@ -66,7 +65,7 @@ class EditProfileView extends StatelessWidget {
                               child: CircleAvatar(
                                 radius: 60,
                                 backgroundImage: (profileImage == null
-                                    ? NetworkImage('${userModel.image}')
+                                    ? NetworkImage('${Helper.userModel!.image}')
                                     : FileImage(profileImage)) as ImageProvider,
                               ),
                             ),

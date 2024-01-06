@@ -17,12 +17,12 @@ class SilentVoice extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => LayoutCubit(layoutRepo: LayoutRepoImpl()),
+          create: (context) =>
+              LayoutCubit(layoutRepo: LayoutRepoImpl())..getUserData(),
         ),
         BlocProvider(create: (BuildContext context) => AppCubit()),
         BlocProvider(
             create: ((BuildContext context) => SocialCubit()
-              ..getUserData(Helper.uId)
               ..getPosts()
               ..getUsers())),
       ],

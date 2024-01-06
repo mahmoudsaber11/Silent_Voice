@@ -8,33 +8,41 @@ import 'package:social_app/cubit/states.dart';
 import 'package:social_app/features/create_post/presentation/widgets/appbar_post_view.dart';
 import 'package:social_app/features/create_post/presentation/widgets/custom_card_create_post.dart';
 import 'package:social_app/features/create_post/data/models/post_model.dart';
-import 'package:social_app/features/auth/data/models/user_model.dart';
 
-class NewPostView extends StatelessWidget {
+class NewPostView extends StatefulWidget {
   NewPostView({
     super.key,
     this.postId,
     this.postModel,
   });
-  final TextEditingController textController = TextEditingController();
-  final now = TimeOfDay.now();
   final String? postId;
   final PostModel? postModel;
+
+  @override
+  State<NewPostView> createState() => _NewPostViewState();
+}
+
+class _NewPostViewState extends State<NewPostView> {
+  final TextEditingController textController = TextEditingController();
+  @override
+  void dispose() {
+    super.dispose();
+    textController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SocialCubit, SocialStates>(
       builder: (context, state) {
-        UserModel userModel = SocialCubit.get(context).userModel!;
         return Scaffold(
           backgroundColor: AppColors.primaryColor,
-          body: Column(
-            children: [
-              AppBarPostView(
-                  socialUserModel: userModel,
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                AppBarPostView(
                   textController: textController,
-                  now: now),
-              Expanded(
-                child: CustomCardApp(
+                ),
+                CustomCardApp(
                   widget: Column(
                     children: [
                       if (state is SocialCreatePostLoadingState)
@@ -47,8 +55,8 @@ class NewPostView extends StatelessWidget {
                         height: 50.h,
                       ),
                       CustomCardCreatePost(
-                          socialUserModel: userModel,
-                          textController: textController),
+                        textController: textController,
+                      ),
                       Spacer(),
                       Expanded(
                         child: Row(
@@ -89,8 +97,8 @@ class NewPostView extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

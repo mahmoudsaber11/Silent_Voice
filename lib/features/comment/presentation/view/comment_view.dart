@@ -7,6 +7,7 @@ import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/core/widgets/custom_card_app.dart';
 import 'package:social_app/cubit/cubit.dart';
 import 'package:social_app/cubit/states.dart';
+import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
 import 'package:social_app/models/social_app/comment_model.dart';
 
 class CommentView extends StatelessWidget {
@@ -14,8 +15,9 @@ class CommentView extends StatelessWidget {
 
   final String? postId;
   final String? postUid;
-
-  CommentView({Key? key, this.postId, this.postUid}) : super(key: key);
+  final int? likes;
+  CommentView({Key? key, this.postId, this.postUid, this.likes})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class CommentView extends StatelessWidget {
     return Builder(
       builder: (context) {
         SocialCubit.get(context).getComments(postId);
-        SocialCubit.get(context).getUserData(postUid!);
+        LayoutCubit.get(context).getUserData();
 
         return BlocBuilder<SocialCubit, SocialStates>(
             builder: (context, state) {

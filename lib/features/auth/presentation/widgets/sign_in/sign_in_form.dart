@@ -14,6 +14,7 @@ import 'package:social_app/features/auth/data/repositories/sign_in/sign_in_repo_
 import 'package:social_app/features/auth/presentation/cubits/sign_in/sign_in_cubit.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_in/sign_in_state.dart';
 import 'package:social_app/cubit/cubit.dart';
+import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
@@ -157,7 +158,7 @@ class _SignUpFormState extends State<SignInForm> {
         key: 'uId',
         value: state.uId,
       ).then((value) async {
-        SocialCubit.get(context).getUserData(Helper.uId);
+        BlocProvider.of<LayoutCubit>(context).getUserData();
         showToast(
           text: 'Welcome in Silent Voice',
           state: ToastStates.success,

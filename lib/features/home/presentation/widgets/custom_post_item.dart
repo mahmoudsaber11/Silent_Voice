@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/features/comment/presentation/view/comment_view.dart';
 import 'package:social_app/cubit/cubit.dart';
-import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/core/widgets/custom_divider.dart';
-import 'package:social_app/features/home/presentation/widgets/custom_profile_create_post.dart';
+import 'package:social_app/features/home/presentation/widgets/custom_icon_likes.dart';
+import 'package:social_app/features/home/presentation/widgets/upper_section.dart';
 import 'package:social_app/features/create_post/data/models/post_model.dart';
 import 'package:social_app/shared/components/components.dart';
 
 class CustomPostItem extends StatelessWidget {
-  final PostModel model;
-  final UserModel userModel;
+  final PostModel? postModel;
   const CustomPostItem({
     super.key,
-    required this.model,
-    required this.userModel,
+    required this.postModel,
   });
 
   @override
@@ -39,25 +38,25 @@ class CustomPostItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomProfileCreatePost(model: model),
+            UpperSection(postModel: postModel!),
             SizedBox(
               height: 15.h,
             ),
             Text(
-              '${model.text}',
+              '${postModel!.text}',
               style: TextStyle(fontSize: 14.sp),
             ),
             SizedBox(
               height: 10.sp,
             ),
-            if (model.postImage != '')
+            if (postModel!.postImage != '')
               Container(
                 width: double.infinity,
                 height: 400.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.r),
                   image: DecorationImage(
-                      image: NetworkImage('${model.postImage}'),
+                      image: NetworkImage('${postModel!.postImage}'),
                       fit: BoxFit.cover),
                 ),
               ),
@@ -69,15 +68,16 @@ class CustomPostItem extends StatelessWidget {
               height: 15.h,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
                   onTap: () {
                     navigateTo(
                       context,
                       CommentView(
-                        // likes: model.likes,
-                        //  postId: model.postId,
-                        postUid: model.uId,
+                        likes: postModel!.likes,
+                        postId: postModel!.postId,
+                        postUid: postModel!.uId,
                       ),
                     );
                   },
@@ -85,7 +85,8 @@ class CustomPostItem extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 15,
-                        backgroundImage: NetworkImage('${userModel.image}'),
+                        backgroundImage:
+                            NetworkImage('${Helper.userModel!.image}'),
                       ),
                       SizedBox(
                         width: 10.w,
@@ -97,20 +98,17 @@ class CustomPostItem extends StatelessWidget {
                     ],
                   ),
                 ),
-                Spacer(),
                 InkWell(
                   onTap: () async {
-                    UserModel? postUser = SocialCubit.get(context).userModel;
                     await SocialCubit.get(context).likedByMe(
-                      postUser: postUser,
-                      context: context,
-                      postModel: model,
-                      //    postId: model.postId
-                    );
+                        postUser: Helper.userModel,
+                        context: context,
+                        postModel: postModel,
+                        postId: postModel!.postId);
                   },
-                  // child: CustomIconsLikes(
-                  //   text: "${model.likes}",
-                  // ),
+                  child: CustomIconsLikes(
+                    text: "${postModel!.likes}",
+                  ),
                 ),
               ],
             ),

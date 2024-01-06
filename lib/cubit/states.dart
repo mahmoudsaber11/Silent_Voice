@@ -132,3 +132,13 @@ class UploadMessagePicErrorState extends SocialStates {}
 class UploadMessagePicLoadingState extends SocialStates {}
 
 class AppChangeModeStates extends SocialStates {}
+
+class DeletePostLoading extends SocialStates {}
+
+class DeletePostSuccess extends SocialStates {}
+
+class DeletePostError extends SocialStates {
+  final String error;
+
+  DeletePostError({required this.error});
+}

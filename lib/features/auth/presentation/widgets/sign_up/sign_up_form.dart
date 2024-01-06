@@ -13,7 +13,7 @@ import 'package:social_app/core/widgets/custom_text_field.dart';
 import 'package:social_app/features/auth/data/repositories/sign_up/sign_up_repo_impl.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_up/sign_up_state.dart';
-import 'package:social_app/cubit/cubit.dart';
+import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -244,7 +244,7 @@ class _SignUpFormState extends State<SignUpForm> {
           key: 'uId',
           value: state.uId,
         ).then((value) async {
-          SocialCubit.get(context).getUserData(Helper.uId);
+          BlocProvider.of<LayoutCubit>(context).getUserData();
           showToast(
             text: 'Welcome in Silent Voice',
             state: ToastStates.success,
