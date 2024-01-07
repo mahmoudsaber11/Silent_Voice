@@ -26,17 +26,8 @@ class CommentAndLikeSection extends StatelessWidget {
       children: [
         Row(
           children: [
-            InkWell(
-              onTap: () async {
-                await SocialCubit.get(context).likedByMe(
-                    postUser: Helper.userModel,
-                    context: context,
-                    postModel: postModel,
-                    postId: postModel!.postId);
-              },
-              child: CustomIconsLikes(
-                text: "${postModel!.likes}",
-              ),
+            CustomIconsLikes(
+              text: "${postModel!.likes}",
             ),
             Spacer(),
             Icon(

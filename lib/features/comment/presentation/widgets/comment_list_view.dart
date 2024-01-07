@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:social_app/features/comment/presentation/view/comment_view.dart';
+import 'package:social_app/features/comment/presentation/widgets/build_comment.dart';
 import 'package:social_app/models/social_app/comment_model.dart';
 
 class CommentListView extends StatelessWidget {

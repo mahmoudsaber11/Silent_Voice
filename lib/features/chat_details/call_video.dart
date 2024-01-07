@@ -3,8 +3,6 @@ import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/core/utils/app_constant.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 
-import '../../cubit/cubit.dart';
-
 class CallPage extends StatelessWidget {
   const CallPage({Key? key, required this.callID}) : super(key: key);
   final String callID;

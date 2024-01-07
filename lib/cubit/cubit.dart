@@ -345,21 +345,21 @@ class SocialCubit extends Cubit<SocialStates> {
     });
   }
 
-  Future getCommentImage() async {
-    emit(UpdatePostLoadingState());
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
-      commentImage = File(pickedFile.path);
-      emit(GetCommentPicSuccessState());
-    } else {
-      emit(GetCommentPicErrorState());
-    }
-  }
+  // Future getCommentImage() async {
+  //   emit(UpdatePostLoadingState());
+  //   final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+  //   if (pickedFile != null) {
+  //     commentImage = File(pickedFile.path);
+  //     emit(GetCommentPicSuccessState());
+  //   } else {
+  //     emit(GetCommentPicErrorState());
+  //   }
+  // }
 
-  void popCommentImage() {
-    commentImage = null;
-    emit(DeleteCommentPicState());
-  }
+  // void popCommentImage() {
+  //   commentImage = null;
+  //   emit(DeleteCommentPicState());
+  // }
 
   List<UserModel>? users;
 
