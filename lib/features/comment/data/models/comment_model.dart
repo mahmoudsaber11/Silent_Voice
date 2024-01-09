@@ -7,7 +7,7 @@ class CommentModel extends Equatable {
   final String? commentText;
   final String? time;
   final String? date;
-  final FieldValue? dateTime;
+  final Timestamp? dateTime;
   final String? uId;
 
   CommentModel(
@@ -26,7 +26,7 @@ class CommentModel extends Equatable {
         commentText: json['commentText'],
         time: json['time'],
         date: json['date'],
-        dateTime: json['dateTime'],
+        dateTime: json['dateTime'] as Timestamp?,
         uId: json['uId']);
   }
 

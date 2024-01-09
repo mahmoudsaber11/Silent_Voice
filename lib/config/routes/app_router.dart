@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_app/features/comment/presentation/view/comment_view.dart';
 import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/features/auth/data/repositories/sign_up/sign_up_repo_impl.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
@@ -42,8 +41,12 @@ class AppRouter {
       case Routes.postViewRoute:
         return MaterialPageRoute(builder: (context) => NewPostView());
 
-      case Routes.commentsViewRoute:
-        return MaterialPageRoute(builder: (context) => CommentView());
+      // case Routes.commentsViewRoute:
+      //   final args = routeSettings.arguments as CommentsViewParams;
+      //   return MaterialPageRoute(
+      //       builder: (context) => CommentView(
+      //         likes: ,
+      //           ));
 
       case Routes.editProfileViewRoute:
         return MaterialPageRoute(builder: (context) => EditProfileView());

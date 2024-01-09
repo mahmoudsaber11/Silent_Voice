@@ -81,35 +81,6 @@ class SocialPostImageErrorState extends SocialStates {}
 
 class SocialRemovePostImageState extends SocialStates {}
 
-class DeletePostSuccessState extends SocialStates {}
-//create comment
-
-class UpdatePostLoadingState extends SocialStates {}
-
-class GetCommentPicSuccessState extends SocialStates {}
-
-class GetCommentPicErrorState extends SocialStates {}
-
-class GetCommentLoadingState extends SocialStates {}
-
-class GetCommentSuccessState extends SocialStates {}
-
-class UploadCommentPicLoadingState extends SocialStates {}
-
-class UploadCommentPicErrorState extends SocialStates {}
-
-class SocialCommentLoadingState extends SocialStates {}
-
-class SocialCommentSuccessState extends SocialStates {}
-
-class SocialCommentErrorState extends SocialStates {
-  final String error;
-
-  SocialCommentErrorState(this.error);
-}
-
-class DeleteCommentPicState extends SocialStates {}
-
 //chat
 class SocialSendMessageSuccessState extends SocialStates {}
 

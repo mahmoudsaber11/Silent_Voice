@@ -15,7 +15,7 @@ class CommentRepoImpl implements CommentRepo {
       commentText: commentPostParams.commentText,
       time: commentPostParams.time,
       date: commentPostParams.date,
-      dateTime: FieldValue.serverTimestamp(),
+      dateTime: Timestamp.now(),
     );
     return await FirebaseFirestore.instance
         .collection('posts')

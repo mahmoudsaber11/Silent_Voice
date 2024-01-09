@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/core/widgets/custom_button.dart';
-import 'package:social_app/cubit/cubit.dart';
+import 'package:social_app/features/comment/data/entities/comment_post_params.dart';
+import 'package:social_app/features/comment/presentation/cubit/comment_cubit.dart';
 
 class BuildCommentInputSection extends StatefulWidget {
   const BuildCommentInputSection({
@@ -28,6 +30,7 @@ class _BuildCommentInputSectionState extends State<BuildCommentInputSection> {
     super.dispose();
   }
 
+  String commentText = '';
   @override
   void initState() {
     _initFormAttributes();
@@ -75,7 +78,7 @@ class _BuildCommentInputSectionState extends State<BuildCommentInputSection> {
                   suffixIcon: SizedBox(
                     width: 50.w,
                     child: CustomButton(
-                      onPressed: () => _getTextAndImage(context),
+                      onPressed: () => _getText(context),
                     ),
                   ),
                   filled: true,
@@ -88,14 +91,20 @@ class _BuildCommentInputSectionState extends State<BuildCommentInputSection> {
     );
   }
 
-  void _getTextAndImage(BuildContext context) {
+  void _getText(BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      SocialCubit.get(context).commentPost(
-        postId: widget.postId,
-        comment: commentTextControl.text,
-        time: TimeOfDay.now().format(context),
+      BlocProvider.of<CommentCubit>(context).commentPost(
+        params: CommentPostParams(
+            commentText: commentTextControl.text,
+            postId: widget.postId,
+            time: TimeOfDay.now().format(context),
+            date: Helper.getDate()),
+        context: context,
       );
     }
+    setState(() {
+      commentText = '';
+    });
     commentTextControl.clear();
   }
 }

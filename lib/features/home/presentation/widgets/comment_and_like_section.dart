@@ -1,10 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/core/widgets/custom_divider.dart';
 import 'package:social_app/cubit/cubit.dart';
-import 'package:social_app/features/comment/data/models/comment_model.dart';
 import 'package:social_app/features/comment/presentation/view/comment_view.dart';
 import 'package:social_app/features/create_post/data/models/post_model.dart';
 import 'package:social_app/features/home/presentation/widgets/custom_icon_likes.dart';
@@ -14,11 +14,9 @@ class CommentAndLikeSection extends StatelessWidget {
   const CommentAndLikeSection({
     super.key,
     required this.postModel,
-    required this.comments,
   });
 
   final PostModel? postModel;
-  final List<CommentModel> comments;
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +36,22 @@ class CommentAndLikeSection extends StatelessWidget {
             SizedBox(
               width: 4.w,
             ),
-            Text(
-              "${comments.length} Comments",
-              style: TextStyle(fontSize: 12.sp),
+            StreamBuilder(
+              stream: commentStream(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  QuerySnapshot<Map<String, dynamic>> commentsSnapshot =
+                      snapshot.data!;
+                  List<QueryDocumentSnapshot<Map<String, dynamic>>> comments =
+                      commentsSnapshot.docs;
+                  return Text(
+                    "${comments.length} Comments",
+                    style: TextStyle(fontSize: 12.sp),
+                  );
+                } else {
+                  return Text("0");
+                }
+              },
             ),
           ],
         ),
@@ -52,35 +63,31 @@ class CommentAndLikeSection extends StatelessWidget {
           height: 15.h,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            CircleAvatar(
+              radius: 15,
+              backgroundImage: NetworkImage('${Helper.userModel!.image}'),
+            ),
+            SizedBox(
+              width: 10.w,
+            ),
             InkWell(
               onTap: () {
+                //  context.navigateTo(routeName: Routes.commentsViewRoute);
                 navigateTo(
-                  context,
-                  CommentView(
-                    likes: postModel!.likes,
-                    postId: postModel!.postId,
-                    postUid: postModel!.uId,
-                  ),
-                );
+                    context,
+                    CommentView(
+                      likes: postModel!.likes,
+                      postId: postModel!.postId,
+                      postUid: postModel!.uId,
+                    ));
               },
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 15,
-                    backgroundImage: NetworkImage('${Helper.userModel!.image}'),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Text(
-                    'Write a comment ....',
-                    style: TextStyle(fontSize: 14.sp),
-                  ),
-                ],
+              child: Text(
+                'Write a comment ....',
+                style: TextStyle(fontSize: 14.sp),
               ),
             ),
+            Spacer(),
             InkWell(
               onTap: () async {
                 await SocialCubit.get(context).likedByMe(
@@ -97,5 +104,14 @@ class CommentAndLikeSection extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> commentStream() {
+    return FirebaseFirestore.instance
+        .collection('posts')
+        .doc(postModel!.postId)
+        .collection("comments")
+        .orderBy('dateTime')
+        .snapshots();
   }
 }
