@@ -95,13 +95,6 @@ class _BuildCommentInputSectionState extends State<BuildCommentInputSection> {
         comment: commentTextControl.text,
         time: TimeOfDay.now().format(context),
       );
-    } else {
-      SocialCubit.get(context).uploadCommentPic(
-        postId: widget.postId,
-        commentText:
-            commentTextControl.text == '' ? null : commentTextControl.text,
-        time: TimeOfDay.now().format(context),
-      );
     }
     commentTextControl.clear();
   }

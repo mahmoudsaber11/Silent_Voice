@@ -4,7 +4,6 @@ class CommentModel {
   String? name;
   String? image;
   String? commentText;
-  Map<String, dynamic>? commentImage;
   String? time;
   String? date;
   FieldValue? dateTime;
@@ -13,7 +12,6 @@ class CommentModel {
     this.name,
     this.image,
     this.commentText,
-    this.commentImage,
     this.time,
     this.date,
     this.dateTime,
@@ -23,7 +21,6 @@ class CommentModel {
     name = json['name'];
     image = json['image'];
     commentText = json['commentText'];
-    commentImage = json['commentImage'];
     time = json['time'];
     date = json['date'];
   }
@@ -33,7 +30,6 @@ class CommentModel {
       'name': name,
       'image': image,
       'commentText': commentText,
-      'commentImage': commentImage,
       'time': time,
       'dateTime': dateTime,
       'date': date,

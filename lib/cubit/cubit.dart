@@ -9,7 +9,7 @@ import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/features/auth/presentation/views/sign_in_view.dart';
 import 'package:social_app/cubit/states.dart';
 import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
-import 'package:social_app/models/social_app/comment_model.dart';
+import 'package:social_app/features/comment/data/models/comment_model.dart';
 import 'package:social_app/models/social_app/like_model.dart';
 import 'package:social_app/models/social_app/message_model.dart';
 import 'package:social_app/features/create_post/data/models/post_model.dart';
@@ -275,7 +275,6 @@ class SocialCubit extends Cubit<SocialStates> {
         name: Helper.userModel!.name,
         image: Helper.userModel!.image,
         commentText: comment,
-        commentImage: commentImage,
         time: time,
         date: date,
         dateTime: FieldValue.serverTimestamp());
@@ -293,40 +292,37 @@ class SocialCubit extends Cubit<SocialStates> {
     });
   }
 
-  bool isCommentImageLoading = false;
-  String? commentImageURL;
-  File? commentImage;
-  void uploadCommentPic({
-    required String? postId,
-    String? commentText,
-    required String? time,
-    String? date,
-  }) {
-    isCommentImageLoading = true;
-    emit(UploadCommentPicLoadingState());
-    firebase_storage.FirebaseStorage.instance
-        .ref()
-        .child(Uri.file(commentImage!.path).pathSegments.last)
-        .putFile(commentImage!)
-        .then((value) {
-      value.ref.getDownloadURL().then((value) {
-        commentImageURL = value;
-        commentPost(
-          postId: postId,
-          comment: commentText,
-          commentImage: {'width': 150, 'image': value, 'height': 200},
-          time: time,
-          date: date,
-        );
-        emit(UpdatePostLoadingState());
-        isCommentImageLoading = false;
-      }).catchError((error) {
-        emit(UploadCommentPicErrorState());
-      });
-    }).catchError((error) {
-      emit(UploadCommentPicErrorState());
-    });
-  }
+  // void uploadCommentPic({
+  //   required String? postId,
+  //   String? commentText,
+  //   required String? time,
+  //   String? date,
+  // }) {
+  //   isCommentImageLoading = true;
+  //   emit(UploadCommentPicLoadingState());
+  //   firebase_storage.FirebaseStorage.instance
+  //       .ref()
+  //       .child(Uri.file(commentImage!.path).pathSegments.last)
+  //       .putFile(commentImage!)
+  //       .then((value) {
+  //     value.ref.getDownloadURL().then((value) {
+  //       commentImageURL = value;
+  //       commentPost(
+  //         postId: postId,
+  //         comment: commentText,
+  //         commentImage: {'width': 150, 'image': value, 'height': 200},
+  //         time: time,
+  //         date: date,
+  //       );
+  //       emit(UpdatePostLoadingState());
+  //       isCommentImageLoading = false;
+  //     }).catchError((error) {
+  //       emit(UploadCommentPicErrorState());
+  //     });
+  //   }).catchError((error) {
+  //     emit(UploadCommentPicErrorState());
+  //   });
+  // }
 
   void getComments(postId) {
     emit(GetCommentLoadingState());

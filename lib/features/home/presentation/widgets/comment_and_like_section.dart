@@ -4,10 +4,10 @@ import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/core/widgets/custom_divider.dart';
 import 'package:social_app/cubit/cubit.dart';
+import 'package:social_app/features/comment/data/models/comment_model.dart';
 import 'package:social_app/features/comment/presentation/view/comment_view.dart';
 import 'package:social_app/features/create_post/data/models/post_model.dart';
 import 'package:social_app/features/home/presentation/widgets/custom_icon_likes.dart';
-import 'package:social_app/models/social_app/comment_model.dart';
 import 'package:social_app/shared/components/components.dart';
 
 class CommentAndLikeSection extends StatelessWidget {

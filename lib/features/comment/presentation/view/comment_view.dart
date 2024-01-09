@@ -9,7 +9,7 @@ import 'package:social_app/cubit/cubit.dart';
 import 'package:social_app/cubit/states.dart';
 import 'package:social_app/features/comment/presentation/widgets/no_comments.dart';
 import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
-import 'package:social_app/models/social_app/comment_model.dart';
+import 'package:social_app/features/comment/data/models/comment_model.dart';
 
 class CommentView extends StatelessWidget {
   final String? postId;
