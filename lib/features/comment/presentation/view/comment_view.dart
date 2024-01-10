@@ -22,36 +22,33 @@ class CommentView extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    String? postId = this.postId;
-    return Builder(
-      builder: (context) {
-        BlocProvider.of<CommentCubit>(context).getComments(postId: postId!);
-        return BlocBuilder<CommentCubit, CommentsState>(
-            builder: (context, state) {
-          final cubit = BlocProvider.of<CommentCubit>(context);
-          return Scaffold(
-            backgroundColor: AppColors.primaryColor,
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  CommentAppBar(comments: cubit.comments),
-                  CustomCardApp(
-                      widget: Column(
-                    children: [
-                      cubit.comments.isNotEmpty
-                          ? CommentListView(comments: cubit.comments)
-                          : NoComments(),
-                      BuildCommentInputSection(
-                        postId: postId,
-                      )
-                    ],
-                  )),
-                ],
-              ),
+    return Builder(builder: (context) {
+      BlocProvider.of<CommentCubit>(context).getComments(postId: postId!);
+      return BlocBuilder<CommentCubit, CommentsState>(
+          builder: (context, state) {
+        final cubit = BlocProvider.of<CommentCubit>(context);
+        return Scaffold(
+          backgroundColor: AppColors.primaryColor,
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                CommentAppBar(comments: cubit.comments),
+                CustomCardApp(
+                    widget: Column(
+                  children: [
+                    cubit.comments.isNotEmpty
+                        ? CommentListView(comments: cubit.comments)
+                        : NoComments(),
+                    BuildCommentInputSection(
+                      postId: postId,
+                    )
+                  ],
+                )),
+              ],
             ),
-          );
-        });
-      },
-    );
+          ),
+        );
+      });
+    });
   }
 }

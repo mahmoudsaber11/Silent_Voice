@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/cubit/cubit.dart';
-import 'package:social_app/features/create_post/data/models/post_model.dart';
+import 'package:social_app/features/home/data/models/post_model.dart';
 
 class UpperSection extends StatelessWidget {
   const UpperSection({

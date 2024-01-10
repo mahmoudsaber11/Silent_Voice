@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/features/home/data/models/post_model.dart';
 import 'package:social_app/features/home/presentation/widgets/comment_and_like_section.dart';
 import 'package:social_app/features/home/presentation/widgets/upper_section.dart';
-import 'package:social_app/features/create_post/data/models/post_model.dart';
 
 class CustomPostItem extends StatelessWidget {
   final PostModel? postModel;

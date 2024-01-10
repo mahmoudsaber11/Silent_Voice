@@ -7,7 +7,7 @@ import 'package:social_app/cubit/cubit.dart';
 import 'package:social_app/cubit/states.dart';
 import 'package:social_app/features/create_post/presentation/widgets/appbar_post_view.dart';
 import 'package:social_app/features/create_post/presentation/widgets/custom_card_create_post.dart';
-import 'package:social_app/features/create_post/data/models/post_model.dart';
+import 'package:social_app/features/home/data/models/post_model.dart';
 
 class NewPostView extends StatefulWidget {
   NewPostView({
