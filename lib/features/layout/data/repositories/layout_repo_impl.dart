@@ -32,4 +32,9 @@ class LayoutRepoImpl implements LayoutRepo {
         .doc(Helper.uId)
         .get();
   }
+
+  @override
+  Future<QuerySnapshot<Map<String, dynamic>>> getAllUsers() async {
+    return await FirebaseFirestore.instance.collection('users').get();
+  }
 }

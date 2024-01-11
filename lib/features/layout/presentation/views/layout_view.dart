@@ -8,9 +8,9 @@ class MediaXLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = BlocProvider.of<LayoutCubit>(context);
     return BlocBuilder<LayoutCubit, LayoutState>(
       builder: (context, state) {
+        final cubit = BlocProvider.of<LayoutCubit>(context);
         return Scaffold(
           body: cubit.views()[cubit.currentIndex],
           bottomNavigationBar: BottomNavigationBar(

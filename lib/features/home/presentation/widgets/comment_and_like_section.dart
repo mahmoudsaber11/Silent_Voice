@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/core/widgets/custom_divider.dart';
-import 'package:social_app/cubit/cubit.dart';
 import 'package:social_app/features/comment/presentation/view/comment_view.dart';
 import 'package:social_app/features/home/data/models/post_model.dart';
+import 'package:social_app/features/home/presentation/cubit/post_cubit.dart';
 import 'package:social_app/features/home/presentation/widgets/custom_icon_likes.dart';
 import 'package:social_app/shared/components/components.dart';
 
@@ -73,7 +74,6 @@ class CommentAndLikeSection extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                //  context.navigateTo(routeName: Routes.commentsViewRoute);
                 navigateTo(
                     context,
                     CommentView(
@@ -90,11 +90,8 @@ class CommentAndLikeSection extends StatelessWidget {
             Spacer(),
             InkWell(
               onTap: () async {
-                await SocialCubit.get(context).likedByMe(
-                    postUser: Helper.userModel,
-                    context: context,
-                    postModel: postModel,
-                    postId: postModel!.postId);
+                await BlocProvider.of<PostCubit>(context)
+                    .likedByMe(postModel!.postId);
               },
               child: CustomIconsLikes(
                 text: "Like",

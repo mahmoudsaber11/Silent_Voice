@@ -1,10 +1,10 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_app/cubit/cubit.dart';
-import 'package:social_app/cubit/states.dart';
 import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/features/chat_details/chat_details_screen.dart';
+import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
+import 'package:social_app/features/layout/presentation/cubit/layout_state.dart';
 import 'package:social_app/shared/components/components.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -12,8 +12,8 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SocialCubit, SocialStates>(builder: (context, state) {
-      var cubit = SocialCubit.get(context);
+    return BlocBuilder<LayoutCubit, LayoutState>(builder: (context, state) {
+      var cubit = LayoutCubit.get(context);
       return ListView.separated(
         itemBuilder: (context, index) {
           return ConditionalBuilder(

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:social_app/features/home/data/models/post_model.dart';
 
 abstract class PostState extends Equatable {
   const PostState();
@@ -33,7 +34,12 @@ class GetPostsLoading extends PostState {
 }
 
 class GetPostsSuccess extends PostState {
-  const GetPostsSuccess();
+  final List<PostModel> posts;
+
+  const GetPostsSuccess({required this.posts});
+
+  @override
+  List<Object> get props => [posts];
 }
 
 class GetPostsError extends PostState {
@@ -102,7 +108,12 @@ class LikedByMeLoading extends PostState {
 }
 
 class LikedByMeSuccess extends PostState {
-  const LikedByMeSuccess();
+  final List<PostModel> likedPosts;
+
+  const LikedByMeSuccess({required this.likedPosts});
+
+  @override
+  List<Object> get props => [likedPosts];
 }
 
 class LikedByMeError extends PostState {

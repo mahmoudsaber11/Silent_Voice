@@ -16,6 +16,7 @@ class PostCubit extends Cubit<PostState> {
   void createNewPost({required PostParams postParams}) {
     emit(const CreatePostLoading());
     postRepo.createNewPost(postParams: postParams).then((value) {
+      postImage = null;
       emit(const CreatePostSuccess());
       getPosts();
     }).catchError((error) {
@@ -34,6 +35,7 @@ class PostCubit extends Cubit<PostState> {
                 postImage: postParams.postImage,
                 date: postParams.date,
                 text: postParams.text));
+        postImage = null;
         emit(UploadPostSuccess(image: value));
       }).catchError((error) {
         emit(UploadPostError(error: error.toString()));
@@ -63,7 +65,7 @@ class PostCubit extends Cubit<PostState> {
               'postId': element.id,
             }));
       });
-      emit(GetPostsSuccess());
+      emit(GetPostsSuccess(posts: posts));
     });
   }
 
@@ -78,8 +80,7 @@ class PostCubit extends Cubit<PostState> {
   }
 
   void likePost({required String postId}) {
-    postRepo.likePost(postId: postId).then((value) async {
-      await likedByMe(postId);
+    postRepo.likePost(postId: postId).then((value) {
       getPosts();
       emit(const LikePostSuccess());
     }).catchError((error) {
@@ -105,7 +106,7 @@ class PostCubit extends Cubit<PostState> {
           postId: postId!,
         );
       }
-      emit(LikedByMeSuccess());
+      emit(LikedByMeSuccess(likedPosts: posts));
     }).catchError((error) {
       emit(LikedByMeError(error: error.toString()));
     });

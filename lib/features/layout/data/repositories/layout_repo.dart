@@ -5,4 +5,5 @@ abstract class LayoutRepo {
   void changeBottomNav({required int index, required context}) {}
   List<Widget> views();
   Future<DocumentSnapshot<Map<String, dynamic>>> getUserData();
+  Future<QuerySnapshot<Map<String, dynamic>>> getAllUsers();
 }

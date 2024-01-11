@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
+import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/core/utils/app_text_style.dart';
-import 'package:social_app/features/create_post/presentation/widgets/custom_button_upload_post.dart';
+import 'package:social_app/features/home/data/entities/post_params.dart';
+import 'package:social_app/features/home/presentation/cubit/post_cubit.dart';
 
 class AppBarPostView extends StatelessWidget {
   const AppBarPostView({
     super.key,
-    required this.textController,
+    required this.cubit,
+    required this.postText,
   });
 
-  final TextEditingController textController;
-
+  final PostCubit cubit;
+  final String postText;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,11 +36,53 @@ class AppBarPostView extends StatelessWidget {
             "Create New Post",
             style: AppTextStyles.textStyle20,
           ),
-          CustomButtonUploadPost(
-            textController: textController,
-          )
+          TextButton(
+              onPressed: () {
+                if (cubit.postImage == null) {
+                  cubit.createNewPost(
+                    postParams: PostParams(
+                      date: Helper.getDate(),
+                      time: DateFormat.jm().format(DateTime.now()),
+                      text: postText,
+                    ),
+                  );
+                } else {
+                  cubit.uploadPost(
+                    postParams: PostParams(
+                      date: Helper.getDate(),
+                      time: DateFormat.jm().format(DateTime.now()),
+                      text: postText,
+                    ),
+                  );
+                }
+              },
+              child: Text(
+                'Post',
+                style:
+                    AppTextStyles.textStyle16.copyWith(color: Colors.white60),
+              )),
         ],
       ),
     );
   }
+
+  // void _createNewPost(BuildContext context) {
+  //   if (cubit.postImage == null && postText.isNotEmpty) {
+  //     cubit.createNewPost(
+  //       postParams: PostParams(
+  //         date: Helper.getDate(),
+  //         time: DateFormat.jm().format(DateTime.now()),
+  //         text: postText,
+  //       ),
+  //     );
+  //   } else if (cubit.postImage != null) {
+  //     cubit.uploadPost(
+  //       postParams: PostParams(
+  //         date: Helper.getDate(),
+  //         time: DateFormat.jm().format(DateTime.now()),
+  //         text: postText,
+  //       ),
+  //     );
+  //   }
+  // }
 }

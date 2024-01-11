@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/core/helpers/helper.dart';
-import 'package:social_app/cubit/cubit.dart';
+import 'package:social_app/features/home/presentation/cubit/post_cubit.dart';
 
 class CustomCardCreatePost extends StatelessWidget {
   const CustomCardCreatePost({
@@ -12,6 +13,7 @@ class CustomCardCreatePost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = BlocProvider.of<PostCubit>(context);
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20.w),
       padding: const EdgeInsets.all(20),
@@ -52,7 +54,7 @@ class CustomCardCreatePost extends StatelessWidget {
           const SizedBox(
             height: 20.0,
           ),
-          if (SocialCubit.get(context).postImage != null)
+          if (cubit.postImage != null)
             Stack(alignment: AlignmentDirectional.topEnd, children: [
               Container(
                 height: 400.h,
@@ -60,12 +62,11 @@ class CustomCardCreatePost extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4.0),
                     image: DecorationImage(
-                        image: FileImage(SocialCubit.get(context).postImage!),
-                        fit: BoxFit.cover)),
+                        image: FileImage(cubit.postImage!), fit: BoxFit.cover)),
               ),
               IconButton(
                 onPressed: () {
-                  SocialCubit.get(context).removePostImage();
+                  cubit.removePostImage();
                 },
                 icon: CircleAvatar(
                     backgroundColor: Colors.grey[400],

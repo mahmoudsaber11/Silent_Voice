@@ -2,8 +2,8 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:social_app/cubit/cubit.dart';
-import 'package:social_app/cubit/states.dart';
+import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
+import 'package:social_app/features/layout/presentation/cubit/layout_state.dart';
 import 'package:social_app/features/profile/presentation/widgets/profile/stories_user_item.dart';
 
 class StoriesUsersListView extends StatelessWidget {
@@ -13,8 +13,8 @@ class StoriesUsersListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = SocialCubit.get(context);
-    return BlocBuilder<SocialCubit, SocialStates>(
+    var cubit = LayoutCubit.get(context);
+    return BlocBuilder<LayoutCubit, LayoutState>(
       builder: (context, state) {
         return SizedBox(
           height: 60,

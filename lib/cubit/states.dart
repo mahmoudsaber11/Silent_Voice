@@ -66,6 +66,8 @@ class SocialUploadCoverImageErrorState extends SocialStates {}
 
 class SocialUserUpdateLoadingState extends SocialStates {}
 
+class SocialUserUpdateSuccessState extends SocialStates {}
+
 class SocialUserUpdateErrorState extends SocialStates {}
 
 //create post

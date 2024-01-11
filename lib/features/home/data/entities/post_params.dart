@@ -8,7 +8,7 @@ class PostParams extends Equatable {
 
   PostParams(
       {required this.time,
-      required this.postImage,
+      this.postImage,
       required this.date,
       required this.text});
 

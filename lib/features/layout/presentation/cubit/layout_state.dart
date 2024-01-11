@@ -40,3 +40,25 @@ class GetUserDataError extends LayoutState {
   @override
   List<Object> get props => [error];
 }
+
+class GetAllUsersLoading extends LayoutState {
+  const GetAllUsersLoading();
+}
+
+class GetAllUserSuccess extends LayoutState {
+  final List<UserModel> users;
+
+  const GetAllUserSuccess({required this.users});
+
+  @override
+  List<Object> get props => [users];
+}
+
+class GetAllUserError extends LayoutState {
+  final String error;
+
+  const GetAllUserError({required this.error});
+
+  @override
+  List<Object> get props => [error];
+}
