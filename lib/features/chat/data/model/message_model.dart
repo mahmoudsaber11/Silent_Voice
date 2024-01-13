@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MessageUserModel {
-  String? senderId;
-  String? receiverId;
-  String? time;
-  String? date;
-  Timestamp? dateTime;
-  String? text;
-  Map<String, dynamic>? messageImage;
+  final String? senderId;
+  final String? receiverId;
+  final String? time;
+  final String? date;
+  final Timestamp? dateTime;
+  final String? text;
+  final Map<String, dynamic>? messageImage;
 
   MessageUserModel({
     this.receiverId,
@@ -18,15 +18,15 @@ class MessageUserModel {
     this.text,
     this.messageImage,
   });
-  MessageUserModel.fromJson(Map<String, dynamic>? json) {
-    senderId = json!['senderId'];
-    receiverId = json['receiverId'];
-    messageImage = json['messageImage'];
-    time = json['time'];
-    date = json['date'];
-    dateTime = json['dateTime'];
-
-    text = json['text'];
+  factory MessageUserModel.fromJson(Map<String, dynamic>? json) {
+    return MessageUserModel(
+        senderId: json!['senderId'],
+        receiverId: json['receiverId'],
+        messageImage: json['messageImage'],
+        time: json['time'],
+        date: json['date'],
+        dateTime: json['dateTime'],
+        text: json['text']);
   }
   Map<String, dynamic> toMap() {
     return {
