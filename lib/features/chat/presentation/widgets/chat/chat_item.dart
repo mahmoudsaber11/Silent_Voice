@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/core/utils/app_text_style.dart';
 import 'package:social_app/features/auth/data/models/user_model.dart';
-import 'package:social_app/features/chat_details/chat_details_screen.dart';
+import 'package:social_app/features/chat/presentation/views/chat_details_view.dart';
 import 'package:social_app/shared/components/components.dart';
 
 class ChatItem extends StatelessWidget {
@@ -16,7 +16,11 @@ class ChatItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        navigateTo(context, ChatDetails());
+        navigateTo(
+            context,
+            ChatDetailsView(
+              userModel: userModel,
+            ));
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),

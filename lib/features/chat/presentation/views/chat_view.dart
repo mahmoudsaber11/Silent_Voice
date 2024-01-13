@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/core/utils/functions/show_toast.dart';
 import 'package:social_app/core/widgets/custom_circular_progress_indicator.dart';
 import 'package:social_app/core/widgets/custom_text_field.dart';
-import 'package:social_app/features/chat/presentation/widgets/appbar_chat.dart';
-import 'package:social_app/features/chat/presentation/widgets/chat_item.dart';
+import 'package:social_app/features/chat/presentation/widgets/chat/appbar_chat.dart';
+import 'package:social_app/features/chat/presentation/widgets/chat/chat_item.dart';
 import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
 import 'package:social_app/features/layout/presentation/cubit/layout_state.dart';
 

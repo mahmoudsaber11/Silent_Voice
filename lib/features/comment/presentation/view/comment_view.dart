@@ -41,7 +41,7 @@ class CommentView extends StatelessWidget {
                         : NoComments(),
                     BuildCommentInputSection(
                       postId: postId,
-                    )
+                    ),
                   ],
                 )),
               ],

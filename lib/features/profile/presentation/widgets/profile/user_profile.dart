@@ -14,7 +14,6 @@ class UserProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: 70.h,
         left: 30.w,
       ),
       child: Row(

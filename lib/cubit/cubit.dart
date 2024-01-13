@@ -8,7 +8,7 @@ import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/features/auth/presentation/views/sign_in_view.dart';
 import 'package:social_app/cubit/states.dart';
-import 'package:social_app/models/social_app/message_model.dart';
+import 'package:social_app/features/chat/data/model/message_model.dart';
 import 'package:social_app/shared/components/components.dart';
 import 'package:social_app/core/helpers/cache_helper.dart';
 import 'dart:io';

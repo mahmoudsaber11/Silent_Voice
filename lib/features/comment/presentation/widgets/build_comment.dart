@@ -38,6 +38,12 @@ class BuildComment extends StatelessWidget {
                 )
               ],
             ),
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.favorite,
+                  color: Colors.red,
+                ))
           ],
         ),
       ],
