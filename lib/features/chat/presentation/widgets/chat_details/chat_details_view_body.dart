@@ -20,7 +20,10 @@ class ChatDetailsViewBody extends StatelessWidget {
           child: CustomCardApp(
             widget: Column(
               children: [
-                ChatBuble(),
+                Expanded(
+                    child: ListView.builder(
+                        itemBuilder: ((context, index) => ChatBuble()))),
+                TextField()
               ],
             ),
           ),

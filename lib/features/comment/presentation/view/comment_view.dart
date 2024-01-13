@@ -29,23 +29,27 @@ class CommentView extends StatelessWidget {
         final cubit = BlocProvider.of<CommentCubit>(context);
         return Scaffold(
           backgroundColor: AppColors.primaryColor,
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                CommentAppBar(comments: cubit.comments),
-                CustomCardApp(
+          body: Column(
+            children: [
+              CommentAppBar(comments: cubit.comments),
+              Expanded(
+                child: CustomCardApp(
                     widget: Column(
                   children: [
                     cubit.comments.isNotEmpty
-                        ? CommentListView(comments: cubit.comments)
+                        ? Expanded(
+                            child: CommentListView(comments: cubit.comments))
                         : NoComments(),
                     BuildCommentInputSection(
                       postId: postId,
                     ),
+                    SizedBox(
+                      height: 10,
+                    )
                   ],
                 )),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       });

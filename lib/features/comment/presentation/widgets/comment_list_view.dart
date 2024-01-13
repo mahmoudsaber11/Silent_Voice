@@ -11,16 +11,13 @@ class CommentListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 30.w),
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height * .78.h,
-        child: ListView.separated(
-          shrinkWrap: true,
-          itemBuilder: (context, index) => BuildComment(
-            comment: comments[index],
-          ),
-          separatorBuilder: (context, index) => SizedBox(height: 25.h),
-          itemCount: comments.length,
+      child: ListView.separated(
+        shrinkWrap: true,
+        itemBuilder: (context, index) => BuildComment(
+          comment: comments[index],
         ),
+        separatorBuilder: (context, index) => SizedBox(height: 25.h),
+        itemCount: comments.length,
       ),
     );
   }
