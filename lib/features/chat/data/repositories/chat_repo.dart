@@ -1,8 +1,5 @@
+import 'package:social_app/features/chat/data/entities/send_message_params.dart';
+
 abstract class ChatRepo {
-  Future<void> sendMessage(
-      {required String receiverId,
-      required String time,
-      required String date,
-      required Map<String, dynamic>? messageImage,
-      required String text});
+  Future<void> sendMessage({required SendMessageParams sendMessageParams});
 }
