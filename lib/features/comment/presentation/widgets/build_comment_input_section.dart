@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/core/helpers/helper.dart';
-import 'package:social_app/core/widgets/custom_messanger_and_comment_field.dart';
+import 'package:social_app/core/widgets/custom_send_button.dart';
 import 'package:social_app/features/comment/data/entities/comment_post_params.dart';
 import 'package:social_app/features/comment/presentation/cubit/comment_cubit.dart';
 
@@ -40,17 +40,36 @@ class _BuildCommentInputSectionState extends State<BuildCommentInputSection> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: CustomMessangerAndCommentField(
-        controller: commentTextControl,
-        hintText: "Add a comment...",
-        prefix: Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: CircleAvatar(
-            radius: 20,
-            backgroundImage: NetworkImage('${Helper.userModel!.image}'),
-          ),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: TextFormField(
+          controller: commentTextControl,
+          validator: (String? value) {
+            if (value!.isEmpty) {
+              return 'Write something!';
+            }
+            return null;
+          },
+          decoration: InputDecoration(
+              prefixIcon: Padding(
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  right: 10,
+                ),
+                child: CircleAvatar(
+                  radius: 20,
+                  backgroundImage: NetworkImage('${Helper.userModel!.image}'),
+                ),
+              ),
+              suffixIcon: CustomSendButton(
+                onPressed: () => _getText(context),
+              ),
+              border: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              hintText: "Add a comment...",
+              hintStyle: TextStyle(color: Colors.grey[400])),
         ),
-        onPressed: () => _getText(context),
       ),
     );
   }

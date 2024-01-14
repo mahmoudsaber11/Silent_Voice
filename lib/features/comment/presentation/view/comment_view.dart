@@ -39,7 +39,7 @@ class CommentView extends StatelessWidget {
                     cubit.comments.isNotEmpty
                         ? Expanded(
                             child: CommentListView(comments: cubit.comments))
-                        : NoComments(),
+                        : Expanded(child: NoComments()),
                     BuildCommentInputSection(
                       postId: postId,
                     ),

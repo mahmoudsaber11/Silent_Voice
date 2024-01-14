@@ -35,7 +35,7 @@ class BuildComment extends StatelessWidget {
                     '${comment.time}',
                     style: const TextStyle(color: Colors.grey, fontSize: 10),
                   ),
-                )
+                ),
               ],
             ),
             IconButton(

@@ -89,121 +89,121 @@ class SocialCubit extends Cubit<SocialStates> {
     });
   }
 
-  void sendMessage({
-    String? receiverId,
-    String? text,
-    Map<String, Object>? messageImage,
-    String? time,
-    String? date,
-  }) {
-    MessageUserModel model = MessageUserModel(
-        text: text,
-        receiverId: receiverId,
-        senderId: Helper.userModel!.uId,
-        time: time,
-        dateTime: Timestamp.now());
-    //set my chat
-    FirebaseFirestore.instance
-        .collection('users')
-        .doc(Helper.userModel!.uId)
-        .collection('chats')
-        .doc(receiverId)
-        .collection('messages')
-        .add(model.toMap())
-        .then((value) {
-      emit(SocialSendMessageSuccessState());
-    }).catchError((error) {
-      emit(SocialSendMessageErrorState());
-    });
-    //set receiver chat
-    FirebaseFirestore.instance
-        .collection('users')
-        .doc(receiverId)
-        .collection('chats')
-        .doc(Helper.userModel!.uId)
-        .collection('messages')
-        .add(model.toMap())
-        .then((value) {
-      emit(SocialSendMessageSuccessState());
-    }).catchError((error) {
-      emit(SocialSendMessageErrorState());
-    });
-  }
+  // void sendMessage({
+  //   String? receiverId,
+  //   String? text,
+  //   Map<String, Object>? messageImage,
+  //   String? time,
+  //   String? date,
+  // }) {
+  //   MessageUserModel model = MessageUserModel(
+  //       text: text,
+  //       receiverId: receiverId,
+  //       senderId: Helper.userModel!.uId,
+  //       time: time,
+  //       dateTime: Timestamp.now());
+  //   //set my chat
+  //   FirebaseFirestore.instance
+  //       .collection('users')
+  //       .doc(Helper.userModel!.uId)
+  //       .collection('chats')
+  //       .doc(receiverId)
+  //       .collection('messages')
+  //       .add(model.toMap())
+  //       .then((value) {
+  //     emit(SocialSendMessageSuccessState());
+  //   }).catchError((error) {
+  //     emit(SocialSendMessageErrorState());
+  //   });
+  //   //set receiver chat
+  //   FirebaseFirestore.instance
+  //       .collection('users')
+  //       .doc(receiverId)
+  //       .collection('chats')
+  //       .doc(Helper.userModel!.uId)
+  //       .collection('messages')
+  //       .add(model.toMap())
+  //       .then((value) {
+  //     emit(SocialSendMessageSuccessState());
+  //   }).catchError((error) {
+  //     emit(SocialSendMessageErrorState());
+  //   });
+  // }
 
-  List<MessageUserModel> messages = [];
-  void getMessages({
-    required String receiverId,
-  }) {
-    FirebaseFirestore.instance
-        .collection('users')
-        .doc(Helper.userModel!.uId)
-        .collection('chats')
-        .doc(receiverId)
-        .collection('messages')
-        .orderBy(
-          'dateTime',
-          descending: true,
-        )
-        .snapshots()
-        .listen((event) {
-      messages = [];
-      // ignore: avoid_function_literals_in_foreach_calls
-      event.docs.forEach((element) {
-        messages.add(MessageUserModel.fromJson(element.data()));
-      });
-      emit(SocialGetMessageSuccessState());
-    });
-  }
+  // List<MessageUserModel> messages = [];
+  // void getMessages({
+  //   required String receiverId,
+  // }) {
+  //   FirebaseFirestore.instance
+  //       .collection('users')
+  //       .doc(Helper.userModel!.uId)
+  //       .collection('chats')
+  //       .doc(receiverId)
+  //       .collection('messages')
+  //       .orderBy(
+  //         'dateTime',
+  //         descending: true,
+  //       )
+  //       .snapshots()
+  //       .listen((event) {
+  //     messages = [];
+  //     // ignore: avoid_function_literals_in_foreach_calls
+  //     event.docs.forEach((element) {
+  //       messages.add(MessageUserModel.fromJson(element.data()));
+  //     });
+  //     emit(SocialGetMessageSuccessState());
+  //   });
+  // }
 
-  File? messageImage;
-  void getMessageImage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
-      messageImage = File(pickedFile.path);
-      emit(GetMessagePicSuccessState());
-    } else {
-      emit(GetMessagePicErrorState());
-    }
-  }
+  // File? messageImage;
+  // void getMessageImage() async {
+  //   final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+  //   if (pickedFile != null) {
+  //     messageImage = File(pickedFile.path);
+  //     emit(GetMessagePicSuccessState());
+  //   } else {
+  //     emit(GetMessagePicErrorState());
+  //   }
+  // }
 
-  void popMessageImage() {
-    messageImage = null;
-    emit(DeleteMessagePicState());
-  }
+  // void popMessageImage() {
+  //   messageImage = null;
+  //   emit(DeleteMessagePicState());
+  // }
 
-  bool isMessageImageLoading = false;
-  String? imageURL;
-  void uploadMessagePic({
-    String? senderId,
-    required String? receiverId,
-    String? text,
-    required String? time,
-    String? dateTime,
-  }) {
-    isMessageImageLoading = true;
-    emit(UploadMessagePicLoadingState());
-    firebase_storage.FirebaseStorage.instance
-        .ref()
-        .child(Uri.file(messageImage!.path).pathSegments.last)
-        .putFile(messageImage!)
-        .then((value) {
-      value.ref.getDownloadURL().then((value) {
-        imageURL = value;
-        sendMessage(
-          receiverId: receiverId!,
-          text: text!,
-          messageImage: {'width': 150, 'image': value, 'height': 200},
-          time: time,
-        );
-        emit(UploadMessagePicSuccessState());
-        isMessageImageLoading = false;
-      }).catchError((error) {
-        emit(UploadMessagePicErrorState());
-      });
-    }).catchError((error) {
-      emit(UploadMessagePicErrorState());
-    });
-  }
+  // bool isMessageImageLoading = false;
+  // String? imageURL;
+  // void uploadMessagePic({
+  //   String? senderId,
+  //   required String? receiverId,
+  //   String? text,
+  //   required String? time,
+  //   String? dateTime,
+  // }) {
+  //   isMessageImageLoading = true;
+  //   emit(UploadMessagePicLoadingState());
+  //   firebase_storage.FirebaseStorage.instance
+  //       .ref()
+  //       .child(Uri.file(messageImage!.path).pathSegments.last)
+  //       .putFile(messageImage!)
+  //       .then((value) {
+  //     value.ref.getDownloadURL().then((value) {
+  //       imageURL = value;
+  //       sendMessage(
+  //         receiverId: receiverId!,
+  //         text: text!,
+  //         messageImage: {'width': 150, 'image': value, 'height': 200},
+  //         time: time,
+  //       );
+  //       emit(UploadMessagePicSuccessState());
+  //       isMessageImageLoading = false;
+  //     }).catchError((error) {
+  //       emit(UploadMessagePicErrorState());
+  //     });
+  //   }).catchError((error) {
+  //     emit(UploadMessagePicErrorState());
+  //   });
+  // }
 
   dynamic signOut(context) async {
     await CacheHelper.removeData(

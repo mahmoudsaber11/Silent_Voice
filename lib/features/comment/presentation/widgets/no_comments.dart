@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:social_app/core/utils/app_color.dart';
+import 'package:social_app/core/utils/app_text_style.dart';
 
 class NoComments extends StatelessWidget {
   const NoComments({
@@ -11,7 +13,9 @@ class NoComments extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Center(
         child: Text(
-          "no comments",
+          "No comments...",
+          style: AppTextStyles.textStyle16Bold
+              .copyWith(color: AppColors.primaryColor),
         ),
       ),
     );
