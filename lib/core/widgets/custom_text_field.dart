@@ -6,8 +6,9 @@ class CustomTextField extends StatelessWidget {
     super.key,
     required this.keyboardType,
     required this.controller,
-    required this.hintText,
+    this.hintText,
     this.validate,
+    this.labelText,
     this.onChange,
     this.isPassword,
     this.suffix,
@@ -21,6 +22,7 @@ class CustomTextField extends StatelessWidget {
 
   final TextInputType keyboardType;
   final String? hintText;
+  final String? labelText;
   final TextEditingController controller;
   final String? Function(String?)? validate;
   final ValueSetter? onChange;
@@ -49,6 +51,7 @@ class CustomTextField extends StatelessWidget {
         textCapitalization: textCapitalization,
         // textAlign: TextAlign.center,
         decoration: InputDecoration(
+          labelText: labelText,
           suffixIcon: suffix,
           contentPadding: EdgeInsets.symmetric(vertical: 20.h),
           hintText: hintText,

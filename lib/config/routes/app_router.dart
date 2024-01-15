@@ -10,6 +10,8 @@ import 'package:social_app/features/layout/presentation/views/layout_view.dart';
 import 'package:social_app/features/on_boarding/data/repositories/on_boarding_repo_impl.dart';
 import 'package:social_app/features/on_boarding/presentation/cubit/on_boarding_cubit.dart';
 import 'package:social_app/features/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:social_app/features/profile/data/repositories/edit_profile_repo_impl.dart';
+import 'package:social_app/features/profile/presentation/cubit/edit_profile_cubit.dart';
 import 'package:social_app/features/profile/presentation/view/edit_profile_view.dart.dart';
 import 'package:social_app/splash/presentation/views/splash_view.dart';
 
@@ -49,7 +51,11 @@ class AppRouter {
       //           ));
 
       case Routes.editProfileViewRoute:
-        return MaterialPageRoute(builder: (context) => EditProfileView());
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                create: (context) =>
+                    EditProfileCubit(editProfileRepo: EditProfileRepoImpl()),
+                child: EditProfileView()));
 
       default:
         return _unFoundRoute();
