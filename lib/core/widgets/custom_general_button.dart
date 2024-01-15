@@ -32,7 +32,7 @@ class CustomGeneralButton extends StatelessWidget {
               text,
               style: AppTextStyles.textStyle16,
             ),
-            Spacer(),
+            const Spacer(),
             Icon(
               Icons.arrow_right_outlined,
               color: Colors.white,

@@ -19,20 +19,20 @@ class AppbarHomeView extends StatelessWidget {
             "Media X",
             style: AppTextStyles.textStyle25,
           ),
-          Spacer(),
+          const Spacer(),
           IconButton(
               padding: EdgeInsets.zero,
               onPressed: () {
                 context.navigateTo(routeName: Routes.postViewRoute);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.add,
                 size: 28,
               )),
           IconButton(
               padding: EdgeInsets.zero,
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.notifications_none_outlined,
                 size: 28,
               )),

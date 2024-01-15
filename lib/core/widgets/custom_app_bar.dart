@@ -17,7 +17,7 @@ class CustomAppBar extends StatelessWidget {
           onTap: () {
             context.getBack();
           },
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back_ios,
             color: Colors.white,
           ),
@@ -26,7 +26,7 @@ class CustomAppBar extends StatelessWidget {
           title,
           style: AppTextStyles.textStyle20,
         ),
-        Icon(
+        const Icon(
           Icons.more_horiz,
           color: Colors.white,
         )

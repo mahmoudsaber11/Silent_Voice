@@ -9,14 +9,14 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         backgroundColor: AppColors.primaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0.r),
         ),
       ),
       onPressed: onPressed,
-      child: RotationTransition(
+      child: const RotationTransition(
         turns: AlwaysStoppedAnimation(310 / 360),
         child: Icon(
           Icons.send_rounded,

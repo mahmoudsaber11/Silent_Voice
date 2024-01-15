@@ -33,6 +33,7 @@ class EditProfileRepoImpl implements EditProfileRepo {
       uId: Helper.userModel!.uId,
       image: updateUserParams.image ?? Helper.userModel!.image,
     );
+    Helper.userModel = model;
     return await FirebaseFirestore.instance
         .collection('users')
         .doc(Helper.userModel!.uId)

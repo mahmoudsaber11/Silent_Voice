@@ -32,7 +32,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
               child: Stack(
                 children: [
                   PageView.builder(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     controller: pageController,
                     itemCount: cubit.onBoardingPages().length,
                     itemBuilder: (context, index) => CustomPageView(
@@ -77,7 +77,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
   void navOnBoarding(BuildContext context) {
     if (pageController.page! < 2) {
       pageController.nextPage(
-          duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+          duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
     } else {
       CacheHelper.saveData(key: 'onBoarding', value: true);
       context.navigateAndReplacement(newRoute: Routes.signInRoute);

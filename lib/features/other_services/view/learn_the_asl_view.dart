@@ -48,7 +48,7 @@ class _LearnTheASLState extends State<LearnTheASL> {
                   onPressed: () {
                     context.getBack();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_back_ios,
                     color: AppColors.primaryColor,
                   )),

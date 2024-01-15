@@ -10,7 +10,7 @@ import 'package:social_app/features/home/data/repositories/post_repo.dart';
 import 'package:social_app/features/home/presentation/cubit/post_state.dart';
 
 class PostCubit extends Cubit<PostState> {
-  PostCubit({required this.postRepo}) : super(PostsInitial());
+  PostCubit({required this.postRepo}) : super(const PostsInitial());
   final PostRepo postRepo;
 
   void createNewPost({required PostParams postParams}) {
@@ -26,7 +26,7 @@ class PostCubit extends Cubit<PostState> {
 
   File? postImage;
   void uploadPost({required PostParams postParams}) {
-    emit(UploadPostLoading());
+    emit(const UploadPostLoading());
     postRepo.uploadPost(postImage: postImage).then((value) {
       value.ref.getDownloadURL().then((value) {
         createNewPost(
@@ -52,6 +52,7 @@ class PostCubit extends Cubit<PostState> {
     emit(const GetPostsLoading());
     postRepo.getPosts().listen((event) {
       posts = [];
+      // ignore: avoid_function_literals_in_foreach_calls
       event.docs.forEach((element) async {
         posts.add(PostModel.fromJson(element.data()));
         var likes = await element.reference.collection('likes').get();
@@ -91,16 +92,16 @@ class PostCubit extends Cubit<PostState> {
   Future<bool> likedByMe(
     String? postId,
   ) {
-    emit(LikedByMeLoading());
+    emit(const LikedByMeLoading());
     dynamic isLikedByMe = false;
     postRepo.likedByMe().then((event) async {
       var likes = await event.reference.collection('likes').get();
-      likes.docs.forEach((element) {
+      for (var element in likes.docs) {
         if (element.id == Helper.userModel!.uId) {
           isLikedByMe = true;
           // disLikePost(postId);
         }
-      });
+      }
       if (isLikedByMe == false) {
         likePost(
           postId: postId!,
@@ -118,9 +119,9 @@ class PostCubit extends Cubit<PostState> {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       postImage = File(pickedFile.path);
-      emit(PostImageSuccess());
+      emit(const PostImageSuccess());
     } else {
-      emit(PostImageError());
+      emit(const PostImageError());
     }
   }
 

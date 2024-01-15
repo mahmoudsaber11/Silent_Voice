@@ -1,15 +1,15 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_app/features/auth/presentation/views/sign_in_view.dart';
-import 'package:social_app/cubit/states.dart';
-import 'package:social_app/shared/components/components.dart';
-import 'package:social_app/core/helpers/cache_helper.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:social_app/features/auth/presentation/views/sign_in_view.dart';
+// import 'package:social_app/cubit/states.dart';
+// import 'package:social_app/shared/components/components.dart';
+// import 'package:social_app/core/helpers/cache_helper.dart';
 
-class SocialCubit extends Cubit<SocialStates> {
-  SocialCubit() : super(SocialInitialState());
+// class SocialCubit extends Cubit<SocialStates> {
+//   SocialCubit() : super(SocialInitialState());
 
-  static SocialCubit get(context) => BlocProvider.of(context);
+//   static SocialCubit get(context) => BlocProvider.of(context);
 
-  var currentIndex = 0;
+//   var currentIndex = 0;
 
   // File? profileImage;
   // ImagePicker picker = ImagePicker();
@@ -80,35 +80,35 @@ class SocialCubit extends Cubit<SocialStates> {
   //   });
   // }
 
-  dynamic signOut(context) async {
-    await CacheHelper.removeData(
-      key: 'uId',
-    ).then((value) {
-      if (value) {
-        navigateAndFinish(context, const SignInView());
-        SocialCubit.get(context).currentIndex = 0;
-      }
-    });
-  }
+  // dynamic signOut(context) async {
+  //   await CacheHelper.removeData(
+  //     key: 'uId',
+  //   ).then((value) {
+  //     if (value) {
+  //       navigateAndFinish(context, const SignInView());
+  //       SocialCubit.get(context).currentIndex = 0;
+  //     }
+  //   });
+  // }
 
   // bool isDarkMode = true;
 
-  // void setUserToken() async {
-  //   String? token = await FirebaseMessaging.instance.getToken();
-  //   await FirebaseFirestore.instance
-  //       .collection('users')
-  //       .doc(Helper.userModel!.uId)
-  //       .update({'token': token}).then((value) => {});
-  // }
+//   void setUserToken() async {
+//     String? token = await FirebaseMessaging.instance.getToken();
+//     await FirebaseFirestore.instance
+//         .collection('users')
+//         .doc(Helper.userModel!.uId)
+//         .update({'token': token}).then((value) => {});
+//   }
 
-  // Future getMyData() async {
-  //   FirebaseFirestore.instance
-  //       .collection('users')
-  //       .doc(Helper.uId)
-  //       .snapshots()
-  //       .listen((value) async {
-  //     Helper.userModel = UserModel.fromJson(value.data());
-  //     setUserToken();
-  //   });
-  // }
-}
+//   Future getMyData() async {
+//     FirebaseFirestore.instance
+//         .collection('users')
+//         .doc(Helper.uId)
+//         .snapshots()
+//         .listen((value) async {
+//       Helper.userModel = UserModel.fromJson(value.data());
+//       setUserToken();
+//     });
+//   }
+// }

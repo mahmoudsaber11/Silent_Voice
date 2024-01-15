@@ -11,7 +11,7 @@ import 'package:social_app/features/home/presentation/cubit/post_cubit.dart';
 import 'package:social_app/features/home/presentation/cubit/post_state.dart';
 
 class NewPostView extends StatefulWidget {
-  NewPostView({
+  const NewPostView({
     super.key,
     this.postId,
     this.postModel,
@@ -66,7 +66,7 @@ class _NewPostViewState extends State<NewPostView> {
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black12,
                               blurRadius: 5,
@@ -78,7 +78,7 @@ class _NewPostViewState extends State<NewPostView> {
                         ),
                         child: Column(
                           children: [
-                            UserNameAndImage(),
+                            const UserNameAndImage(),
                             const SizedBox(
                               height: 20.0,
                             ),
@@ -128,7 +128,7 @@ class _NewPostViewState extends State<NewPostView> {
                           ],
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Expanded(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -141,14 +141,14 @@ class _NewPostViewState extends State<NewPostView> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.image,
                                     color: AppColors.primaryColor,
                                   ),
                                   SizedBox(
                                     width: 5.0.w,
                                   ),
-                                  Text(
+                                  const Text(
                                     'add photo',
                                     style: TextStyle(
                                         color: AppColors.primaryColor),
@@ -159,7 +159,7 @@ class _NewPostViewState extends State<NewPostView> {
                             SizedBox(
                               width: 10.0.w,
                             ),
-                            Text(
+                            const Text(
                               '# tags',
                               style: TextStyle(color: AppColors.primaryColor),
                             )

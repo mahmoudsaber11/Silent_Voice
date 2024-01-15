@@ -15,11 +15,11 @@ class CustomSendButton extends StatelessWidget {
       padding: EdgeInsets.zero,
       onPressed: onPressed,
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
             color: AppColors.primaryColor,
             borderRadius: BorderRadius.circular(12.r)),
-        child: RotationTransition(
+        child: const RotationTransition(
           turns: AlwaysStoppedAnimation(310 / 350),
           child: Icon(
             Icons.send_outlined,

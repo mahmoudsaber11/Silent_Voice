@@ -22,7 +22,7 @@ class AppBarChatDetails extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
       child: Column(
         children: [
-          CustomAppBar(
+          const CustomAppBar(
             title: "Chat",
           ),
           SizedBox(
@@ -51,20 +51,22 @@ class AppBarChatDetails extends StatelessWidget {
                     Text(
                       '${userModel.bio}',
                       maxLines: 1,
-                      style: TextStyle(fontSize: 12, color: Colors.white70),
+                      style:
+                          const TextStyle(fontSize: 12, color: Colors.white70),
                     ),
                   ],
                 ),
               ),
               CustomButtonCall(
                 icon: Icons.call_outlined,
-                onPressed: () => navigateTo(context, SpeechScreen()),
+                onPressed: () => navigateTo(context, const SpeechScreen()),
               ),
               SizedBox(
                 width: 7.w,
               ),
               CustomButtonCall(
-                onPressed: () => navigateTo(context, CallPage(callID: '1')),
+                onPressed: () =>
+                    navigateTo(context, const CallPage(callID: '1')),
                 icon: Icons.videocam_outlined,
               ),
             ],

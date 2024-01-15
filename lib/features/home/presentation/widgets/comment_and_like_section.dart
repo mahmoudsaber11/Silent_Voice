@@ -28,7 +28,7 @@ class CommentAndLikeSection extends StatelessWidget {
             CustomIconsLikes(
               text: "${postModel!.likes}",
             ),
-            Spacer(),
+            const Spacer(),
             Icon(
               Icons.comment_outlined,
               color: AppColors.primaryColor,
@@ -50,7 +50,7 @@ class CommentAndLikeSection extends StatelessWidget {
                     style: TextStyle(fontSize: 12.sp),
                   );
                 } else {
-                  return Text("0");
+                  return const Text("0");
                 }
               },
             ),
@@ -59,7 +59,7 @@ class CommentAndLikeSection extends StatelessWidget {
         SizedBox(
           height: 15.h,
         ),
-        CustomDivider(),
+        const CustomDivider(),
         SizedBox(
           height: 15.h,
         ),
@@ -87,13 +87,13 @@ class CommentAndLikeSection extends StatelessWidget {
                 style: TextStyle(fontSize: 14.sp),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             InkWell(
               onTap: () async {
                 await BlocProvider.of<PostCubit>(context)
                     .likedByMe(postModel!.postId);
               },
-              child: CustomIconsLikes(
+              child: const CustomIconsLikes(
                 text: "Like",
               ),
             ),

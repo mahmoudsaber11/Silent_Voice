@@ -40,7 +40,7 @@ class BuildComment extends StatelessWidget {
             ),
             IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.favorite,
                   color: Colors.red,
                 ))

@@ -47,7 +47,7 @@ class CreateUserError extends SignUpState {
 class SignUpChangePasswordVisibility extends SignUpState {
   final bool isPassword;
 
-  SignUpChangePasswordVisibility({required this.isPassword});
+  const SignUpChangePasswordVisibility({required this.isPassword});
 
   @override
   List<Object?> get props => [isPassword];

@@ -19,7 +19,7 @@ class LayoutRepoImpl implements LayoutRepo {
   List<Widget> views() {
     return [
       const HomeView(),
-      ChatView(),
+      const ChatView(),
       const OtherServicesView(),
       const ProfileView(),
     ];

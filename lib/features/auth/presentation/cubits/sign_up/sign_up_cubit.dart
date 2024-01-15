@@ -3,7 +3,7 @@ import 'package:social_app/features/auth/data/repositories/sign_up/sign_up_repo.
 import 'package:social_app/features/auth/presentation/cubits/sign_up/sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
-  SignUpCubit({required this.signUpRepo}) : super(SignUpInitial());
+  SignUpCubit({required this.signUpRepo}) : super(const SignUpInitial());
   static SignUpCubit get(context) => BlocProvider.of(context);
   SignUpRepo signUpRepo;
   void signUp({
@@ -12,7 +12,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     required String password,
     required String phone,
   }) {
-    emit(SignUpLoading());
+    emit(const SignUpLoading());
     signUpRepo
         .signUp(name: name, email: email, password: password, phone: phone)
         .then((value) {

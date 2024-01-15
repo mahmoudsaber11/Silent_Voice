@@ -6,7 +6,7 @@ class CommentPostParams extends Equatable {
   final String? time;
   final String? date;
 
-  CommentPostParams({
+  const CommentPostParams({
     required this.commentText,
     required this.postId,
     required this.time,

@@ -18,14 +18,12 @@ class HomeView extends StatelessWidget {
         SizedBox(
           height: 40.h,
         ),
-        AppbarHomeView(),
+        const AppbarHomeView(),
         BlocConsumer<PostCubit, PostState>(
           listener: (context, state) => _controlFeedsState(state),
           builder: (context, state) {
             final cubit = BlocProvider.of<PostCubit>(context);
-            if (state is GetPostsLoading) {
-              return const CustomCircularProgressIndicator();
-            } else if (state is GetPostsSuccess) {
+            if (state is GetPostsSuccess) {
               return Expanded(
                 child: ListView.separated(
                     physics: const BouncingScrollPhysics(),
@@ -40,7 +38,7 @@ class HomeView extends StatelessWidget {
             } else if (state is GetPostsError) {
               return showToast(text: state.error, state: ToastStates.error);
             } else {
-              return Text("ksomk");
+              return const Center(child: CustomCircularProgressIndicator());
             }
           },
         ),

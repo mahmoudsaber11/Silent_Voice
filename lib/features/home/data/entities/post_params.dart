@@ -6,7 +6,7 @@ class PostParams extends Equatable {
   final String? postImage;
   final String text;
 
-  PostParams(
+  const PostParams(
       {required this.time,
       this.postImage,
       required this.date,

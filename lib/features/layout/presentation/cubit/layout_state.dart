@@ -14,7 +14,7 @@ class LayoutInitial extends LayoutState {
 class ChangeBottomNavState extends LayoutState {
   final int index;
 
-  ChangeBottomNavState(this.index);
+  const ChangeBottomNavState(this.index);
   @override
   List<Object?> get props => [index];
 }

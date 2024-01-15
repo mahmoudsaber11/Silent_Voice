@@ -15,11 +15,12 @@ class CustomEditButton extends StatelessWidget {
     return OutlinedButton(
         style: ButtonStyle(
             padding: MaterialStatePropertyAll(EdgeInsets.all(8.w)),
-            side: MaterialStateProperty.all<BorderSide>(BorderSide(
+            side: MaterialStateProperty.all<BorderSide>(const BorderSide(
                     color: AppColors
                         .primaryColor) // Change to your desired border color
                 ),
-            backgroundColor: MaterialStatePropertyAll(AppColors.primaryColor)),
+            backgroundColor:
+                const MaterialStatePropertyAll(AppColors.primaryColor)),
         onPressed: () {
           context.navigateTo(routeName: Routes.editProfileViewRoute);
         },

@@ -64,7 +64,7 @@ class ChatRepoImpl implements ChatRepo {
   Future<TaskSnapshot> uploadMessageImage({File? messageImage}) async {
     return await firebase_storage.FirebaseStorage.instance
         .ref()
-        .child(Uri.file(messageImage!.path).pathSegments.last)
+        .child("messages/${Uri.file(messageImage!.path).pathSegments.last}")
         .putFile(messageImage);
   }
 }

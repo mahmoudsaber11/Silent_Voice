@@ -4,7 +4,7 @@ import 'package:social_app/features/comment/presentation/widgets/build_comment.d
 import 'package:social_app/features/comment/data/models/comment_model.dart';
 
 class CommentListView extends StatelessWidget {
-  const CommentListView({Key? key, required this.comments}) : super(key: key);
+  const CommentListView({super.key, required this.comments});
 
   final List<CommentModel> comments;
   @override

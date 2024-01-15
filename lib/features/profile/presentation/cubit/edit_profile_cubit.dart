@@ -8,15 +8,17 @@ import 'package:social_app/features/profile/presentation/cubit/edit_profile_stat
 
 class EditProfileCubit extends Cubit<EditProfileState> {
   EditProfileCubit({required this.editProfileRepo})
-      : super(EditProfileInitial());
+      : super(const EditProfileInitial());
   final EditProfileRepo editProfileRepo;
 
-  void updateUser({required UpdateUserParams updateUserParams}) {
-    emit(UpdateUserLoading());
+  void updateUser({
+    required UpdateUserParams updateUserParams,
+  }) {
+    emit(const UpdateUserLoading());
     editProfileRepo
         .updateUser(updateUserParams: updateUserParams)
         .then((value) {
-      emit(UpdateUserSuccess());
+      emit(const UpdateUserSuccess());
     }).catchError((error) {
       emit(UpdateUserError(error: error));
     });
@@ -34,8 +36,10 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     });
   }
 
-  void uploadProfileImage({required UpdateUserParams updateUserParams}) {
-    emit(UploadImageLoading());
+  void uploadProfileImage({
+    required UpdateUserParams updateUserParams,
+  }) {
+    emit(const UploadImageLoading());
 
     editProfileRepo
         .uploadProfileImage(profileImage: profileImage)

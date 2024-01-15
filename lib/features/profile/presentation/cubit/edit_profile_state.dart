@@ -23,7 +23,7 @@ class UpdateUserSuccess extends EditProfileState {
 class UpdateUserError extends EditProfileState {
   final String error;
 
-  UpdateUserError({required this.error});
+  const UpdateUserError({required this.error});
   @override
   List<Object?> get props => [error];
 }
@@ -31,7 +31,7 @@ class UpdateUserError extends EditProfileState {
 class GetProfileImageSuccess extends EditProfileState {
   final File profileImage;
 
-  GetProfileImageSuccess({required this.profileImage});
+  const GetProfileImageSuccess({required this.profileImage});
   @override
   List<Object> get props => [profileImage];
 }
@@ -39,7 +39,7 @@ class GetProfileImageSuccess extends EditProfileState {
 class GetProfileImageError extends EditProfileState {
   final String error;
 
-  GetProfileImageError({required this.error});
+  const GetProfileImageError({required this.error});
   @override
   List<Object> get props => [error];
 }

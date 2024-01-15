@@ -97,7 +97,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       hintText: "Enter your name",
                       keyboardType: TextInputType.name,
                       controller: _nameController,
-                      autofillHints: <String>[AutofillHints.name],
+                      autofillHints: const <String>[AutofillHints.name],
                       focusNode: _nameFocusNode,
                       onEditingComplete: () =>
                           FocusScope.of(context).requestFocus(_emailFocusNode),
@@ -116,7 +116,7 @@ class _SignUpFormState extends State<SignUpForm> {
                         keyboardType: TextInputType.emailAddress,
                         controller: _emailController,
                         focusNode: _emailFocusNode,
-                        autofillHints: <String>[AutofillHints.email],
+                        autofillHints: const <String>[AutofillHints.email],
                         onEditingComplete: () => FocusScope.of(context)
                             .requestFocus(_passwordFocusNode)),
                     SizedBox(
@@ -143,7 +143,7 @@ class _SignUpFormState extends State<SignUpForm> {
                         keyboardType: TextInputType.visiblePassword,
                         controller: _passwordController,
                         focusNode: _passwordFocusNode,
-                        autofillHints: <String>[AutofillHints.password],
+                        autofillHints: const <String>[AutofillHints.password],
                         onEditingComplete: () => FocusScope.of(context)
                             .requestFocus(_confirmPassFocusNode)),
                     SizedBox(
@@ -174,7 +174,7 @@ class _SignUpFormState extends State<SignUpForm> {
                         keyboardType: TextInputType.visiblePassword,
                         controller: _confirmController,
                         focusNode: _confirmPassFocusNode,
-                        autofillHints: <String>[AutofillHints.password],
+                        autofillHints: const <String>[AutofillHints.password],
                         onEditingComplete: () => FocusScope.of(context)
                             .requestFocus(_phoneFocusNode)),
                     SizedBox(
@@ -195,7 +195,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       onSubmit: (String val) => _signUp(context),
                       keyboardType: TextInputType.phone,
                       controller: _phoneController,
-                      autofillHints: <String>[AutofillHints.photo],
+                      autofillHints: const <String>[AutofillHints.photo],
                       focusNode: _phoneFocusNode,
                     ),
                     SizedBox(
@@ -249,7 +249,7 @@ class _SignUpFormState extends State<SignUpForm> {
             text: 'Welcome in Silent Voice',
             state: ToastStates.success,
           );
-          context.navigateAndReplacement(newRoute: Routes.LayoutViewRoute);
+          context.navigateAndReplacement(newRoute: Routes.layoutViewRoute);
         });
       }
     });

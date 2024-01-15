@@ -7,7 +7,7 @@ import 'package:social_app/features/comment/presentation/cubit/comment_state.dar
 import 'package:social_app/features/home/presentation/cubit/post_cubit.dart';
 
 class CommentCubit extends Cubit<CommentsState> {
-  CommentCubit({required this.commentRepo}) : super(CommentsInitial());
+  CommentCubit({required this.commentRepo}) : super(const CommentsInitial());
   final CommentRepo commentRepo;
 
   void commentPost(
@@ -15,7 +15,7 @@ class CommentCubit extends Cubit<CommentsState> {
     emit(const CommentPostLoading());
     commentRepo.commentPost(commentPostParams: params).then((success) {
       BlocProvider.of<PostCubit>(context).getPosts();
-      emit(CommentPostSuccess());
+      emit(const CommentPostSuccess());
     }).catchError((error) {
       emit(CommentPostError(error: error.toString()));
     });
@@ -25,10 +25,10 @@ class CommentCubit extends Cubit<CommentsState> {
   void getComments({required String postId}) {
     commentRepo.getComments(postId: postId).listen((event) {
       comments.clear();
-      event.docs.forEach((element) {
+      for (var element in event.docs) {
         comments.add(CommentModel.fromJson(element.data()));
         emit(GetCommentsSuccess(comments: comments));
-      });
+      }
     });
   }
 }

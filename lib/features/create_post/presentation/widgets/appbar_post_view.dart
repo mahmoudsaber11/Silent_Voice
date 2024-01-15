@@ -28,7 +28,7 @@ class AppBarPostView extends StatelessWidget {
               onPressed: () {
                 context.getBack();
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.clear,
                 color: Colors.white,
               )),

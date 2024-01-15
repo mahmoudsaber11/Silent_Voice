@@ -10,7 +10,7 @@ class CommentModel extends Equatable {
   final Timestamp? dateTime;
   final String? uId;
 
-  CommentModel(
+  const CommentModel(
       {this.name,
       this.image,
       this.commentText,

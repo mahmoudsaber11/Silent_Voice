@@ -9,7 +9,7 @@ import 'package:social_app/features/layout/presentation/cubit/layout_state.dart'
 import 'package:social_app/shared/components/components.dart';
 
 class LayoutCubit extends Cubit<LayoutState> {
-  LayoutCubit({required this.layoutRepo}) : super(LayoutInitial());
+  LayoutCubit({required this.layoutRepo}) : super(const LayoutInitial());
   static LayoutCubit get(context) => BlocProvider.of(context);
   final LayoutRepo layoutRepo;
   var currentIndex = 0;
@@ -28,12 +28,11 @@ class LayoutCubit extends Cubit<LayoutState> {
     return layoutRepo.views();
   }
 
-  Future<void> getUserData() async {
+  void getUserData() {
     emit(const GetUserDataLoading());
     layoutRepo.getUserData().then((value) {
       Helper.userModel = UserModel.fromJson(value.data());
       emit(GetUserDataSuccess(user: Helper.userModel!));
-      print(Helper.userModel);
     }).catchError((error) {
       emit(GetUserDataError(error: error.toString()));
     });
@@ -41,14 +40,14 @@ class LayoutCubit extends Cubit<LayoutState> {
 
   List<UserModel>? users;
   void getAllUsers() {
-    emit(GetAllUsersLoading());
+    emit(const GetAllUsersLoading());
     users = [];
     layoutRepo.getAllUsers().then((value) {
-      value.docs.forEach((element) {
+      for (var element in value.docs) {
         if (element.data()['uId'] != Helper.userModel!.uId) {
           users!.add(UserModel.fromJson(element.data()));
         }
-      });
+      }
       emit(GetAllUserSuccess(users: users!));
     }).catchError((error) {
       emit(GetUserDataError(error: error));

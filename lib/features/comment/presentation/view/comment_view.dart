@@ -14,12 +14,12 @@ class CommentView extends StatelessWidget {
 
   final String? postId;
   final String? postUid;
-  CommentView({
-    Key? key,
+  const CommentView({
+    super.key,
     required this.postId,
     this.likes,
     required this.postUid,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
@@ -39,11 +39,11 @@ class CommentView extends StatelessWidget {
                     cubit.comments.isNotEmpty
                         ? Expanded(
                             child: CommentListView(comments: cubit.comments))
-                        : Expanded(child: NoComments()),
+                        : const Expanded(child: NoComments()),
                     BuildCommentInputSection(
                       postId: postId,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     )
                   ],

@@ -14,5 +14,5 @@ void main() async {
   cameras = await availableCameras();
   await CacheHelper.initSharedPref();
 
-  runApp(SilentVoice());
+  runApp(const SilentVoice());
 }

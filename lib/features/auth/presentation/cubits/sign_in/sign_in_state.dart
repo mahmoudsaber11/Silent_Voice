@@ -26,7 +26,7 @@ class SignInLoading extends SingInState {
 class SignInSuccess extends SingInState {
   final String uId;
 
-  SignInSuccess({required this.uId});
+  const SignInSuccess({required this.uId});
   @override
   List<Object?> get props => [uId];
 }
@@ -34,7 +34,7 @@ class SignInSuccess extends SingInState {
 class SignInError extends SingInState {
   final String error;
 
-  SignInError(this.error);
+  const SignInError(this.error);
   @override
   List<Object?> get props => [error];
 }

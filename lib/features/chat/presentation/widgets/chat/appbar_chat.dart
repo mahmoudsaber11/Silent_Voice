@@ -19,7 +19,7 @@ class AppBarChat extends StatelessWidget {
               color: Colors.black,
             ),
           ),
-          Icon(Icons.edit_calendar_outlined)
+          const Icon(Icons.edit_calendar_outlined)
         ],
       ),
     );

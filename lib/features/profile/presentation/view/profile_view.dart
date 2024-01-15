@@ -8,7 +8,7 @@ import 'package:social_app/features/profile/presentation/widgets/profile/custom_
 import 'package:social_app/features/profile/presentation/widgets/profile/user_profile.dart';
 
 class ProfileView extends StatelessWidget {
-  const ProfileView({Key? key}) : super(key: key);
+  const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class ProfileView extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.arrow_back_ios,
                     color: AppColors.primaryColor,
                   ),
@@ -37,14 +37,14 @@ class ProfileView extends StatelessWidget {
                   onPressed: () {
                     context.navigateTo(routeName: Routes.editProfileViewRoute);
                   },
-                  icon: Icon(Icons.settings_outlined))
+                  icon: const Icon(Icons.settings_outlined))
             ],
           ),
         ),
-        UserProfile(),
+        const UserProfile(),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 30.0.h),
-          child: Row(
+          child: const Row(
             children: [
               CustomCountInfo(
                 text: "Following",

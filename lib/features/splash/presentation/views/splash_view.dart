@@ -62,7 +62,7 @@ class _SplashViewState extends State<SplashView> {
     bool? onBoarding = CacheHelper.getBoolData(key: 'onBoarding');
     if (onBoarding != null) {
       if (Helper.uId != null) {
-        context.navigateAndRemoveUntil(newRoute: Routes.LayoutViewRoute);
+        context.navigateAndRemoveUntil(newRoute: Routes.layoutViewRoute);
       } else {
         context.navigateAndReplacement(newRoute: Routes.signInRoute);
       }

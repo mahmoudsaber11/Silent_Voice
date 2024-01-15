@@ -35,27 +35,20 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
                 create: (context) => SignUpCubit(signUpRepo: SignUpRepoImpl()),
-                child: SignUpView()));
+                child: const SignUpView()));
 
-      case Routes.LayoutViewRoute:
-        return MaterialPageRoute(builder: (context) => MediaXLayout());
+      case Routes.layoutViewRoute:
+        return MaterialPageRoute(builder: (context) => const MediaXLayout());
 
       case Routes.postViewRoute:
-        return MaterialPageRoute(builder: (context) => NewPostView());
-
-      // case Routes.commentsViewRoute:
-      //   final args = routeSettings.arguments as CommentsViewParams;
-      //   return MaterialPageRoute(
-      //       builder: (context) => CommentView(
-      //         likes: ,
-      //           ));
+        return MaterialPageRoute(builder: (context) => const NewPostView());
 
       case Routes.editProfileViewRoute:
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
                 create: (context) =>
                     EditProfileCubit(editProfileRepo: EditProfileRepoImpl()),
-                child: EditProfileView()));
+                child: const EditProfileView()));
 
       default:
         return _unFoundRoute();

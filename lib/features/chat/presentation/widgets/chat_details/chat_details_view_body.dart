@@ -61,14 +61,12 @@ class ChatDetailsViewBody extends StatelessWidget {
                           )
                         : Column(
                             children: [
-                              Expanded(
-                                  child: Container(
-                                child: Center(
-                                  child: Text(
-                                    "No Message...",
-                                    style: TextStyle(
-                                        color: AppColors.primaryColor),
-                                  ),
+                              const Expanded(
+                                  child: Center(
+                                child: Text(
+                                  "No Message...",
+                                  style:
+                                      TextStyle(color: AppColors.primaryColor),
                                 ),
                               )),
                               CustomMessangerField(

@@ -43,7 +43,7 @@ class UserProfile extends StatelessWidget {
               SizedBox(
                 height: 10.h,
               ),
-              CustomEditButton(),
+              const CustomEditButton(),
             ],
           )
         ],

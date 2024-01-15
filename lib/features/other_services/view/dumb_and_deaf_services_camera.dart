@@ -6,7 +6,7 @@ class DumbDeafServicesCamera extends StatefulWidget {
   const DumbDeafServicesCamera({super.key});
 
   @override
-  _HomeState createState() => _HomeState();
+  State<DumbDeafServicesCamera> createState() => _HomeState();
 }
 
 class _HomeState extends State<DumbDeafServicesCamera> {

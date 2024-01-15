@@ -23,7 +23,7 @@ class _ChatViewState extends State<ChatView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AppBarChat(),
+        const AppBarChat(),
         SizedBox(
           height: 20.h,
         ),
@@ -35,8 +35,8 @@ class _ChatViewState extends State<ChatView> {
               keyboardType: TextInputType.text,
               controller: searchController,
               hintText: "Search 'Your Friend'",
-              prefix: Icon(Icons.search),
-              suffix: Icon(Icons.mic_outlined),
+              prefix: const Icon(Icons.search),
+              suffix: const Icon(Icons.mic_outlined),
             ),
           ),
         ),
@@ -59,7 +59,7 @@ class _ChatViewState extends State<ChatView> {
           } else if (state is GetAllUserError) {
             return showToast(text: state.error, state: ToastStates.error);
           } else {
-            return CustomCircularProgressIndicator();
+            return const CustomCircularProgressIndicator();
           }
         }),
       ],
