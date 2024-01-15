@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/config/routes/routes.dart';
+import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/features/auth/data/repositories/sign_up/sign_up_repo_impl.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_up/sign_up_cubit.dart';
 import 'package:social_app/features/auth/presentation/views/sign_in_view.dart';
 import 'package:social_app/features/auth/presentation/views/sign_up_view.dart';
+import 'package:social_app/features/chat/presentation/views/chat_details_view.dart';
+import 'package:social_app/features/chat/presentation/widgets/chat_details/call_video.dart';
+import 'package:social_app/features/chat/presentation/widgets/chat_details/nlp.dart';
+import 'package:social_app/features/comment/presentation/view/comment_view.dart';
 import 'package:social_app/features/create_post/presentation/view/new_post_view.dart';
 import 'package:social_app/features/layout/presentation/views/layout_view.dart';
 import 'package:social_app/features/on_boarding/data/repositories/on_boarding_repo_impl.dart';
@@ -40,6 +45,13 @@ class AppRouter {
       case Routes.layoutViewRoute:
         return MaterialPageRoute(builder: (context) => const MediaXLayout());
 
+      case Routes.commentsViewRoute:
+        final args = routeSettings.arguments as String;
+        return MaterialPageRoute(
+            builder: (context) => CommentView(
+                  postId: args,
+                ));
+
       case Routes.postViewRoute:
         return MaterialPageRoute(builder: (context) => const NewPostView());
 
@@ -49,6 +61,18 @@ class AppRouter {
                 create: (context) =>
                     EditProfileCubit(editProfileRepo: EditProfileRepoImpl()),
                 child: const EditProfileView()));
+
+      case Routes.speechScreenRoute:
+        return MaterialPageRoute(builder: (context) => const SpeechScreen());
+
+      case Routes.callPageRoute:
+        return MaterialPageRoute(
+            builder: (context) => const CallPage(callID: '1'));
+
+      case Routes.chatDetailsViewRoute:
+        final args = routeSettings.arguments as UserModel;
+        return MaterialPageRoute(
+            builder: (context) => ChatDetailsView(userModel: args));
 
       default:
         return _unFoundRoute();

@@ -2,14 +2,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/core/utils/app_color.dart';
+import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/core/widgets/custom_divider.dart';
 import 'package:social_app/features/comment/presentation/view/comment_view.dart';
 import 'package:social_app/features/home/data/models/post_model.dart';
 import 'package:social_app/features/home/presentation/cubit/post_cubit.dart';
 import 'package:social_app/features/home/presentation/widgets/custom_icon_likes.dart';
-import 'package:social_app/shared/components/components.dart';
 
 class CommentAndLikeSection extends StatelessWidget {
   const CommentAndLikeSection({
@@ -74,13 +75,9 @@ class CommentAndLikeSection extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                navigateTo(
-                    context,
-                    CommentView(
-                      likes: postModel!.likes,
-                      postId: postModel!.postId,
-                      postUid: postModel!.uId,
-                    ));
+                context.navigateTo(
+                    routeName: Routes.commentsViewRoute,
+                    arguments: postModel!.postId);
               },
               child: Text(
                 'Write a comment ....',

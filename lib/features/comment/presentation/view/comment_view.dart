@@ -10,15 +10,10 @@ import 'package:social_app/core/widgets/custom_card_app.dart';
 import 'package:social_app/features/comment/presentation/widgets/no_comments.dart';
 
 class CommentView extends StatelessWidget {
-  final int? likes;
-
   final String? postId;
-  final String? postUid;
   const CommentView({
     super.key,
     required this.postId,
-    this.likes,
-    required this.postUid,
   });
   @override
   Widget build(BuildContext context) {

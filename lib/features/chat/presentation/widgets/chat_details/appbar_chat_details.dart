@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/config/routes/routes.dart';
+import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/core/utils/app_text_style.dart';
 import 'package:social_app/core/widgets/custom_app_bar.dart';
 import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/features/chat/presentation/widgets/chat_details/custom_button_call.dart';
-import 'package:social_app/features/chat/presentation/widgets/chat_details/call_video.dart';
-import 'package:social_app/features/chat/presentation/widgets/chat_details/nlp.dart';
-import 'package:social_app/shared/components/components.dart';
 
 class AppBarChatDetails extends StatelessWidget {
   const AppBarChatDetails({
@@ -59,14 +58,15 @@ class AppBarChatDetails extends StatelessWidget {
               ),
               CustomButtonCall(
                 icon: Icons.call_outlined,
-                onPressed: () => navigateTo(context, const SpeechScreen()),
+                onPressed: () =>
+                    context.navigateTo(routeName: Routes.speechScreenRoute),
               ),
               SizedBox(
                 width: 7.w,
               ),
               CustomButtonCall(
                 onPressed: () =>
-                    navigateTo(context, const CallPage(callID: '1')),
+                    context.navigateTo(routeName: Routes.callPageRoute),
                 icon: Icons.videocam_outlined,
               ),
             ],

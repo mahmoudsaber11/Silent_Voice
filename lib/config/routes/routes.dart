@@ -7,4 +7,7 @@ class Routes {
   static const String postViewRoute = "/postView";
   static const String commentsViewRoute = "/commentsView";
   static const String editProfileViewRoute = "/editProfileView";
+  static const String speechScreenRoute = "/speechScreen";
+  static const String callPageRoute = "/callPage";
+  static const String chatDetailsViewRoute = "/chatDetailsView";
 }

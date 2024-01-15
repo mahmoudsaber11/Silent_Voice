@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/core/helpers/cache_helper.dart';
 import 'package:social_app/core/helpers/helper.dart';
+import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/features/auth/data/models/user_model.dart';
-import 'package:social_app/features/auth/presentation/views/sign_in_view.dart';
 import 'package:social_app/features/layout/data/repositories/layout_repo.dart';
 import 'package:social_app/features/layout/presentation/cubit/layout_state.dart';
-import 'package:social_app/shared/components/components.dart';
 
 class LayoutCubit extends Cubit<LayoutState> {
   LayoutCubit({required this.layoutRepo}) : super(const LayoutInitial());
@@ -54,12 +54,13 @@ class LayoutCubit extends Cubit<LayoutState> {
     });
   }
 
-  dynamic signOut(context) async {
+  dynamic signOut(BuildContext context) async {
     await CacheHelper.removeData(
       key: 'uId',
     ).then((value) {
       if (value) {
-        navigateAndFinish(context, const SignInView());
+        context.navigateTo(routeName: Routes.signInRoute);
+        //  navigateAndFinish(context, const SignInView());
         LayoutCubit.get(context).currentIndex = 0;
       }
     });
