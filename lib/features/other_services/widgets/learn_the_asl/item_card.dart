@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:social_app/features/other_services/model/photo.dart';
+import 'package:social_app/core/utils/app_text_style.dart';
+import 'package:social_app/features/other_services/data/model/photo.dart';
 
 class ItemCard extends StatelessWidget {
   const ItemCard({super.key, required this.photo});
@@ -16,7 +17,7 @@ class ItemCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 5),
           child: Text(
             photo.title,
-            //style: const TextStyle(color: kTextLightColor),
+            style: AppTextStyles.textStyle25,
           ),
         ),
       ],

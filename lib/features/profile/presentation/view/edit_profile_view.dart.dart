@@ -11,7 +11,6 @@ import 'package:social_app/core/utils/app_text_style.dart';
 import 'package:social_app/core/widgets/custom_general_button.dart';
 import 'package:social_app/core/widgets/custom_text_field.dart';
 
-import 'package:social_app/cubit/states.dart';
 import 'package:social_app/features/profile/data/entities/update_user_params.dart';
 import 'package:social_app/features/profile/presentation/cubit/edit_profile_cubit.dart';
 import 'package:social_app/features/profile/presentation/cubit/edit_profile_state.dart';
@@ -53,36 +52,20 @@ class _EditProfileViewState extends State<EditProfileView> {
         _bioController.text = Helper.userModel!.bio!;
         _phoneController.text = Helper.userModel!.phone!;
         return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            centerTitle: true,
-            title: Text(
-              "Edit Profile",
-              style: AppTextStyles.textStyle25.copyWith(color: Colors.black),
-            ),
-            leading: InkWell(
-              onTap: () {
-                context.getBack();
-              },
-              child: Icon(
-                Icons.arrow_back_ios,
-                color: Colors.black,
-              ),
-            ),
-          ),
+          appBar: appBarEditProile(context),
           body: SingleChildScrollView(
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
-                    if (state is SocialUserUpdateLoadingState)
+                    if (state is UpdateUserLoading)
                       const LinearProgressIndicator(
                         color: AppColors.primaryColor,
                       ),
-                    if (state is SocialUserUpdateLoadingState)
+                    if (state is UpdateUserLoading)
                       SizedBox(
-                        height: 15.h,
+                        height: 30.h,
                       ),
                     CircleAvatar(
                       radius: 64,
@@ -119,6 +102,9 @@ class _EditProfileViewState extends State<EditProfileView> {
                       },
                       prefix: Icon(Icons.person),
                     ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
                     TextFieldLabel(
                       text: "Bio",
                     ),
@@ -132,6 +118,9 @@ class _EditProfileViewState extends State<EditProfileView> {
                         }
                         return null;
                       },
+                    ),
+                    SizedBox(
+                      height: 15.h,
                     ),
                     TextFieldLabel(
                       text: "Phone",
@@ -307,6 +296,26 @@ class _EditProfileViewState extends State<EditProfileView> {
         //   ),
         // ));
       },
+    );
+  }
+
+  AppBar appBarEditProile(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.white,
+      centerTitle: true,
+      title: Text(
+        "Edit Profile",
+        style: AppTextStyles.textStyle25.copyWith(color: Colors.black),
+      ),
+      leading: InkWell(
+        onTap: () {
+          context.getBack();
+        },
+        child: Icon(
+          Icons.arrow_back_ios,
+          color: Colors.black,
+        ),
+      ),
     );
   }
 }

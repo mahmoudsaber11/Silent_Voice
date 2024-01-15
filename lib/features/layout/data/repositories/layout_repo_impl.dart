@@ -6,7 +6,7 @@ import 'package:social_app/features/Home/presentation/views/home_view.dart';
 import 'package:social_app/features/chat/presentation/views/chat_view.dart';
 import 'package:social_app/features/layout/data/repositories/layout_repo.dart';
 import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
-import 'package:social_app/features/other_services/other_services_screens.dart';
+import 'package:social_app/features/other_services/view/other_services_view.dart';
 import 'package:social_app/features/profile/presentation/view/profile_view.dart';
 
 class LayoutRepoImpl implements LayoutRepo {
@@ -20,7 +20,7 @@ class LayoutRepoImpl implements LayoutRepo {
     return [
       const HomeView(),
       ChatView(),
-      const OtherServices(),
+      const OtherServicesView(),
       const ProfileView(),
     ];
   }

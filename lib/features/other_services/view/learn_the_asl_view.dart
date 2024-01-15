@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:social_app/features/other_services/learn_the_asl/widgets/item_card.dart';
-import 'package:social_app/features/other_services/model/photo.dart';
+import 'package:social_app/core/utils/app_color.dart';
+import 'package:social_app/core/utils/app_navigator.dart';
+import 'package:social_app/core/utils/app_text_style.dart';
+import 'package:social_app/features/other_services/widgets/learn_the_asl/item_card.dart';
+import 'package:social_app/features/other_services/data/model/photo.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class LearnTheASL extends StatefulWidget {
@@ -27,19 +30,28 @@ class _LearnTheASLState extends State<LearnTheASL> {
         player: YoutubePlayer(
           controller: controller!,
           showVideoProgressIndicator: true,
-          progressIndicatorColor: Colors.amber,
+          progressIndicatorColor: AppColors.primaryColor,
           progressColors: const ProgressBarColors(
-              playedColor: Colors.amber, handleColor: Colors.amberAccent),
+              playedColor: AppColors.primaryColor,
+              handleColor: AppColors.primaryColor),
         ),
         builder: (context, player) {
           return Scaffold(
             appBar: AppBar(
-              backgroundColor: Colors.deepOrange,
-              title: const Align(
-                  child: Text(
+              centerTitle: true,
+              backgroundColor: Colors.white,
+              title: Text(
                 'Learn The ASL',
-                style: TextStyle(color: Colors.white),
-              )),
+                style: AppTextStyles.textStyle25,
+              ),
+              leading: IconButton(
+                  onPressed: () {
+                    context.getBack();
+                  },
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: AppColors.primaryColor,
+                  )),
             ),
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,

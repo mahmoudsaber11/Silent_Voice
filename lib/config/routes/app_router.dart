@@ -13,7 +13,7 @@ import 'package:social_app/features/on_boarding/presentation/views/on_boarding_v
 import 'package:social_app/features/profile/data/repositories/edit_profile_repo_impl.dart';
 import 'package:social_app/features/profile/presentation/cubit/edit_profile_cubit.dart';
 import 'package:social_app/features/profile/presentation/view/edit_profile_view.dart.dart';
-import 'package:social_app/splash/presentation/views/splash_view.dart';
+import 'package:social_app/features/splash/presentation/views/splash_view.dart';
 
 class AppRouter {
   static Route<dynamic>? onGenerateRoute(RouteSettings routeSettings) {

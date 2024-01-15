@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 abstract class EditProfileState extends Equatable {
   const EditProfileState();
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 class EditProfileInitial extends EditProfileState {

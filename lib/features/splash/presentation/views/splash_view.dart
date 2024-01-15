@@ -6,7 +6,7 @@ import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/core/helpers/cache_helper.dart';
 import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/core/utils/app_navigator.dart';
-import 'package:social_app/splash/presentation/widgets/splash_view_body.dart';
+import 'package:social_app/features/splash/presentation/widgets/splash_view_body.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
