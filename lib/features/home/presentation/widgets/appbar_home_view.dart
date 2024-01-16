@@ -16,7 +16,7 @@ class AppbarHomeView extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            "Media X",
+            "Silent Voice",
             style: AppTextStyles.textStyle25,
           ),
           const Spacer(),

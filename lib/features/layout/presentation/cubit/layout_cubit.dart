@@ -60,9 +60,13 @@ class LayoutCubit extends Cubit<LayoutState> {
     ).then((value) {
       if (value) {
         context.navigateAndReplacement(newRoute: Routes.signInRoute);
-        //  navigateAndFinish(context, const SignInView());
         LayoutCubit.get(context).currentIndex = 0;
       }
     });
+  }
+
+  void changeCurrentIndexToZero() {
+    currentIndex = 0;
+    emit(ChangeBottomNavState(currentIndex));
   }
 }

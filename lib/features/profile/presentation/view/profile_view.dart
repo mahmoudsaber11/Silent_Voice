@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/core/utils/app_color.dart';
+import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/core/utils/app_text_style.dart';
 import 'package:social_app/features/profile/presentation/widgets/profile/custom_count_info.dart';
+import 'package:social_app/features/profile/presentation/widgets/profile/custom_edit_button.dart';
 import 'package:social_app/features/profile/presentation/widgets/profile/custom_sign_out_button.dart';
 import 'package:social_app/features/profile/presentation/widgets/profile/user_profile.dart';
 
@@ -32,7 +35,12 @@ class ProfileView extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              const CustomSignOutButtom(),
+              CustomEditButton(
+                onPressed: (() =>
+                    context.navigateTo(routeName: Routes.editProfileViewRoute)),
+                text: "Edit",
+              ),
+              //  const CustomSignOutButtom(),
             ],
           ),
         ),
@@ -55,6 +63,11 @@ class ProfileView extends StatelessWidget {
               ),
             ],
           ),
+        ),
+        const Spacer(),
+        const CustomSignOutButtom(),
+        SizedBox(
+          height: 20.h,
         ),
       ],
     );

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/core/utils/app_navigator.dart';
+import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
 import 'package:social_app/features/profile/data/entities/update_user_params.dart';
 import 'package:social_app/features/profile/presentation/cubit/edit_profile_cubit.dart';
 import 'package:social_app/features/profile/presentation/cubit/edit_profile_state.dart';
@@ -44,14 +45,13 @@ class ConfirmEditingButtons extends StatelessWidget {
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () {
-                        cubit.uploadProfileImage(
-                          updateUserParams: UpdateUserParams(
-                            name: nameController.text,
-                            phone: phoneController.text,
-                            bio: bioController.text,
-                          ),
-                        );
-                        context.navigateTo(routeName: Routes.layoutViewRoute);
+                        _uploadProfileImage().then((value) {
+                          BlocProvider.of<LayoutCubit>(context)
+                              .changeCurrentIndexToZero();
+                          Future.delayed(const Duration(seconds: 8), () {
+                            context.getBack();
+                          });
+                        });
                       }),
                 ),
                 if (state is UploadImageLoading) ...[
@@ -67,6 +67,16 @@ class ConfirmEditingButtons extends StatelessWidget {
             ),
           ),
       ],
+    );
+  }
+
+  Future<void> _uploadProfileImage() async {
+    return await cubit.uploadProfileImage(
+      updateUserParams: UpdateUserParams(
+        name: nameController.text,
+        phone: phoneController.text,
+        bio: bioController.text,
+      ),
     );
   }
 }

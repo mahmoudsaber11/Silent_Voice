@@ -23,31 +23,28 @@ class MediaXLayout extends StatelessWidget {
             },
             showSelectedLabels: true,
             showUnselectedLabels: false,
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_outlined,
-                  size: 30,
+                icon: Image.asset(
+                  'assets/icons/home.png',
+                  color: Colors.white,
                 ),
                 label: "Home",
               ),
               BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.message_outlined,
-                    size: 25,
+                  icon: Image.asset(
+                    "assets/icons/message.png",
+                    color: Colors.white,
                   ),
                   label: "Message"),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                   icon: Icon(
                     Icons.label_important_outline,
                     size: 30,
                   ),
                   label: "Services"),
               BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.person_outlined,
-                    size: 30,
-                  ),
+                  icon: Image.asset("assets/icons/profile.png"),
                   label: "Profile"),
             ],
           ),

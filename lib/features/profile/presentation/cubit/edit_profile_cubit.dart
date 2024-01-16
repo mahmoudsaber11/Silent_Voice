@@ -36,9 +36,9 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     });
   }
 
-  void uploadProfileImage({
+  Future<void> uploadProfileImage({
     required UpdateUserParams updateUserParams,
-  }) {
+  }) async {
     emit(const UploadImageLoading());
 
     editProfileRepo

@@ -83,131 +83,128 @@ class _SignUpFormState extends State<SignUpForm> {
           return Form(
               key: _formKey,
               autovalidateMode: autovalidateMode,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25.w),
-                child: Column(
-                  children: [
-                    CustomTextField(
+              child: Column(
+                children: [
+                  CustomTextField(
+                    validate: (String? value) =>
+                        Helper.validateUserNameField(value),
+                    prefix: Icon(
+                      Icons.person_outlined,
+                      color: Colors.grey[400],
+                    ),
+                    hintText: "Enter your name",
+                    keyboardType: TextInputType.name,
+                    controller: _nameController,
+                    autofillHints: const <String>[AutofillHints.name],
+                    focusNode: _nameFocusNode,
+                    onEditingComplete: () =>
+                        FocusScope.of(context).requestFocus(_emailFocusNode),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  CustomTextField(
                       validate: (String? value) =>
-                          Helper.validateUserNameField(value),
+                          Helper.validateEmailField(value),
                       prefix: Icon(
-                        Icons.person_outlined,
+                        Icons.email_outlined,
                         color: Colors.grey[400],
                       ),
-                      hintText: "Enter your name",
-                      keyboardType: TextInputType.name,
-                      controller: _nameController,
-                      autofillHints: const <String>[AutofillHints.name],
-                      focusNode: _nameFocusNode,
+                      hintText: "Enter your email address",
+                      keyboardType: TextInputType.emailAddress,
+                      controller: _emailController,
+                      focusNode: _emailFocusNode,
+                      autofillHints: const <String>[AutofillHints.email],
+                      onEditingComplete: () => FocusScope.of(context)
+                          .requestFocus(_passwordFocusNode)),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  CustomTextField(
+                      isPassword: cubit.isPassword,
+                      suffix: IconButton(
+                        onPressed: () => cubit.switchPassVisibility(),
+                        icon: Icon(
+                          cubit.isPassword
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: AppColors.primaryColor,
+                        ),
+                      ),
+                      validate: (String? value) =>
+                          Helper.validatePasswordField(value),
+                      prefix: Icon(
+                        Icons.lock_outline,
+                        color: Colors.grey[400],
+                      ),
+                      hintText: "Enter password",
+                      keyboardType: TextInputType.visiblePassword,
+                      controller: _passwordController,
+                      focusNode: _passwordFocusNode,
+                      autofillHints: const <String>[AutofillHints.password],
+                      onEditingComplete: () => FocusScope.of(context)
+                          .requestFocus(_confirmPassFocusNode)),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  CustomTextField(
+                      isPassword: cubit.isConfirmPassVisible,
+                      suffix: IconButton(
+                        onPressed: () => cubit.switchConfirmPassVisibility(),
+                        icon: Icon(
+                          cubit.isConfirmPassVisible
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: AppColors.primaryColor,
+                        ),
+                      ),
+                      validate: (String? value) =>
+                          Helper.validateConfirmPasswordField(
+                            value: value,
+                            password: _passwordController.text,
+                            confirmPassword: _confirmController.text,
+                          ),
+                      prefix: Icon(
+                        Icons.lock_outline,
+                        color: Colors.grey[400],
+                      ),
+                      hintText: "Enter confirm password",
+                      keyboardType: TextInputType.visiblePassword,
+                      controller: _confirmController,
+                      focusNode: _confirmPassFocusNode,
+                      autofillHints: const <String>[AutofillHints.password],
                       onEditingComplete: () =>
-                          FocusScope.of(context).requestFocus(_emailFocusNode),
+                          FocusScope.of(context).requestFocus(_phoneFocusNode)),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  CustomTextField(
+                    validate: (value) {
+                      if (value!.isEmpty) {
+                        return 'Invalid phone!';
+                      }
+                      return null;
+                    },
+                    prefix: Icon(
+                      Icons.phone,
+                      color: Colors.grey[400],
                     ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    CustomTextField(
-                        validate: (String? value) =>
-                            Helper.validateEmailField(value),
-                        prefix: Icon(
-                          Icons.email_outlined,
-                          color: Colors.grey[400],
-                        ),
-                        hintText: "Enter your email address",
-                        keyboardType: TextInputType.emailAddress,
-                        controller: _emailController,
-                        focusNode: _emailFocusNode,
-                        autofillHints: const <String>[AutofillHints.email],
-                        onEditingComplete: () => FocusScope.of(context)
-                            .requestFocus(_passwordFocusNode)),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    CustomTextField(
-                        isPassword: cubit.isPassword,
-                        suffix: IconButton(
-                          onPressed: () => cubit.switchPassVisibility(),
-                          icon: Icon(
-                            cubit.isPassword
-                                ? Icons.visibility_outlined
-                                : Icons.visibility_off_outlined,
-                            color: AppColors.primaryColor,
-                          ),
-                        ),
-                        validate: (String? value) =>
-                            Helper.validatePasswordField(value),
-                        prefix: Icon(
-                          Icons.lock_outline,
-                          color: Colors.grey[400],
-                        ),
-                        hintText: "Enter password",
-                        keyboardType: TextInputType.visiblePassword,
-                        controller: _passwordController,
-                        focusNode: _passwordFocusNode,
-                        autofillHints: const <String>[AutofillHints.password],
-                        onEditingComplete: () => FocusScope.of(context)
-                            .requestFocus(_confirmPassFocusNode)),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    CustomTextField(
-                        isPassword: cubit.isConfirmPassVisible,
-                        suffix: IconButton(
-                          onPressed: () => cubit.switchConfirmPassVisibility(),
-                          icon: Icon(
-                            cubit.isConfirmPassVisible
-                                ? Icons.visibility_outlined
-                                : Icons.visibility_off_outlined,
-                            color: AppColors.primaryColor,
-                          ),
-                        ),
-                        validate: (String? value) =>
-                            Helper.validateConfirmPasswordField(
-                              value: value,
-                              password: _passwordController.text,
-                              confirmPassword: _confirmController.text,
-                            ),
-                        prefix: Icon(
-                          Icons.lock_outline,
-                          color: Colors.grey[400],
-                        ),
-                        hintText: "Enter confirm password",
-                        keyboardType: TextInputType.visiblePassword,
-                        controller: _confirmController,
-                        focusNode: _confirmPassFocusNode,
-                        autofillHints: const <String>[AutofillHints.password],
-                        onEditingComplete: () => FocusScope.of(context)
-                            .requestFocus(_phoneFocusNode)),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    CustomTextField(
-                      validate: (value) {
-                        if (value!.isEmpty) {
-                          return 'Invalid phone!';
-                        }
-                        return null;
-                      },
-                      prefix: Icon(
-                        Icons.phone,
-                        color: Colors.grey[400],
-                      ),
-                      hintText: "Phone Number",
-                      onSubmit: (String val) => _signUp(context),
-                      keyboardType: TextInputType.phone,
-                      controller: _phoneController,
-                      autofillHints: const <String>[AutofillHints.photo],
-                      focusNode: _phoneFocusNode,
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    state is SignUpLoading
-                        ? const CustomCircularProgressIndicator()
-                        : CustomGeneralButton(
-                            text: "Create Account",
-                            onPressed: () => _signUp(context))
-                  ],
-                ),
+                    hintText: "Phone Number",
+                    onSubmit: (String val) => _signUp(context),
+                    keyboardType: TextInputType.phone,
+                    controller: _phoneController,
+                    autofillHints: const <String>[AutofillHints.photo],
+                    focusNode: _phoneFocusNode,
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  state is SignUpLoading
+                      ? const CustomCircularProgressIndicator()
+                      : CustomGeneralButton(
+                          text: "Create Account",
+                          onPressed: () => _signUp(context))
+                ],
               ));
         },
       ),

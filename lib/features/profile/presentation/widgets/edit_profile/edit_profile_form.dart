@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/core/helpers/helper.dart';
+import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/core/widgets/custom_circular_progress_indicator.dart';
 import 'package:social_app/core/widgets/custom_general_button.dart';
 import 'package:social_app/core/widgets/custom_text_field.dart';
@@ -139,8 +140,15 @@ class _EditProfileFormState extends State<EditProfileForm> {
                     ? const CustomCircularProgressIndicator()
                     : CustomGeneralButton(
                         text: 'Update',
-                        onPressed: () {
-                          _update(cubit);
+                        onPressed: () async {
+                          _update(cubit).then((value) {
+                            BlocProvider.of<LayoutCubit>(context).currentIndex =
+                                0;
+                            Future.delayed(const Duration(milliseconds: 500),
+                                () {
+                              context.getBack();
+                            });
+                          });
                         }),
               ),
             ],
@@ -150,7 +158,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
     );
   }
 
-  void _update(EditProfileCubit cubit) {
+  Future<void> _update(EditProfileCubit cubit) async {
     if (_formKey.currentState!.validate()) {
       cubit.updateUser(
         updateUserParams: UpdateUserParams(

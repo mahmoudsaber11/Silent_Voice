@@ -71,60 +71,57 @@ class _SignUpFormState extends State<SignInForm> {
           return Form(
               key: _formKey,
               autovalidateMode: autovalidateMode,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25.w),
-                child: Column(
-                  children: [
-                    CustomTextField(
-                        validate: (String? value) =>
-                            Helper.validateEmailField(value),
-                        prefix: Icon(
-                          Icons.email_outlined,
-                          color: Colors.grey[400],
-                        ),
-                        hintText: "Enter your email address",
-                        keyboardType: TextInputType.emailAddress,
-                        controller: _emailController,
-                        focusNode: _emailFocusNode,
-                        autofillHints: const <String>[AutofillHints.email],
-                        onEditingComplete: () => FocusScope.of(context)
-                            .requestFocus(_passwordFocusNode)),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    CustomTextField(
-                      isPassword: cubit.isPassword,
-                      suffix: IconButton(
-                        onPressed: () => cubit.changePasswordVisibility(),
-                        icon: Icon(
-                          cubit.isPassword
-                              ? Icons.visibility_outlined
-                              : Icons.visibility_off_outlined,
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
+              child: Column(
+                children: [
+                  CustomTextField(
                       validate: (String? value) =>
-                          Helper.validatePasswordField(value),
+                          Helper.validateEmailField(value),
                       prefix: Icon(
-                        Icons.lock_outline,
+                        Icons.email_outlined,
                         color: Colors.grey[400],
                       ),
-                      onSubmit: (String val) => _signIn(context),
-                      hintText: "Enter password",
-                      keyboardType: TextInputType.visiblePassword,
-                      controller: _passwordController,
-                      focusNode: _passwordFocusNode,
-                      autofillHints: const <String>[AutofillHints.password],
+                      hintText: "Enter your email address",
+                      keyboardType: TextInputType.emailAddress,
+                      controller: _emailController,
+                      focusNode: _emailFocusNode,
+                      autofillHints: const <String>[AutofillHints.email],
+                      onEditingComplete: () => FocusScope.of(context)
+                          .requestFocus(_passwordFocusNode)),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  CustomTextField(
+                    isPassword: cubit.isPassword,
+                    suffix: IconButton(
+                      onPressed: () => cubit.changePasswordVisibility(),
+                      icon: Icon(
+                        cubit.isPassword
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                        color: AppColors.primaryColor,
+                      ),
                     ),
-                    SizedBox(
-                      height: 20.h,
+                    validate: (String? value) =>
+                        Helper.validatePasswordField(value),
+                    prefix: Icon(
+                      Icons.lock_outline,
+                      color: Colors.grey[400],
                     ),
-                    state is SignInLoading
-                        ? const CustomCircularProgressIndicator()
-                        : CustomGeneralButton(
-                            text: "SIGN IN", onPressed: () => _signIn(context))
-                  ],
-                ),
+                    onSubmit: (String val) => _signIn(context),
+                    hintText: "Enter password",
+                    keyboardType: TextInputType.visiblePassword,
+                    controller: _passwordController,
+                    focusNode: _passwordFocusNode,
+                    autofillHints: const <String>[AutofillHints.password],
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  state is SignInLoading
+                      ? const CustomCircularProgressIndicator()
+                      : CustomGeneralButton(
+                          text: "SIGN IN", onPressed: () => _signIn(context))
+                ],
               ));
         },
       ),

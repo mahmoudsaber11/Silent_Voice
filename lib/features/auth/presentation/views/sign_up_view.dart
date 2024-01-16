@@ -27,48 +27,52 @@ class SignUpView extends StatelessWidget {
               height: 35.h,
             ),
             CustomCardApp(
-                widget: Column(
-              children: [
-                SizedBox(
-                  height: 20.h,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Welcome",
-                      style: AppTextStyles.textStyle30
-                          .copyWith(color: Colors.black),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                      "Create Account to keep exploring amazing\ndestinations around the world!",
-                      style: AppTextStyles.textStyle15,
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20.h),
-                const SignUpForm(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Already have an account?",
-                      style: AppTextStyles.textStyle15
-                          .copyWith(color: Colors.black),
-                    ),
-                    TextButton(
-                        onPressed: () => context.getBack(),
-                        child: Text(
-                          "Sign in",
-                          style: AppTextStyles.textStyle15
-                              .copyWith(color: AppColors.primaryColor),
-                        ))
-                  ],
-                ),
-              ],
+                widget: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Welcome",
+                        style: AppTextStyles.textStyle30
+                            .copyWith(color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Text(
+                        "Create Account to keep exploring amazing\ndestinations around the world!",
+                        style: AppTextStyles.textStyle15,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.h),
+                  const SignUpForm(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Already have an account?",
+                        style: AppTextStyles.textStyle15
+                            .copyWith(color: Colors.black),
+                      ),
+                      TextButton(
+                          onPressed: () => context.getBack(),
+                          child: Text(
+                            "Sign in",
+                            style: AppTextStyles.textStyle15
+                                .copyWith(color: AppColors.primaryColor),
+                          ))
+                    ],
+                  ),
+                ],
+              ),
             )),
           ],
         ),

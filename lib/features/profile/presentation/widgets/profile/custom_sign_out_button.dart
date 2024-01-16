@@ -11,27 +11,33 @@ class CustomSignOutButtom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-        style: const ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(AppColors.primaryColor)),
-        onPressed: () {
-          BlocProvider.of<LayoutCubit>(context).signOut(context);
-        },
-        child: Row(
-          children: [
-            const Text(
-              'SignOut',
-              style: TextStyle(color: Colors.white),
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Icon(
-              Icons.logout,
-              size: 20.sp,
-              color: Colors.white,
-            ),
-          ],
-        ));
+    return SizedBox(
+      height: 55.h,
+      width: MediaQuery.of(context).size.width * .9,
+      child: ElevatedButton(
+          style: const ButtonStyle(
+              backgroundColor:
+                  MaterialStatePropertyAll(AppColors.primaryColor)),
+          onPressed: () {
+            BlocProvider.of<LayoutCubit>(context).signOut(context);
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.logout,
+                size: 25.sp,
+                color: Colors.white,
+              ),
+              SizedBox(
+                width: 15.w,
+              ),
+              const Text(
+                'Log out',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ],
+          )),
+    );
   }
 }

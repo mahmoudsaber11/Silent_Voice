@@ -28,49 +28,53 @@ class SignInView extends StatelessWidget {
               height: 35.h,
             ),
             CustomCardApp(
-                widget: Column(
-              children: [
-                SizedBox(
-                  height: 50.h,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Welcome",
-                      style: AppTextStyles.textStyle30
-                          .copyWith(color: Colors.black),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                      "login now to communicate with friends",
-                      style: AppTextStyles.textStyle15,
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20.h),
-                const SignInForm(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Don\'t have an account?',
-                      style: AppTextStyles.textStyle15
-                          .copyWith(color: Colors.black),
-                    ),
-                    TextButton(
-                        onPressed: () =>
-                            context.navigateTo(routeName: Routes.signUpRoute),
-                        child: Text(
-                          "Sign up",
-                          style: AppTextStyles.textStyle15
-                              .copyWith(color: AppColors.primaryColor),
-                        ))
-                  ],
-                ),
-              ],
+                widget: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 50.h,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Welcome",
+                        style: AppTextStyles.textStyle30
+                            .copyWith(color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Text(
+                        "login now to communicate with friends",
+                        style: AppTextStyles.textStyle15,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.h),
+                  const SignInForm(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Don\'t have an account?',
+                        style: AppTextStyles.textStyle15
+                            .copyWith(color: Colors.black),
+                      ),
+                      TextButton(
+                          onPressed: () =>
+                              context.navigateTo(routeName: Routes.signUpRoute),
+                          child: Text(
+                            "Sign up",
+                            style: AppTextStyles.textStyle15
+                                .copyWith(color: AppColors.primaryColor),
+                          ))
+                    ],
+                  ),
+                ],
+              ),
             )),
           ],
         ),

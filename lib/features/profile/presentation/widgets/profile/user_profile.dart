@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/core/utils/app_color.dart';
-import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/core/utils/app_text_style.dart';
-import 'package:social_app/features/profile/presentation/widgets/profile/custom_edit_button.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({
@@ -42,13 +39,20 @@ class UserProfile extends StatelessWidget {
                 '${Helper.userModel!.bio}',
                 style: AppTextStyles.textStyle15,
               ),
-              SizedBox(
-                height: 10.h,
+              const SizedBox(
+                height: 5,
               ),
-              CustomEditButton(
-                onPressed: (() =>
-                    context.navigateTo(routeName: Routes.editProfileViewRoute)),
-                text: "Edit",
+              Row(
+                children: [
+                  const Icon(
+                    Icons.phone,
+                    color: Colors.grey,
+                  ),
+                  Text(
+                    '${Helper.userModel!.phone}',
+                    style: AppTextStyles.textStyle15,
+                  ),
+                ],
               ),
             ],
           )

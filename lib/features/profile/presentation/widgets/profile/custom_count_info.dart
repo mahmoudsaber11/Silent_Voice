@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_app/core/utils/app_text_style.dart';
 
 class CustomCountInfo extends StatelessWidget {
   const CustomCountInfo({
@@ -15,11 +16,10 @@ class CustomCountInfo extends StatelessWidget {
         children: [
           Text(
             count,
-            style: Theme.of(context).textTheme.titleSmall,
+            style: AppTextStyles.textStyle20.copyWith(color: Colors.black),
           ),
           Text(
             text,
-            style: Theme.of(context).textTheme.bodySmall,
           ),
         ],
       ),
