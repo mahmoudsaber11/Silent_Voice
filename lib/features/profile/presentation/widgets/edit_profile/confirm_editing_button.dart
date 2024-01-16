@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/core/utils/app_color.dart';
+import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/features/profile/data/entities/update_user_params.dart';
 import 'package:social_app/features/profile/presentation/cubit/edit_profile_cubit.dart';
 import 'package:social_app/features/profile/presentation/cubit/edit_profile_state.dart';
@@ -30,15 +32,27 @@ class ConfirmEditingButtons extends StatelessWidget {
           Expanded(
             child: Column(
               children: <Widget>[
-                ElevatedButton(
-                  child: const Text("Update Profile Image"),
-                  onPressed: () => cubit.uploadProfileImage(
-                    updateUserParams: UpdateUserParams(
-                      name: nameController.text,
-                      phone: phoneController.text,
-                      bio: bioController.text,
-                    ),
-                  ),
+                SizedBox(
+                  width: screenWidth * 0.5.w,
+                  height: 40.h,
+                  child: ElevatedButton(
+                      style: const ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(AppColors.primaryColor)),
+                      child: const Text(
+                        "Update Profile Image",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {
+                        cubit.uploadProfileImage(
+                          updateUserParams: UpdateUserParams(
+                            name: nameController.text,
+                            phone: phoneController.text,
+                            bio: bioController.text,
+                          ),
+                        );
+                        context.navigateTo(routeName: Routes.layoutViewRoute);
+                      }),
                 ),
                 if (state is UploadImageLoading) ...[
                   SizedBox(height: 8.h),

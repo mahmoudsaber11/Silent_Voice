@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/core/utils/app_color.dart';
-import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/core/utils/app_text_style.dart';
 import 'package:social_app/features/profile/presentation/widgets/profile/custom_count_info.dart';
+import 'package:social_app/features/profile/presentation/widgets/profile/custom_sign_out_button.dart';
 import 'package:social_app/features/profile/presentation/widgets/profile/user_profile.dart';
 
 class ProfileView extends StatelessWidget {
@@ -18,7 +17,6 @@ class ProfileView extends StatelessWidget {
           padding:
               EdgeInsets.only(left: 15.w, right: 15.w, top: 40.h, bottom: 30.h),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
@@ -33,11 +31,8 @@ class ProfileView extends StatelessWidget {
                   )
                 ],
               ),
-              IconButton(
-                  onPressed: () {
-                    context.navigateTo(routeName: Routes.editProfileViewRoute);
-                  },
-                  icon: const Icon(Icons.settings_outlined))
+              const Spacer(),
+              const CustomSignOutButtom(),
             ],
           ),
         ),
@@ -61,40 +56,6 @@ class ProfileView extends StatelessWidget {
             ],
           ),
         ),
-        // Padding(
-        //   padding: const EdgeInsets.all(10.0),
-        //   child: Column(
-        //     children: [
-        //       Container(
-        //         width: double.infinity,
-        //         padding: const EdgeInsets.all(10),
-        //         height: 60,
-        //         child: InkWell(
-        //           onTap: () {
-        //             SocialCubit.get(context).signOut(context);
-        //           },
-        //           child: const Row(
-        //             mainAxisAlignment: MainAxisAlignment.start,
-        //             children: [
-        //               Icon(
-        //                 Icons.power_settings_new,
-        //                 size: 20,
-        //                 color: Colors.deepOrange,
-        //               ),
-        //               SizedBox(
-        //                 width: 10,
-        //               ),
-        //               Text(
-        //                 'SignOut',
-        //                 style: TextStyle(fontSize: 15),
-        //               )
-        //             ],
-        //           ),
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
       ],
     );
   }

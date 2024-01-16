@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/core/utils/app_color.dart';
-import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/core/utils/app_text_style.dart';
 
 class CustomEditButton extends StatelessWidget {
   const CustomEditButton({
     super.key,
+    required this.text,
+    this.onPressed,
   });
-
+  final String text;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
@@ -21,11 +22,9 @@ class CustomEditButton extends StatelessWidget {
                 ),
             backgroundColor:
                 const MaterialStatePropertyAll(AppColors.primaryColor)),
-        onPressed: () {
-          context.navigateTo(routeName: Routes.editProfileViewRoute);
-        },
+        onPressed: onPressed,
         child: Text(
-          "Edit",
+          text,
           style: AppTextStyles.textStyle16,
         ));
   }

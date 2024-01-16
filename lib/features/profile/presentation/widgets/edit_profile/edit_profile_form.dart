@@ -79,6 +79,9 @@ class _EditProfileFormState extends State<EditProfileForm> {
                 bioController: _bioController,
                 state: state,
               ),
+              SizedBox(
+                height: 15.h,
+              ),
               const TextFieldLabel(
                 text: "UserName",
               ),
