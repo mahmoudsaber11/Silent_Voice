@@ -34,30 +34,23 @@ dependencies:
   flutter_bloc: ^8.1.2
   bloc_provider: ^1.0.0
   dio: ^4.0.6
-  conditional_builder_null_safety: ^0.0.6
-  hexcolor: ^3.0.1 
-  webview_flutter: ^3.0.4
   fluttertoast: ^8.2.1
   shared_preferences: ^2.0.18
-  carousel_slider: ^4.2.1
   image_picker: ^0.8.7
-  tflite_flutter: ^0.10.4
   camera: ^0.10.5
-  zego_uikit_prebuilt_call: ^3.18.4
+  # zego_uikit_prebuilt_call: ^3.18.4
   youtube_player_flutter: ^8.1.2
-  teachable: ^0.0.2
-  permission_handler: ^11.1.0
   tflite: ^1.1.2
-  speech_to_text: ^6.5.1
-  highlight_text: ^1.6.0
-  avatar_glow: ^2.0.2
+  # speech_to_text: ^6.5.1
+  # highlight_text: ^1.6.0
+  # avatar_glow: ^2.0.2
   flutter_launcher_icons: ^0.13.1
   equatable: ^2.0.5
   dartz: ^0.10.1
   flutter_screenutil: ^5.9.0
   flutter_spinkit: ^5.2.0
-  circular_bottom_navigation: ^2.3.0
   intl: ^0.19.0
+  flutter_native_splash: ^2.3.9
   #firebase
   firebase_core: ^2.24.2
   firebase_auth: ^4.15.3

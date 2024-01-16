@@ -7,7 +7,6 @@ import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/core/widgets/custom_divider.dart';
-import 'package:social_app/features/comment/presentation/view/comment_view.dart';
 import 'package:social_app/features/home/data/models/post_model.dart';
 import 'package:social_app/features/home/presentation/cubit/post_cubit.dart';
 import 'package:social_app/features/home/presentation/widgets/custom_icon_likes.dart';

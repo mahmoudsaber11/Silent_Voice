@@ -14,13 +14,15 @@ class OtherServicesView extends StatelessWidget {
         body: Column(
           children: [
             CustomCard(
-              title: 'Dumb and Deaf Services Camera ==>',
-              image: 'assets/images/cv2.webp',
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: ((context) => const DumbDeafServicesCamera()))),
-            ),
+                title: 'Dumb and Deaf Services Camera ==>',
+                image: 'assets/images/cv2.webp',
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: ((context) =>
+                              const DumbDeafServicesCamera())));
+                }),
             CustomCard(
               image: 'assets/images/cv3.png',
               title: 'Learn The ASL ==>',

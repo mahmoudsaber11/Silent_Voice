@@ -7,8 +7,6 @@ import 'package:social_app/features/auth/presentation/cubits/sign_up/sign_up_cub
 import 'package:social_app/features/auth/presentation/views/sign_in_view.dart';
 import 'package:social_app/features/auth/presentation/views/sign_up_view.dart';
 import 'package:social_app/features/chat/presentation/views/chat_details_view.dart';
-import 'package:social_app/features/chat/presentation/widgets/chat_details/call_video.dart';
-import 'package:social_app/features/chat/presentation/widgets/chat_details/nlp.dart';
 import 'package:social_app/features/comment/presentation/view/comment_view.dart';
 import 'package:social_app/features/create_post/presentation/view/new_post_view.dart';
 import 'package:social_app/features/layout/presentation/views/layout_view.dart';
@@ -62,12 +60,12 @@ class AppRouter {
                     EditProfileCubit(editProfileRepo: EditProfileRepoImpl()),
                 child: const EditProfileView()));
 
-      case Routes.speechScreenRoute:
-        return MaterialPageRoute(builder: (context) => const SpeechScreen());
+      // case Routes.speechScreenRoute:
+      //   return MaterialPageRoute(builder: (context) => const SpeechScreen());
 
-      case Routes.callPageRoute:
-        return MaterialPageRoute(
-            builder: (context) => const CallPage(callID: '1'));
+      // case Routes.callPageRoute:
+      //   return MaterialPageRoute(
+      //       builder: (context) => const CallPage(callID: '1'));
 
       case Routes.chatDetailsViewRoute:
         final args = routeSettings.arguments as UserModel;

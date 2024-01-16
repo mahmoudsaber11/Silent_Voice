@@ -56,11 +56,9 @@ class AppBarChatDetails extends StatelessWidget {
                   ],
                 ),
               ),
-              CustomButtonCall(
-                icon: Icons.call_outlined,
-                onPressed: () =>
-                    context.navigateTo(routeName: Routes.speechScreenRoute),
-              ),
+              CustomButtonCall(icon: Icons.mic_outlined, onPressed: () {}
+                  // context.navigateTo(routeName: Routes.speechScreenRoute),
+                  ),
               SizedBox(
                 width: 7.w,
               ),

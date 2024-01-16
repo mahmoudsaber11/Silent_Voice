@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:social_app/core/utils/app_color.dart';
 
 class MyTheme {
@@ -17,33 +16,33 @@ class MyTheme {
   );
   static final darkTheme = ThemeData(
       primarySwatch: Colors.deepOrange,
-      scaffoldBackgroundColor: HexColor('333739'),
-      appBarTheme: AppBarTheme(
+      scaffoldBackgroundColor: const Color(0xff333739),
+      appBarTheme: const AppBarTheme(
         titleSpacing: 20.0,
         // ignore: deprecated_member_use
         //  backwardsCompatibility: false,
         systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: HexColor('333739'),
+          statusBarColor: Color(0xff333739),
           statusBarIconBrightness: Brightness.light,
         ),
-        backgroundColor: HexColor('333739'),
+        backgroundColor: Color(0xff333739),
         elevation: 0.0,
-        titleTextStyle: const TextStyle(
+        titleTextStyle: TextStyle(
           fontFamily: 'Jannah',
           color: Colors.white,
           fontSize: 20.0,
           fontWeight: FontWeight.bold,
         ),
-        iconTheme: const IconThemeData(
+        iconTheme: IconThemeData(
           color: Colors.white,
         ),
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.deepOrange,
         unselectedItemColor: Colors.grey,
         elevation: 20.0,
-        backgroundColor: HexColor('333739'),
+        backgroundColor: Color(0xff333739),
       ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
