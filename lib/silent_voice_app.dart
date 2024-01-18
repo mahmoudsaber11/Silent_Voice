@@ -10,7 +10,6 @@ import 'package:social_app/features/home/presentation/cubit/post_cubit.dart';
 import 'package:social_app/features/layout/data/repositories/layout_repo_impl.dart';
 import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
 
-//
 class SilentVoice extends StatelessWidget {
   const SilentVoice({super.key});
 

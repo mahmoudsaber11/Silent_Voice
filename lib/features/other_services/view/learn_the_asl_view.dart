@@ -25,6 +25,12 @@ class _LearnTheASLState extends State<LearnTheASL> {
   }
 
   @override
+  void dispose() {
+    controller!.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return YoutubePlayerBuilder(
         player: YoutubePlayer(

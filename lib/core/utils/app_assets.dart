@@ -17,5 +17,5 @@ abstract class AppAssets {
   static const String iconNewPost = "assets/icons/new-post.png";
   static const String iconProfile = "assets/icons/profile.png";
   static const String iconSend = "assets/icons/send.png";
-  static const String iconServices = "assets/icons/services.png";
+  static const String iconServices = "assets/icons/sign-language.png";
 }

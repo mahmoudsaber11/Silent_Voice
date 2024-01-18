@@ -1,10 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/features/auth/data/repositories/sign_in/sign_in_repo.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_in/sign_in_state.dart';
-import 'package:social_app/core/helpers/cache_helper.dart';
-import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
 
 class SignInCubit extends Cubit<SingInState> {
   SignInCubit({required this.signInRepo}) : super(const SignInInitial());
