@@ -37,7 +37,7 @@ class _CustomMessangerFieldState extends State<CustomMessangerField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 15.h, bottom: 15, left: 15),
+      padding: EdgeInsets.only(bottom: 40.h, left: 15.w),
       child: Row(
         children: [
           InkWell(

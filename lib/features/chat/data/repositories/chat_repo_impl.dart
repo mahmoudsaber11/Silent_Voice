@@ -14,13 +14,13 @@ class ChatRepoImpl implements ChatRepo {
   Future<void> sendMessage(
       {required SendMessageParams sendMessageParams}) async {
     MessageUserModel messageModel = MessageUserModel(
-      text: sendMessageParams.text,
+      text: sendMessageParams.text ?? "",
       dateTime: Timestamp.now(),
       senderId: Helper.userModel!.uId,
       receiverId: sendMessageParams.receiverId,
       date: sendMessageParams.date,
       time: sendMessageParams.time,
-      messageImage: sendMessageParams.messageImage,
+      messageImage: sendMessageParams.messageImage ?? {},
     );
     // set my chat
     FirebaseFirestore.instance

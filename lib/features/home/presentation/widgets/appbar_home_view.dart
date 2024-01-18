@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/config/routes/routes.dart';
+import 'package:social_app/core/utils/app_assets.dart';
 import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/core/utils/app_text_style.dart';
 
@@ -25,16 +26,9 @@ class AppbarHomeView extends StatelessWidget {
               onPressed: () {
                 context.navigateTo(routeName: Routes.postViewRoute);
               },
-              icon: const Icon(
-                Icons.add,
-                size: 28,
-              )),
-          IconButton(
-              padding: EdgeInsets.zero,
-              onPressed: () {},
-              icon: const Icon(
-                Icons.notifications_none_outlined,
-                size: 28,
+              icon: Image.asset(
+                AppAssets.iconNewPost,
+                width: 35.w,
               )),
         ],
       ),

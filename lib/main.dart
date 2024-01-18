@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/bloc_observable.dart';
 import 'package:social_app/core/helpers/cache_helper.dart';
+import 'package:social_app/firebase_options.dart';
 import 'package:social_app/silent_voice_app.dart';
 
 List<CameraDescription>? cameras;
 void main() async {
   Bloc.observer = SimpleBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   cameras = await availableCameras();
   await CacheHelper.initSharedPref();
 

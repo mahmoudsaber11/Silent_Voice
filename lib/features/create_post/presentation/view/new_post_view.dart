@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/core/utils/functions/show_toast.dart';
 import 'package:social_app/core/widgets/custom_card_app.dart';
 import 'package:social_app/features/create_post/presentation/widgets/appbar_post_view.dart';
+import 'package:social_app/features/create_post/presentation/widgets/user_name_and_image.dart';
 import 'package:social_app/features/home/data/models/post_model.dart';
 import 'package:social_app/features/home/presentation/cubit/post_cubit.dart';
 import 'package:social_app/features/home/presentation/cubit/post_state.dart';
@@ -52,7 +52,9 @@ class _NewPostViewState extends State<NewPostView> {
                     children: [
                       if (state is CreatePostLoading ||
                           state is UploadPostLoading)
-                        const LinearProgressIndicator(),
+                        const LinearProgressIndicator(
+                          color: AppColors.primaryColor,
+                        ),
                       if (state is CreatePostLoading ||
                           state is UploadPostLoading)
                         const SizedBox(
@@ -192,27 +194,5 @@ class _NewPostViewState extends State<NewPostView> {
     if (state is UploadPostError) {
       showToast(text: state.error, state: ToastStates.error);
     }
-  }
-}
-
-class UserNameAndImage extends StatelessWidget {
-  const UserNameAndImage({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        CircleAvatar(
-          radius: 25.0,
-          backgroundImage: NetworkImage('${Helper.userModel!.image}'),
-        ),
-        const SizedBox(
-          width: 15.0,
-        ),
-        Text('${Helper.userModel!.name}'),
-      ],
-    );
   }
 }

@@ -35,13 +35,15 @@ class CustomPostItem extends StatelessWidget {
           SizedBox(
             height: 15.h,
           ),
-          Text(
-            '${postModel!.text}',
-            style: TextStyle(fontSize: 14.sp),
-          ),
-          SizedBox(
-            height: 10.sp,
-          ),
+          if (postModel!.text != null) ...[
+            Text(
+              '${postModel!.text}',
+              style: TextStyle(fontSize: 14.sp),
+            ),
+            SizedBox(
+              height: 10.sp,
+            ),
+          ],
           if (postModel!.postImage != '')
             Container(
               width: double.infinity,

@@ -25,9 +25,7 @@ class SilentVoice extends StatelessWidget {
         ),
         BlocProvider(
             create: (context) => CommentCubit(commentRepo: CommentRepoImpl())),
-        BlocProvider(
-            create: (context) =>
-                PostCubit(postRepo: PostRepoImpl())..getPosts())
+        BlocProvider(create: (context) => PostCubit(postRepo: PostRepoImpl()))
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),

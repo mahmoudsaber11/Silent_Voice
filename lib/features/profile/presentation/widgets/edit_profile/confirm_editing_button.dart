@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
@@ -33,29 +32,24 @@ class ConfirmEditingButtons extends StatelessWidget {
           Expanded(
             child: Column(
               children: <Widget>[
-                SizedBox(
-                  width: screenWidth * 0.5.w,
-                  height: 40.h,
-                  child: ElevatedButton(
-                      style: const ButtonStyle(
-                          backgroundColor:
-                              MaterialStatePropertyAll(AppColors.primaryColor)),
-                      child: const Text(
-                        "Update Profile Image",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      onPressed: () {
-                        _uploadProfileImage().then((value) {
-                          BlocProvider.of<LayoutCubit>(context)
-                              .changeCurrentIndexToZero();
-                          Future.delayed(const Duration(seconds: 8), () {
-                            context.getBack();
-                          });
+                ElevatedButton(
+                    style: const ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(AppColors.primaryColor)),
+                    child: const Text(
+                      "Update Profile Image",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () {
+                      _uploadProfileImage().then((value) {
+                        BlocProvider.of<LayoutCubit>(context)
+                            .changeCurrentIndexToZero();
+                        Future.delayed(const Duration(seconds: 10), () {
+                          context.getBack();
                         });
-                      }),
-                ),
+                      });
+                    }),
                 if (state is UploadImageLoading) ...[
-                  SizedBox(height: 8.h),
                   SizedBox(
                     width: screenWidth * 0.4,
                     child: const LinearProgressIndicator(

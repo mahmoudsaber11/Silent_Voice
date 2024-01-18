@@ -28,7 +28,7 @@ class LayoutCubit extends Cubit<LayoutState> {
     return layoutRepo.views();
   }
 
-  void getUserData() {
+  Future<void> getUserData() async {
     emit(const GetUserDataLoading());
     layoutRepo.getUserData().then((value) {
       Helper.userModel = UserModel.fromJson(value.data());

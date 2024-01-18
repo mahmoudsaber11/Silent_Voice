@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/core/utils/app_assets.dart';
 import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
 import 'package:social_app/features/layout/presentation/cubit/layout_state.dart';
 
@@ -26,25 +28,32 @@ class MediaXLayout extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 icon: Image.asset(
-                  'assets/icons/home.png',
+                  AppAssets.iconHome,
+                  width: 25.w,
                   color: Colors.white,
                 ),
                 label: "Home",
               ),
               BottomNavigationBarItem(
                   icon: Image.asset(
-                    "assets/icons/message.png",
+                    AppAssets.iconMessage,
                     color: Colors.white,
+                    width: 30.w,
                   ),
                   label: "Message"),
-              const BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.label_important_outline,
-                    size: 30,
+              BottomNavigationBarItem(
+                  icon: Image.asset(
+                    AppAssets.iconServices,
+                    width: 30.w,
+                    color: Colors.white,
                   ),
                   label: "Services"),
               BottomNavigationBarItem(
-                  icon: Image.asset("assets/icons/profile.png"),
+                  icon: Image.asset(
+                    AppAssets.iconProfile,
+                    color: Colors.white,
+                    width: 30.w,
+                  ),
                   label: "Profile"),
             ],
           ),

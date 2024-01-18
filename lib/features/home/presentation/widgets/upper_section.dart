@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/core/helpers/helper.dart';
 import 'package:social_app/features/home/data/models/post_model.dart';
 import 'package:social_app/features/home/presentation/cubit/post_cubit.dart';
 
@@ -54,14 +55,17 @@ class UpperSection extends StatelessWidget {
         SizedBox(
           width: 15.w,
         ),
-        IconButton(
-          onPressed: () {
-            BlocProvider.of<PostCubit>(context)
-                .deletePost(postId: postModel.postId!);
-          },
-          icon: Icon(
-            Icons.more_horiz,
-            size: 20.sp,
+        Visibility(
+          visible: Helper.uId != postModel.postId,
+          child: IconButton(
+            onPressed: () {
+              BlocProvider.of<PostCubit>(context)
+                  .deletePost(postId: postModel.postId!);
+            },
+            icon: Icon(
+              Icons.more_horiz,
+              size: 20.sp,
+            ),
           ),
         )
       ],

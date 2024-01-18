@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/core/utils/app_assets.dart';
 import 'package:social_app/core/utils/app_color.dart';
 
 class CustomSendButton extends StatelessWidget {
@@ -11,22 +12,20 @@ class CustomSendButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      elevation: 0,
-      padding: EdgeInsets.zero,
       onPressed: onPressed,
       child: Container(
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            color: AppColors.primaryColor,
-            borderRadius: BorderRadius.circular(12.r)),
-        child: const RotationTransition(
-          turns: AlwaysStoppedAnimation(310 / 350),
-          child: Icon(
-            Icons.send_outlined,
-            color: Colors.white,
-          ),
-        ),
-      ),
+          width: 50.w,
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+              color: AppColors.primaryColor,
+              borderRadius: BorderRadius.circular(12.r)),
+          child: Center(
+            child: Image.asset(
+              AppAssets.iconSend,
+              width: 28.w,
+              color: Colors.white,
+            ),
+          )),
     );
   }
 }

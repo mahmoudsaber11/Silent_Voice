@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/core/utils/app_assets.dart';
 import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
 
@@ -24,10 +25,9 @@ class CustomSignOutButtom extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                Icons.logout,
-                size: 25.sp,
-                color: Colors.white,
+              Image.asset(
+                AppAssets.iconLogout,
+                width: 30.w,
               ),
               SizedBox(
                 width: 15.w,

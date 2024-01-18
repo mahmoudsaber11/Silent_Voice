@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:equatable/equatable.dart';
 import 'package:social_app/features/home/data/models/post_model.dart';
 
@@ -126,11 +128,14 @@ class LikedByMeError extends PostState {
 }
 
 class PostImageSuccess extends PostState {
-  const PostImageSuccess();
+  final File postImage;
+
+  const PostImageSuccess({required this.postImage});
+
+  @override
+  List<Object> get props => [postImage];
 }
 
-class PostImageError extends PostState {
-  const PostImageError();
-}
+class PostImageError extends PostState {}
 
 class RemovePostImage extends PostState {}

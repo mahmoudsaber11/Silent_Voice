@@ -15,6 +15,7 @@ class SignInView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             SizedBox(

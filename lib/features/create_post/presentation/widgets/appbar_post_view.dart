@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:social_app/core/helpers/helper.dart';
@@ -26,7 +27,9 @@ class AppBarPostView extends StatelessWidget {
         children: [
           IconButton(
               onPressed: () {
-                context.getBack();
+                BlocProvider.of<PostCubit>(context).getPosts().then((value) {
+                  context.getBack();
+                });
               },
               icon: const Icon(
                 Icons.clear,
@@ -38,23 +41,7 @@ class AppBarPostView extends StatelessWidget {
           ),
           TextButton(
               onPressed: () {
-                if (cubit.postImage == null) {
-                  cubit.createNewPost(
-                    postParams: PostParams(
-                      date: Helper.getDate(),
-                      time: DateFormat.jm().format(DateTime.now()),
-                      text: postText,
-                    ),
-                  );
-                } else {
-                  cubit.uploadPost(
-                    postParams: PostParams(
-                      date: Helper.getDate(),
-                      time: DateFormat.jm().format(DateTime.now()),
-                      text: postText,
-                    ),
-                  );
-                }
+                _createPost();
               },
               child: Text(
                 'Post',
@@ -66,23 +53,23 @@ class AppBarPostView extends StatelessWidget {
     );
   }
 
-  // void _createNewPost(BuildContext context) {
-  //   if (cubit.postImage == null && postText.isNotEmpty) {
-  //     cubit.createNewPost(
-  //       postParams: PostParams(
-  //         date: Helper.getDate(),
-  //         time: DateFormat.jm().format(DateTime.now()),
-  //         text: postText,
-  //       ),
-  //     );
-  //   } else if (cubit.postImage != null) {
-  //     cubit.uploadPost(
-  //       postParams: PostParams(
-  //         date: Helper.getDate(),
-  //         time: DateFormat.jm().format(DateTime.now()),
-  //         text: postText,
-  //       ),
-  //     );
-  //   }
-  // }
+  void _createPost() {
+    if (cubit.postImage == null && postText.isNotEmpty) {
+      cubit.createNewPost(
+        postParams: PostParams(
+          date: Helper.getDate(),
+          time: DateFormat.jm().format(DateTime.now()),
+          text: postText,
+        ),
+      );
+    } else if (cubit.postImage != null) {
+      cubit.uploadPost(
+        postParams: PostParams(
+          date: Helper.getDate(),
+          time: DateFormat.jm().format(DateTime.now()),
+          text: postText,
+        ),
+      );
+    }
+  }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/core/helpers/helper.dart';
-import 'package:social_app/core/utils/app_color.dart';
+import 'package:social_app/core/utils/app_assets.dart';
 import 'package:social_app/core/widgets/custom_card_app.dart';
 import 'package:social_app/features/auth/data/models/user_model.dart';
 import 'package:social_app/features/chat/presentation/cubit/chat_cubit.dart';
@@ -33,6 +33,9 @@ class ChatDetailsViewBody extends StatelessWidget {
             builder: (context, state) {
               return Expanded(
                 child: CustomCardApp(
+                    image: const DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(AppAssets.chatBackground)),
                     widget: cubit.messages.isNotEmpty
                         ? Column(
                             children: [
@@ -54,27 +57,14 @@ class ChatDetailsViewBody extends StatelessWidget {
                                 userModel: userModel,
                                 cubit: cubit,
                               ),
-                              SizedBox(
-                                height: 10.h,
-                              ),
                             ],
                           )
                         : Column(
                             children: [
-                              const Expanded(
-                                  child: Center(
-                                child: Text(
-                                  "No Message...",
-                                  style:
-                                      TextStyle(color: AppColors.primaryColor),
-                                ),
-                              )),
+                              const Expanded(child: SizedBox()),
                               CustomMessangerField(
                                 userModel: userModel,
                                 cubit: cubit,
-                              ),
-                              SizedBox(
-                                height: 10.h,
                               ),
                             ],
                           )),

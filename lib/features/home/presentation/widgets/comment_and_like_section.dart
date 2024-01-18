@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/config/routes/routes.dart';
 import 'package:social_app/core/helpers/helper.dart';
+import 'package:social_app/core/utils/app_assets.dart';
 import 'package:social_app/core/utils/app_color.dart';
 import 'package:social_app/core/utils/app_navigator.dart';
 import 'package:social_app/core/widgets/custom_divider.dart';
@@ -29,10 +30,9 @@ class CommentAndLikeSection extends StatelessWidget {
               text: "${postModel!.likes}",
             ),
             const Spacer(),
-            Icon(
-              Icons.comment_outlined,
-              color: AppColors.primaryColor,
-              size: 20.sp,
+            Image.asset(
+              AppAssets.iconMessage,
+              width: 25.w,
             ),
             SizedBox(
               width: 4.w,
@@ -47,7 +47,7 @@ class CommentAndLikeSection extends StatelessWidget {
                       commentsSnapshot.docs;
                   return Text(
                     "${comments.length} Comments",
-                    style: TextStyle(fontSize: 12.sp),
+                    style: TextStyle(fontSize: 13.sp),
                   );
                 } else {
                   return const Text("0");

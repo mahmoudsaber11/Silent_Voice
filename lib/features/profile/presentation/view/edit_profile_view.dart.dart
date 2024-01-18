@@ -54,7 +54,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                   },
                 ),
                 SizedBox(
-                  height: 30.h,
+                  height: 15.h,
                 ),
                 const EditProfileForm(),
               ],

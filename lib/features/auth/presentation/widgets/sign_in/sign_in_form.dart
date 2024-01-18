@@ -13,6 +13,7 @@ import 'package:social_app/core/widgets/custom_text_field.dart';
 import 'package:social_app/features/auth/data/repositories/sign_in/sign_in_repo_impl.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_in/sign_in_cubit.dart';
 import 'package:social_app/features/auth/presentation/cubits/sign_in/sign_in_state.dart';
+import 'package:social_app/features/home/presentation/cubit/post_cubit.dart';
 import 'package:social_app/features/layout/presentation/cubit/layout_cubit.dart';
 
 class SignInForm extends StatefulWidget {
@@ -133,6 +134,7 @@ class _SignUpFormState extends State<SignInForm> {
       _formKey.currentState!.save();
       Helper.keyboardUnfocus(context);
       BlocProvider.of<SignInCubit>(context).signIn(
+        context: context,
         email: _emailController.text.trim(),
         password: _passwordController.text,
       );
@@ -155,13 +157,16 @@ class _SignUpFormState extends State<SignInForm> {
         value: state.uId,
       ).then((value) async {
         Helper.uId = state.uId;
-        BlocProvider.of<LayoutCubit>(context).getUserData();
-        showToast(
-          text: 'Welcome in Silent Voice',
-          state: ToastStates.success,
-        );
-        context.navigateAndReplacement(newRoute: Routes.layoutViewRoute);
-        BlocProvider.of<LayoutCubit>(context).currentIndex = 0;
+        BlocProvider.of<LayoutCubit>(context).getUserData().then((value) {
+          showToast(
+            text: 'Welcome in Silent Voice',
+            state: ToastStates.success,
+          );
+          BlocProvider.of<PostCubit>(context).getPosts().then((value) {
+            context.navigateAndReplacement(newRoute: Routes.layoutViewRoute);
+            BlocProvider.of<LayoutCubit>(context).currentIndex = 0;
+          });
+        });
       });
     }
   }

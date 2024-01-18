@@ -31,8 +31,8 @@ class PostCubit extends Cubit<PostState> {
       value.ref.getDownloadURL().then((value) {
         createNewPost(
             postParams: PostParams(
-                time: postParams.text,
-                postImage: postParams.postImage,
+                time: postParams.time,
+                postImage: value,
                 date: postParams.date,
                 text: postParams.text));
         postImage = null;
@@ -48,7 +48,7 @@ class PostCubit extends Cubit<PostState> {
   List<PostModel> posts = [];
   List<String> postsId = [];
   List<int> likes = [];
-  void getPosts() {
+  Future<void> getPosts() async {
     emit(const GetPostsLoading());
     postRepo.getPosts().listen((event) {
       posts = [];
@@ -119,9 +119,9 @@ class PostCubit extends Cubit<PostState> {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       postImage = File(pickedFile.path);
-      emit(const PostImageSuccess());
+      emit(PostImageSuccess(postImage: postImage!));
     } else {
-      emit(const PostImageError());
+      emit(PostImageError());
     }
   }
 

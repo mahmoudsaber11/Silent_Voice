@@ -10,10 +10,9 @@ class CustomIconsLikes extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(
-          Icons.favorite,
-          size: 22.sp,
-          color: Colors.red,
+        Image.asset(
+          "assets/icons/likes.jpg",
+          width: 30.w,
         ),
         SizedBox(
           width: 5.w,
