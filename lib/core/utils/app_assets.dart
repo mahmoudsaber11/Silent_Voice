@@ -2,8 +2,8 @@ abstract class AppAssets {
   //assets
   static const String splashView = "assets/images/splash_view.png";
   static const String onBoarding1 = "assets/images/onBoarding1.jpg";
-  static const String onBoarding2 = "assets/images/onBoarding2.jpg";
-  static const String onBoarding3 = "assets/images/onBoarding3.jpg";
+  static const String onBoarding2 = "assets/images/onBoarding2.webp";
+  static const String onBoarding3 = "assets/images/onBoarding3.webp";
   static const String chatBackground =
       "assets/images/chat_light_background.jpg";
   static const String noData = "assets/images/noData.jpg";

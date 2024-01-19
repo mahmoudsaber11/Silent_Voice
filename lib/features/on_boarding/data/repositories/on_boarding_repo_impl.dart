@@ -7,7 +7,8 @@ class OnBoardingRepoImpl implements OnBoardingRepo {
   List<OnBoardingModel> onBoardingPages() {
     return <OnBoardingModel>[
       const OnBoardingModel(
-          image: AppAssets.onBoarding1, title: "Welcome To the Fun Media X"),
+          image: AppAssets.onBoarding1,
+          title: "Welcome To the Fun Silent Voice"),
       const OnBoardingModel(
           image: AppAssets.onBoarding2,
           title: "Best Social App to Make New Friends"),
